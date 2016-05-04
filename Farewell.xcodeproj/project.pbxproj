@@ -15,6 +15,9 @@
 		0F48B6F31CD92DF1008A7F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */; };
 		0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6FD1CD92DF1008A7F3D /* FarewellTests.m */; };
 		0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7081CD92DF1008A7F3D /* FarewellUITests.m */; };
+		0F48B7181CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
+		0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
+		0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,8 @@
 		0F48B7041CD92DF1008A7F3D /* FarewellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarewellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F48B7081CD92DF1008A7F3D /* FarewellUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarewellUITests.m; sourceTree = "<group>"; };
 		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTurnBasedMatch.h; sourceTree = "<group>"; };
+		0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTurnBasedMatch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +115,8 @@
 				0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */,
 				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
 				0F48B6E31CD92DF1008A7F3D /* Supporting Files */,
+				0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */,
+				0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */,
 			);
 			path = Farewell;
 			sourceTree = "<group>";
@@ -273,6 +280,7 @@
 				0F48B6EB1CD92DF1008A7F3D /* ViewController.m in Sources */,
 				0F48B6E81CD92DF1008A7F3D /* AppDelegate.m in Sources */,
 				0F48B6E51CD92DF1008A7F3D /* main.m in Sources */,
+				0F48B7181CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */,
+				0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */,
+				0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
