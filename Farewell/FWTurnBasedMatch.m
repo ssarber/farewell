@@ -51,4 +51,20 @@
         
     };
 }
+
+
+- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers viewController:(UIViewController *)viewController
+{
+    _presentingViewController = viewController;
+    
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.minPlayers = minPlayers;
+    request.maxPlayers = maxPlayers;
+    
+    GKTurnBasedMatchmakerViewController *matchMakerVC = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
+    matchMakerVC.turnBasedMatchmakerDelegate = self;
+    matchMakerVC.showExistingMatches = YES;
+    
+    [_presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
+}
 @end

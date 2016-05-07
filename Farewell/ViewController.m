@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "FWTurnBasedMatch.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextView *mainTextView;
 
 @end
 
@@ -16,12 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [[FWTurnBasedMatch sharedInstance] authenticateLocalUserFromController:self];
+    [FWTurnBasedMatch sharedInstance].delegate = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)presentGCTurnViewController:(id)sender
+{
+    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:4 viewController:self];
+    
 }
+
+
 
 @end

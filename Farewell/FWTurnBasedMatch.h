@@ -9,12 +9,24 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-@interface FWTurnBasedMatch : NSObject <GKLocalPlayerListener>
+@protocol TurnBasedMatchDelegate <NSObject>
+
+@end
+
+@interface FWTurnBasedMatch : NSObject <GKLocalPlayerListener, GKTurnBasedMatchmakerViewControllerDelegate>
 
 @property (assign, nonatomic) BOOL userAuthenticated;
+
+@property (strong, nonatomic) UIViewController *presentingViewController;
+
+@property (nonatomic, weak) id <TurnBasedMatchDelegate> delegate;
 
 + (FWTurnBasedMatch *)sharedInstance;
 
 - (void)authenticateLocalUserFromController:(UIViewController *)controller;
+
+- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers
+                     maxPlayers:(NSUInteger)maxPlayers
+                 viewController:(UIViewController *)viewController;
 
 @end

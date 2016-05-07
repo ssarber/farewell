@@ -18,6 +18,7 @@
 		0F48B7181CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
 		0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
 		0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
+		0F65B57E1CDE96EC007B1A56 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F65B57D1CDE96EC007B1A56 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTurnBasedMatch.h; sourceTree = "<group>"; };
 		0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTurnBasedMatch.m; sourceTree = "<group>"; };
+		0F65B57D1CDE96EC007B1A56 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F65B57E1CDE96EC007B1A56 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,7 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
+				0F65B57D1CDE96EC007B1A56 /* GameKit.framework */,
 				0F48B6E21CD92DF1008A7F3D /* Farewell */,
 				0F48B6FC1CD92DF1008A7F3D /* FarewellTests */,
 				0F48B7071CD92DF1008A7F3D /* FarewellUITests */,
@@ -214,6 +218,12 @@
 				TargetAttributes = {
 					0F48B6DF1CD92DF1008A7F3D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = E89J2JM4SK;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					0F48B6F81CD92DF1008A7F3D = {
 						CreatedOnToolsVersion = 7.3;
@@ -425,10 +435,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Farewell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.Farewell;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -436,10 +449,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Farewell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.Farewell;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -508,6 +524,7 @@
 				0F48B70F1CD92DF1008A7F3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +533,7 @@
 				0F48B7121CD92DF1008A7F3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellUITests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +542,7 @@
 				0F48B7151CD92DF1008A7F3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
