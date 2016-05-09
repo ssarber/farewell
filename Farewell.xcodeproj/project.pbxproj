@@ -110,17 +110,17 @@
 		0F48B6E21CD92DF1008A7F3D /* Farewell */ = {
 			isa = PBXGroup;
 			children = (
+				0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */,
+				0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */,
 				0F48B6E61CD92DF1008A7F3D /* AppDelegate.h */,
 				0F48B6E71CD92DF1008A7F3D /* AppDelegate.m */,
 				0F48B6E91CD92DF1008A7F3D /* ViewController.h */,
 				0F48B6EA1CD92DF1008A7F3D /* ViewController.m */,
 				0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */,
-				0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */,
 				0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */,
 				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
+				0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */,
 				0F48B6E31CD92DF1008A7F3D /* Supporting Files */,
-				0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */,
-				0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */,
 			);
 			path = Farewell;
 			sourceTree = "<group>";

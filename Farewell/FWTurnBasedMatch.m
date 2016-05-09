@@ -26,6 +26,8 @@
 
 - (void)authenticateLocalUserFromController:(UIViewController *)authenticationPresentingVC
 {
+    self.presentingViewController = authenticationPresentingVC;
+    
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
     
     __weak GKLocalPlayer *weakLocalPlayer = localPlayer;
@@ -55,7 +57,7 @@
 
 - (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers viewController:(UIViewController *)viewController
 {
-    _presentingViewController = viewController;
+    self.presentingViewController = viewController;
     
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.minPlayers = minPlayers;
@@ -65,6 +67,68 @@
     matchMakerVC.turnBasedMatchmakerDelegate = self;
     matchMakerVC.showExistingMatches = YES;
     
-    [_presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
+    [self.presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
 }
+
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    self.currentMatch = match;
+    
+    GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
+    
+    // If the first participant doesn't have lastTurnDate set yet, it should be
+    // safe to assume we have a brand new match
+    if (firstParticipant.lastTurnDate) {
+        if ([match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+            [self.delegate takeTurnInGame:match];
+        } else {
+            [self.delegate layoutMatch:match];
+        }
+    } else {
+        [self.delegate enterNewGame:match];
+    }
+}
+
+
+- (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error
+{ 
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match
+{
+    NSLog(@"Aww, player %@ quit from match %@", match.currentParticipant, match);
+    
+    NSUInteger currentIndex = [match.participants indexOfObject:match.currentParticipant];
+    
+    GKTurnBasedParticipant *participant;
+    
+    NSMutableArray *nextParticipants = [NSMutableArray array];
+    for (participant in match.participants) {
+        NSUInteger index = [match.participants indexOfObject:participant];
+        participant = [match.participants objectAtIndex:(currentIndex + 1 + index) % match.participants.count];
+        
+        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
+            [nextParticipants addObject:participant];
+        }
+    }
+    
+    [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
+        [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit
+                               nextParticipants:nextParticipants turnTimeout:600
+                                      matchData:matchData completionHandler:nil];
+    }];
+    
+    NSLog(@"Player quit form match");
+    
+}
+
 @end
