@@ -141,7 +141,7 @@
     if ([match.matchID isEqualToString:self.currentMatch.matchID]) {
         
         // It's the current match and our turn now
-        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
+        if ([match.currentParticipant.player.playerID isEqual:localPlayerID]) {
             self.currentMatch = match;
             [self.delegate takeTurnInGame:match];
         } else {

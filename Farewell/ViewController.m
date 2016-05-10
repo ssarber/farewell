@@ -51,44 +51,51 @@
     NSData *data = [sendString dataUsingEncoding:NSUTF8StringEncoding];
     
     self.mainTextView.text = sendString;
+
+    NSMutableArray *nextParticipants = [NSMutableArray array];
+
+    for (GKTurnBasedParticipant *participant in currentMatch.participants) {
+        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
+            [nextParticipants addObject:participant];
+        }
+    }
     
+
 //    NSUInteger currentIndex = [currentMatch.participants indexOfObject:currentMatch.currentParticipant];
-    
 //    NSMutableArray *nextParticipants = [NSMutableArray array];
-//
-//    for (GKTurnBasedParticipant *participant in currentMatch.participants) {
-//       // NSInteger index = ([currentMatch.participants indexOfObject:participant] + currentIndex + 1) % [currentMatch.participants count];
+//    for (NSInteger i = 0; i < [currentMatch.participants count]; i++) {
+//        NSInteger indx = (i + currentIndex + 1) % [currentMatch.participants count];
+//        GKTurnBasedParticipant *participant = [currentMatch.participants objectAtIndex:indx];
+//        
 //        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
 //            [nextParticipants addObject:participant];
 //        }
 //        
-////        [participants addObject:[currentMatch.participants objectAtIndex:index]];
 //    }
     
-
-    NSUInteger currentIndex = [currentMatch.participants indexOfObject:currentMatch.currentParticipant];
-    NSMutableArray *nextParticipants = [NSMutableArray array];
-    for (NSInteger i = 0; i < [currentMatch.participants count]; i++) {
-        NSInteger indx = (i + currentIndex + 1) % [currentMatch.participants count];
-        GKTurnBasedParticipant *participant = [currentMatch.participants objectAtIndex:indx];
-        
-        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
-            [nextParticipants addObject:participant];
+    if ([data length] > 3800) {
+        for (GKTurnBasedParticipant *participant in currentMatch.participants) {
+            participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
         }
-        
+        [currentMatch endMatchInTurnWithMatchData:data completionHandler:^(NSError *error) {
+            if (error) {
+                NSLog(@"Um, got this error: %@", error);
+            }
+        }];
+        self.statusLabel.text = @"Game Over.";
+    } else {
+        [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault matchData:data completionHandler:^(NSError *error) {
+            if (error) {
+                NSLog(@"Got error: %@", error);
+                
+                self.statusLabel.text = @"Oops, something went wrong. Try that again.";
+            } else {
+                self.statusLabel.text = @"Your turn is over.";
+                self.textInputField.enabled = NO;
+            }
+        }];
     }
-    
-    [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:600 matchData:data completionHandler:^(NSError *error) {
-        if (error) {
-            NSLog(@"Got error: %@", error);
-            
-            self.statusLabel.text = @"Oops, something went wrong. Try that again.";
-        } else {
-            self.statusLabel.text = @"Your turn is over.";
-            self.textInputField.enabled = NO;
-        }
-    }];
-    
+
     NSLog(@"Send Turn, %@, %@", data, nextParticipants);
     
     self.textInputField.text = @"";
@@ -109,6 +116,15 @@
     return YES;
 }
 
+
+- (void)updateCharactersLeftCount:(NSData *)matchData
+{
+    if ([matchData length]) {
+        self.statusLabel.text = [NSString stringWithFormat:@"%@, %lu characters left.",
+                                 self.statusLabel.text, 4000 - [matchData length]];
+    }
+}
+
 # pragma mark - FWTurnBasedMatchDelegate protocol methods
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match
@@ -119,7 +135,10 @@
 
 -(void)takeTurnInGame:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Taking turn in a game...");
+    NSString *statusString = [NSString stringWithFormat:@"Your turn."];
+    
+    self.statusLabel.text = statusString;
+    self.textInputField.enabled = YES;
     
     __weak typeof(self) weakSelf = self;
     
@@ -131,6 +150,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextView.text = gameTextSoFar;
             });
+            
+            [self updateCharactersLeftCount:match.matchData];
         }
     }];
 }
@@ -145,7 +166,7 @@
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
         NSUInteger playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
-        statusString = playerName? [NSString stringWithFormat:@"%@'s turn.", playerName] :
+        statusString = playerName? [NSString stringWithFormat:@"%@'s turn", playerName] :
             [NSString stringWithFormat: @"Player %ld's turn.", playerNum];
     }
     
@@ -159,6 +180,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextView.text = gameTextSoFar;
             });
+            
+            [self updateCharactersLeftCount:match.matchData];
         }
     }];
 }
