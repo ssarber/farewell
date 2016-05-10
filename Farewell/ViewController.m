@@ -33,13 +33,11 @@
     [FWTurnBasedMatch sharedInstance].delegate = self;
 }
 
-
 - (IBAction)presentGCTurnViewController:(id)sender
 {
     [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:4 viewController:self];
     
 }
-
 
 - (IBAction)sendTurn:(id)sender
 {
@@ -68,22 +66,17 @@
 //    }
     
 
-    NSUInteger currentIndex = [currentMatch.participants
-                               indexOfObject:currentMatch.currentParticipant];
+    NSUInteger currentIndex = [currentMatch.participants indexOfObject:currentMatch.currentParticipant];
     NSMutableArray *nextParticipants = [NSMutableArray array];
-    for (NSInteger i = 0; i < [currentMatch.participants count]; i++){
-        NSInteger indx = (i + currentIndex + 1) %
-        [currentMatch.participants count];
-        GKTurnBasedParticipant *participant =
-        [currentMatch.participants objectAtIndex:indx];
-        //1
-        if (participant.matchOutcome ==
-            GKTurnBasedMatchOutcomeNone) {
+    for (NSInteger i = 0; i < [currentMatch.participants count]; i++) {
+        NSInteger indx = (i + currentIndex + 1) % [currentMatch.participants count];
+        GKTurnBasedParticipant *participant = [currentMatch.participants objectAtIndex:indx];
+        
+        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
             [nextParticipants addObject:participant];
         }
         
     }
-    
     
     [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:600 matchData:data completionHandler:^(NSError *error) {
         if (error) {
@@ -131,7 +124,7 @@
     __weak typeof(self) weakSelf = self;
     
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
-        if (matchData) {
+        if ([matchData bytes]) {
             NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
             
             // Update the UI on the main thread
@@ -144,7 +137,7 @@
 
 - (void)layoutMatch:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Viewing match where it's not your turn");
+    NSLog(@"Viewing match where it's not our turn...");
     NSString *statusString;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
@@ -168,6 +161,19 @@
             });
         }
     }];
+}
+
+- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
+                                                                   message:@"Another email requires your immediate attention."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Oh, OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

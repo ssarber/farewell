@@ -70,6 +70,7 @@
     [self.presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
 }
 
+#pragma mark - GKTurnBasedMatchmakerViewControllerDelegate methods
 
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match
 {
@@ -130,5 +131,56 @@
     NSLog(@"Player quit form match");
     
 }
+
+#pragma mark - GKTurnBasedEventListener methods
+
+- (void)player:(GKPlayer *)player receivedTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive
+{
+    NSString *localPlayerID = [GKLocalPlayer localPlayer].playerID;
+    
+    if ([match.matchID isEqualToString:self.currentMatch.matchID]) {
+        
+        // It's the current match and our turn now
+        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
+            self.currentMatch = match;
+            [self.delegate takeTurnInGame:match];
+        } else {
+            // It's the cureent match, but some else's turn
+            self.currentMatch = match;
+            [self.delegate layoutMatch:match];
+        }
+    } else {
+        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
+            [self.delegate sendNotice:@"it's your turn for another match." forMatch:match];
+        } else {
+            //It's not the current match and someone else's turn
+        }
+    }
+}
+
+- (void)player:(GKPlayer *)player matchEnded:(GKTurnBasedMatch *)match
+{
+    NSLog(@"Game has ended");
+}
+
+-(void)player:(GKPlayer *)player didRequestMatchWithOtherPlayers:(NSArray *)playersToInvite
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    
+    request.recipients = playersToInvite;
+    request.maxPlayers = 4;
+    request.minPlayers = 2;
+    
+    GKTurnBasedMatchmakerViewController *matchMakerVC = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
+    
+    matchMakerVC.showExistingMatches = NO;
+    
+    matchMakerVC.turnBasedMatchmakerDelegate = self;
+    
+    [self.presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
+}
+
+
 
 @end
