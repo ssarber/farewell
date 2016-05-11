@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "FWTurnBasedMatch.h"
 
+NSUInteger const kMaxAllowedCharacters = 100;
+
 @interface ViewController () <UITextViewDelegate, UITextFieldDelegate, FWTurnBasedMatchDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;
@@ -52,28 +54,19 @@
     
     self.mainTextView.text = sendString;
 
+    NSUInteger currentIndex = [currentMatch.participants indexOfObject:currentMatch.currentParticipant];
     NSMutableArray *nextParticipants = [NSMutableArray array];
-
-    for (GKTurnBasedParticipant *participant in currentMatch.participants) {
+    for (NSInteger i = 0; i < [currentMatch.participants count]; i++) {
+        NSInteger indx = (i + currentIndex + 1) % [currentMatch.participants count];
+        GKTurnBasedParticipant *participant = [currentMatch.participants objectAtIndex:indx];
+        
         if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
             [nextParticipants addObject:participant];
         }
+        
     }
     
-
-//    NSUInteger currentIndex = [currentMatch.participants indexOfObject:currentMatch.currentParticipant];
-//    NSMutableArray *nextParticipants = [NSMutableArray array];
-//    for (NSInteger i = 0; i < [currentMatch.participants count]; i++) {
-//        NSInteger indx = (i + currentIndex + 1) % [currentMatch.participants count];
-//        GKTurnBasedParticipant *participant = [currentMatch.participants objectAtIndex:indx];
-//        
-//        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
-//            [nextParticipants addObject:participant];
-//        }
-//        
-//    }
-    
-    if ([data length] > 3800) {
+    if ([data length] > kMaxAllowedCharacters) {
         for (GKTurnBasedParticipant *participant in currentMatch.participants) {
             participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
         }
@@ -121,7 +114,7 @@
 {
     if ([matchData length]) {
         self.statusLabel.text = [NSString stringWithFormat:@"%@, %lu characters left.",
-                                 self.statusLabel.text, 4000 - [matchData length]];
+                                 self.statusLabel.text,  kMaxAllowedCharacters - [matchData length]];
     }
 }
 
@@ -197,6 +190,11 @@
     
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)receiveEndGame:(GKTurnBasedMatch *)match
+{
+    [self layoutMatch:match];
 }
 
 @end

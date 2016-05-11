@@ -76,6 +76,28 @@
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
+    NSMutableArray *stillPlaying = [NSMutableArray array];
+    
+    for (GKTurnBasedParticipant *p in match.participants) {
+        if (p.matchOutcome == GKTurnBasedMatchOutcomeNone) {
+            [stillPlaying addObject:p];
+        }
+    }
+    
+    if ([stillPlaying count] < 2 && [match.participants count] >= 2) {
+        // There's only one player left
+        for (GKTurnBasedParticipant *part in stillPlaying) {
+            part.matchOutcome = GKTurnBasedMatchOutcomeTied;
+        }
+        [match endMatchInTurnWithMatchData:match.matchData completionHandler:^(NSError *error) {
+            if (error) {
+                NSLog(@"Error ending match %@", error);
+            }
+            [self.delegate layoutMatch:match];
+        }];
+        return;
+    }
+    
     self.currentMatch = match;
     
     GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
@@ -83,7 +105,7 @@
     // If the first participant doesn't have lastTurnDate set yet, it should be
     // safe to assume we have a brand new match
     if (firstParticipant.lastTurnDate) {
-        if ([match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+        if ([match.currentParticipant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
             [self.delegate takeTurnInGame:match];
         } else {
             [self.delegate layoutMatch:match];
@@ -160,7 +182,11 @@
 
 - (void)player:(GKPlayer *)player matchEnded:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Game has ended");
+    if ([match.matchID isEqualToString:self.currentMatch.matchID]) {
+        [self.delegate receiveEndGame:match];
+    } else {
+        [self.delegate sendNotice:@"Another game ended!" forMatch:match];
+    }
 }
 
 -(void)player:(GKPlayer *)player didRequestMatchWithOtherPlayers:(NSArray *)playersToInvite

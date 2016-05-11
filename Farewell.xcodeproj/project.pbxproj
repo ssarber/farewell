@@ -18,7 +18,7 @@
 		0F48B7181CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
 		0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
 		0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
-		0F65B57E1CDE96EC007B1A56 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F65B57D1CDE96EC007B1A56 /* GameKit.framework */; };
+		0FF3039C1CE2926200B6E6A3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3039B1CE2926200B6E6A3 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,7 @@
 		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTurnBasedMatch.h; sourceTree = "<group>"; };
 		0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTurnBasedMatch.m; sourceTree = "<group>"; };
-		0F65B57D1CDE96EC007B1A56 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0FF3039B1CE2926200B6E6A3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F65B57E1CDE96EC007B1A56 /* GameKit.framework in Frameworks */,
+				0FF3039C1CE2926200B6E6A3 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
-				0F65B57D1CDE96EC007B1A56 /* GameKit.framework */,
+				0FF3039B1CE2926200B6E6A3 /* GameKit.framework */,
 				0F48B6E21CD92DF1008A7F3D /* Farewell */,
 				0F48B6FC1CD92DF1008A7F3D /* FarewellTests */,
 				0F48B7071CD92DF1008A7F3D /* FarewellUITests */,
