@@ -17,18 +17,26 @@ NSUInteger const kMaxAllowedCharacters = 100;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIButton *loadGamesButton;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [[FWTurnBasedMatch sharedInstance] authenticateLocalUserFromController:self];
     
     [self.textInputField setReturnKeyType:UIReturnKeyDone];
+    
+    self.textInputField.hidden = YES;
     self.textInputField.delegate = self;
+    
+    [self.loadGamesButton setTitle:@"Begin" forState:UIControlStateNormal];
+    
+    self.characterCountLabel.hidden = YES;
     
     self.statusLabel.text = @"Welcome. Press Begin to get started";
     
@@ -96,11 +104,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.characterCountLabel.textColor = [UIColor blackColor];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
     [textField resignFirstResponder];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     if (textField == self.textInputField) {
         [textField resignFirstResponder];
         [self sendTurn:nil];
@@ -128,9 +138,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 -(void)takeTurnInGame:(GKTurnBasedMatch *)match
 {
+    [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
+    
     NSString *statusString = [NSString stringWithFormat:@"Your turn."];
     
     self.statusLabel.text = statusString;
+    self.textInputField.hidden = NO;
     self.textInputField.enabled = YES;
     
     __weak typeof(self) weakSelf = self;
@@ -152,6 +165,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
 - (void)layoutMatch:(GKTurnBasedMatch *)match
 {
     NSLog(@"Viewing match where it's not our turn...");
+    
+    self.textInputField.hidden = NO;
+    [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
+    
     NSString *statusString;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
