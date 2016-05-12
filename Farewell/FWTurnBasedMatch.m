@@ -55,7 +55,7 @@
 }
 
 
-- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers viewController:(UIViewController *)viewController
+- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers showExistingMatches:(BOOL)show viewController:(UIViewController *)viewController
 {
     self.presentingViewController = viewController;
     
@@ -65,7 +65,7 @@
     
     GKTurnBasedMatchmakerViewController *matchMakerVC = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
     matchMakerVC.turnBasedMatchmakerDelegate = self;
-    matchMakerVC.showExistingMatches = YES;
+    matchMakerVC.showExistingMatches = show? YES : NO;
     
     [self.presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
 }

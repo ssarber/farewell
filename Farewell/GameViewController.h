@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FWTurnBasedMatch.h"
 
-@interface ViewController : UIViewController
+@interface GameViewController : UIViewController
 
+-(void)takeTurnInGame:(GKTurnBasedMatch *)match;
 
 @end
 

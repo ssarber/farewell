@@ -23,7 +23,8 @@
 @implementation FWInitialFlowViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     _textIndex = -1;
     self.beginButton.hidden= YES;
@@ -61,14 +62,16 @@
     return _textArray;
 }
 
-- (IBAction)changeText:(id)sender {
+- (IBAction)changeText:(id)sender
+{
     
     [UIView transitionWithView:self.label duration:0.5 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         self.label.text = [self text];
     } completion:nil];
 }
 
-- (NSString *)text {
+- (NSString *)text
+{
     self.beginButton.hidden = YES;
     
     if (self.textIndex >= self.textArray.count - 1) {

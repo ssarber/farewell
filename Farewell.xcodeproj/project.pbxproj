@@ -10,9 +10,12 @@
 		0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
 		0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
 		0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
+		0F3DE0041CE515610048DFAE /* FWLandingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DE0031CE515610048DFAE /* FWLandingScreenViewController.m */; };
+		0F3DE0051CE515610048DFAE /* FWLandingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DE0031CE515610048DFAE /* FWLandingScreenViewController.m */; };
+		0F3DE0061CE515610048DFAE /* FWLandingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DE0031CE515610048DFAE /* FWLandingScreenViewController.m */; };
 		0F48B6E51CD92DF1008A7F3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6E41CD92DF1008A7F3D /* main.m */; };
 		0F48B6E81CD92DF1008A7F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6E71CD92DF1008A7F3D /* AppDelegate.m */; };
-		0F48B6EB1CD92DF1008A7F3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6EA1CD92DF1008A7F3D /* ViewController.m */; };
+		0F48B6EB1CD92DF1008A7F3D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6EA1CD92DF1008A7F3D /* GameViewController.m */; };
 		0F48B6EE1CD92DF1008A7F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */; };
 		0F48B6F01CD92DF1008A7F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */; };
 		0F48B6F31CD92DF1008A7F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */; };
@@ -44,12 +47,14 @@
 /* Begin PBXFileReference section */
 		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWInitialFlowViewController.h; path = ../FWInitialFlowViewController.h; sourceTree = "<group>"; };
 		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWInitialFlowViewController.m; path = ../FWInitialFlowViewController.m; sourceTree = "<group>"; };
+		0F3DE0021CE515610048DFAE /* FWLandingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWLandingScreenViewController.h; sourceTree = "<group>"; };
+		0F3DE0031CE515610048DFAE /* FWLandingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWLandingScreenViewController.m; sourceTree = "<group>"; };
 		0F48B6E01CD92DF1008A7F3D /* Farewell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farewell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F48B6E41CD92DF1008A7F3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F48B6E61CD92DF1008A7F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0F48B6E71CD92DF1008A7F3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0F48B6E91CD92DF1008A7F3D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0F48B6EA1CD92DF1008A7F3D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0F48B6E91CD92DF1008A7F3D /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		0F48B6EA1CD92DF1008A7F3D /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		0F48B6ED1CD92DF1008A7F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F48B6F21CD92DF1008A7F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,12 +122,14 @@
 			children = (
 				0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */,
 				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
+				0F3DE0021CE515610048DFAE /* FWLandingScreenViewController.h */,
+				0F3DE0031CE515610048DFAE /* FWLandingScreenViewController.m */,
 				0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */,
 				0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */,
 				0F48B6E61CD92DF1008A7F3D /* AppDelegate.h */,
 				0F48B6E71CD92DF1008A7F3D /* AppDelegate.m */,
-				0F48B6E91CD92DF1008A7F3D /* ViewController.h */,
-				0F48B6EA1CD92DF1008A7F3D /* ViewController.m */,
+				0F48B6E91CD92DF1008A7F3D /* GameViewController.h */,
+				0F48B6EA1CD92DF1008A7F3D /* GameViewController.m */,
 				0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */,
 				0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */,
 				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
@@ -294,9 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F48B6EB1CD92DF1008A7F3D /* ViewController.m in Sources */,
+				0F48B6EB1CD92DF1008A7F3D /* GameViewController.m in Sources */,
 				0F48B6E81CD92DF1008A7F3D /* AppDelegate.m in Sources */,
 				0F48B6E51CD92DF1008A7F3D /* main.m in Sources */,
+				0F3DE0041CE515610048DFAE /* FWLandingScreenViewController.m in Sources */,
 				0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B7181CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
 			);
@@ -309,6 +317,7 @@
 				0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */,
 				0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
+				0F3DE0051CE515610048DFAE /* FWLandingScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +328,7 @@
 				0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */,
 				0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
+				0F3DE0061CE515610048DFAE /* FWLandingScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

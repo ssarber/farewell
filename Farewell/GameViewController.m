@@ -6,12 +6,11 @@
 //  Copyright © 2016 Stan Sarber. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "FWTurnBasedMatch.h"
+#import "GameViewController.h"
 
 NSUInteger const kMaxAllowedCharacters = 100;
 
-@interface ViewController () <UITextViewDelegate, UITextFieldDelegate, FWTurnBasedMatchDelegate>
+@interface GameViewController () <UITextViewDelegate, UITextFieldDelegate, FWTurnBasedMatchDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
@@ -21,17 +20,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 @end
 
-@implementation ViewController
+@implementation GameViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[FWTurnBasedMatch sharedInstance] authenticateLocalUserFromController:self];
-    
     [self.textInputField setReturnKeyType:UIReturnKeyDone];
     
-    self.textInputField.hidden = YES;
     self.textInputField.delegate = self;
     
     [self.loadGamesButton setTitle:@"Begin" forState:UIControlStateNormal];
@@ -45,7 +41,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)presentGCTurnViewController:(id)sender
 {
-    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:4 viewController:self];
+    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:YES viewController:self];
+    
+}
+
+- (IBAction)presentGCViewControllerForNewGame:(id)sender
+{
+    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
     
 }
 
@@ -136,7 +138,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.mainTextView.text = @"Dear coworkers,\n";
 }
 
--(void)takeTurnInGame:(GKTurnBasedMatch *)match
+- (void)takeTurnInGame:(GKTurnBasedMatch *)match
 {
     [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
     
