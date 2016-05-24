@@ -6,25 +6,30 @@
 //  Copyright © 2016 Stan Sarber. All rights reserved.
 //
 
-#import "GameViewController.h"
+#import "FWGameScreenViewController.h"
 
 NSUInteger const kMaxAllowedCharacters = 100;
 
-@interface GameViewController () <UITextViewDelegate, UITextFieldDelegate, FWTurnBasedMatchDelegate>
+@interface FWGameScreenViewController () <UITextViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIButton *loadGamesButton;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end
 
-@implementation GameViewController
+@implementation FWGameScreenViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed:)];
+    
+    self.navigationBar.topItem.leftBarButtonItem = backButton;
     
     [self.textInputField setReturnKeyType:UIReturnKeyDone];
     
@@ -36,8 +41,27 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     self.statusLabel.text = @"Welcome. Press Begin to get started";
     
-    [FWTurnBasedMatch sharedInstance].delegate = self;
+//    [FWTurnBasedMatch sharedInstance].delegate = self;
 }
+
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+
+- (IBAction)backButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)doneButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (IBAction)presentGCTurnViewController:(id)sender
 {
@@ -45,11 +69,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
 }
 
+
 - (IBAction)presentGCViewControllerForNewGame:(id)sender
 {
     [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
     
 }
+
 
 - (IBAction)sendTurn:(id)sender
 {
@@ -106,10 +132,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.characterCountLabel.textColor = [UIColor blackColor];
 }
 
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [textField resignFirstResponder];
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -138,7 +166,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.mainTextView.text = @"Dear coworkers,\n";
 }
 
-- (void)takeTurnInGame:(GKTurnBasedMatch *)match
+
+- (void)takeTurnInMatch:(GKTurnBasedMatch *)match
 {
     [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
     
@@ -164,7 +193,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
     }];
 }
 
-- (void)layoutMatch:(GKTurnBasedMatch *)match
+
+- (void)layoutCurrentMatch:(GKTurnBasedMatch *)match
 {
     NSLog(@"Viewing match where it's not our turn...");
     
@@ -198,6 +228,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     }];
 }
 
+
 - (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
@@ -211,9 +242,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+
 - (void)receiveEndGame:(GKTurnBasedMatch *)match
 {
-    [self layoutMatch:match];
+    [self layoutCurrentMatch:match];
 }
 
 @end

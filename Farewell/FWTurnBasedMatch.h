@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-@protocol FWTurnBasedMatchDelegate <NSObject>
+@protocol FWTurnBasedMatchDelegate
 - (void)enterNewGame:(GKTurnBasedMatch *)match;
 - (void)layoutMatch:(GKTurnBasedMatch *)match;
 - (void)takeTurnInGame:(GKTurnBasedMatch *)match;

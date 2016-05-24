@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Farewell/FWTurnBasedMatch.m"
-            timestampString = "484699488.650783"
+            filePath = "Farewell/ViewController.m"
+            timestampString = "484778302.535801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "-player:didRequestMatchWithOtherPlayers:"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-takeTurnInGame:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,14 +25,78 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Farewell/ViewController.m"
-            timestampString = "484778302.535801"
+            filePath = "Farewell/FWLandingScreenViewController.m"
+            timestampString = "485449357.477943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-layoutMatch:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Farewell/FWMainScreenViewController.m"
+            timestampString = "485731276.644971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-takeTurnInGame:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Farewell/FWGameScreenViewController.m"
+            timestampString = "485731268.23004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "-layoutCurrentMatch:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[FWGameScreenViewController layoutCurrentMatch:]_block_invoke"
+                  moduleName = "Farewell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zookgek/Codez/farewell/Farewell/FWGameScreenViewController.m"
+                  timestampString = "485731276.694899"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[FWGameScreenViewController layoutCurrentMatch:]_block_invoke_2"
+                  moduleName = "Farewell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zookgek/Codez/farewell/Farewell/FWGameScreenViewController.m"
+                  timestampString = "485731276.695038"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

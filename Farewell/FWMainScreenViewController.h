@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FWTurnBasedMatch.h"
 
-@interface FWLandingScreenViewController : UIViewController
+@interface FWMainScreenViewController : UIViewController
+
+- (void)layoutMatch:(GKTurnBasedMatch *)match;
 
 @end

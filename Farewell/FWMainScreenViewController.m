@@ -6,37 +6,44 @@
 //  Copyright © 2016 Stan Sarber. All rights reserved.
 //
 
-#import "FWLandingScreenViewController.h"
+#import "FWMainScreenViewController.h"
 #import "FWTurnBasedMatch.h"
-#import "GameViewController.h"
+#import "FWGameScreenViewController.h"
 
-@interface FWLandingScreenViewController () <FWTurnBasedMatchDelegate>
+@interface FWMainScreenViewController () <FWTurnBasedMatchDelegate>
 
-@property (strong, nonatomic) GameViewController *gameVC;
+@property (strong, nonatomic) FWGameScreenViewController *gameVC;
 
 @end
 
-@implementation FWLandingScreenViewController
+@implementation FWMainScreenViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [[FWTurnBasedMatch sharedInstance] authenticateLocalUserFromController:self];
     
     [FWTurnBasedMatch sharedInstance].delegate = self;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
 }
 
--(BOOL)prefersStatusBarHidden
+
+- (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
+
 
 - (IBAction)presentGCViewControllerForNewGame:(id)sender
 {
     [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
     
 }
+
 
 - (IBAction)presentGCTurnViewControllerForAllGames:(id)sender
 {
@@ -51,53 +58,44 @@
     NSLog(@"======== Entering new game ===========");
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"GameViewControllerID"];
-    [self.gameVC setModalPresentationStyle:UIModalPresentationFullScreen];
+    self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
+
     [self presentViewController:self.gameVC animated:YES completion:nil];
+    
+    [self.gameVC enterNewGame:match];
 }
+
 
 -(void)takeTurnInGame:(GKTurnBasedMatch *)match
 {
-    [self.gameVC takeTurnInGame:match];
+//    [self presentViewController:self.gameVC animated:YES completion:nil];
     
-    NSLog(@"Taking turn in game");
+    [self.gameVC takeTurnInMatch:match];
 }
 
 
+- (void)layoutMatch:(GKTurnBasedMatch *)match
+{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController pushViewController:self.gameVC animated:YES];
+    
+    [self presentViewController:self.gameVC animated:NO completion:nil];
+    
+//    [self performSegueWithIdentifier:@"loginMainSegue" sender:self];
 //
-//- (void)layoutMatch:(GKTurnBasedMatch *)match
-//{
-//    NSLog(@"Viewing match where it's not our turn...");
-//    
-//    self.textInputField.hidden = NO;
-//    [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
-//    
-//    NSString *statusString;
-//    
-//    if (match.status == GKTurnBasedMatchStatusEnded) {
-//        statusString = @"Match ended.";
-//    } else {
-//        NSString *playerName = match.currentParticipant.player.displayName;
-//        NSUInteger playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
-//        statusString = playerName? [NSString stringWithFormat:@"%@'s turn", playerName] :
-//        [NSString stringWithFormat: @"Player %ld's turn.", playerNum];
-//    }
-//    
-//    self.statusLabel.text = statusString;
-//    self.textInputField.enabled = NO;
-//    
-//    __weak typeof(self) weakSelf = self;
-//    [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
-//        if (matchData) {
-//            NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                weakSelf.mainTextView.text = gameTextSoFar;
-//            });
-//            
-//            [self updateCharactersLeftCount:match.matchData];
-//        }
-//    }];
+//    [self.gameVC layoutCurrentMatch:match];
+    
+//    [[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
+ 
+}
+
+//-(void)loadAMatch:(GKTurnBasedMatch *)match {
+//    [self.vc dismissViewControllerAnimated:YES completion:nil];
+// [[GCTurnBasedMatchHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
 //}
+
+
+
 //
 //- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
 //{

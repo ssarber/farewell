@@ -7,6 +7,7 @@
 //
 
 #import "FWInitialFlowViewController.h"
+#import "FWMainScreenViewController.h"
 
 @interface FWInitialFlowViewController ()
 
@@ -18,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *beginButton;
 
+@property (assign, nonatomic) BOOL userHasSeenInitialFlow;
+
 @end
 
 @implementation FWInitialFlowViewController
@@ -27,7 +30,7 @@
 {
     [super viewDidLoad];
     _textIndex = -1;
-    self.beginButton.hidden= YES;
+    self.beginButton.hidden = YES;
 }
 
 -(BOOL)prefersStatusBarHidden
@@ -55,7 +58,7 @@
                       @"This place could use some honesty, quite honestly.",
                       @"Just say what's on your mind.",
                       @"Just write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything.",
-                      @"Then read what they wrote and add a couple sentences again. Doesn't it sound like fun?..",
+                      @"Then read what they wrote and add a couple sentences again. See if you can have some fun.",
                       @"Ready to begin?"];
     }
     
@@ -72,7 +75,7 @@
 
 - (NSString *)text
 {
-    self.beginButton.hidden = YES;
+    self.beginButton.hidden = self.userHasSeenInitialFlow? NO : YES;
     
     if (self.textIndex >= self.textArray.count - 1) {
         self.textIndex = 0;
@@ -83,9 +86,20 @@
         
         [UIView transitionWithView: self.beginButton duration:4.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             self.beginButton.hidden = NO;
+            self.userHasSeenInitialFlow = YES;
         } completion:nil];
     }
     return self.textArray[self.textIndex];
 }
+
+- (IBAction)presentLandingViewController:(id)sender
+{
+    UIViewController *landingScreenVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FWLandingScreenViewControllerID"];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:landingScreenVC];
+    
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
 
 @end
