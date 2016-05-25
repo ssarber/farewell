@@ -7,9 +7,16 @@
 //
 
 #import "FWGamesTableViewController.h"
+#import "FWMatchCellTableViewCell.h"
 @import GameKit;
 
-@interface FWGamesTableViewController ()
+typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
+    FWGamesTableViewSectionMyTurn   = 0,
+    FWGamesTableViewSectionTheirTurn   = 1,
+    FWGamesTableViewSectionGameEnded  = 2
+};
+
+@interface FWGamesTableViewController () <FWMatchCellTableViewCellDelegate>
 
 @property (nonatomic, strong) NSArray *allMyMatches;
 
@@ -59,7 +66,7 @@
                 }
             }
             
-            if(m.status != GKTurnBasedMatchStatusEnded && myOutcome != GKTurnBasedMatchOutcomeQuit) {
+            if (m.status != GKTurnBasedMatchStatusEnded && myOutcome != GKTurnBasedMatchOutcomeQuit) {
                 if ([m.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
                     [myMatches addObject:m];
                 } else {
@@ -70,6 +77,10 @@
             }
         }
         self.allMyMatches = @[myMatches, otherMatches, endedMatches];
+        
+        NSLog(@"Ooh, matches: %@", self.allMyMatches);
+        
+        [self.tableView reloadData];
     }];
 }
 
@@ -82,24 +93,48 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 3;
 }
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == FWGamesTableViewSectionMyTurn) {
+        return @"My Turn";
+    } else if (section == FWGamesTableViewSectionTheirTurn) {
+        return @"Their Turn";
+    } else {
+        return @"Game Ended";
+    }
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [[self.allMyMatches objectAtIndex:section] count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    FWMatchCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FWMatchCellTableViewCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    cell.match = match;
+    
+    if ([match.matchData length] > 0) {
+        NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
+        cell.storyText.text = storyString;
+    }
     
     return cell;
 }
-*/
+
+
+- (void)loadAMatch:(GKTurnBasedMatch *)match
+{
+    [self.mainVC dismissViewControllerAnimated:YES completion:nil];
+    [[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
+}
 
 /*
 // Override to support conditional editing of the table view.

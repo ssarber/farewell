@@ -24,6 +24,9 @@
 		0F48B7181CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
 		0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
 		0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */; };
+		0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
+		0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
+		0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
 		0FAFCB1D1CEE2FA6009FE469 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAFCB1C1CEE2FA6009FE469 /* GameKit.framework */; };
 		0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
@@ -70,6 +73,8 @@
 		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTurnBasedMatch.h; sourceTree = "<group>"; };
 		0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTurnBasedMatch.m; sourceTree = "<group>"; };
+		0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMatchCellTableViewCell.h; sourceTree = "<group>"; };
+		0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMatchCellTableViewCell.m; sourceTree = "<group>"; };
 		0FAFCB1C1CEE2FA6009FE469 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
 		0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGamesTableViewController.m; sourceTree = "<group>"; };
@@ -137,6 +142,8 @@
 				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
 				0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */,
 				0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */,
+				0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */,
+				0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */,
 				0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */,
 				0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */,
 				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
@@ -310,6 +317,7 @@
 			files = (
 				0F48B6EB1CD92DF1008A7F3D /* FWGameScreenViewController.m in Sources */,
 				0F48B6E81CD92DF1008A7F3D /* FWAppDelegate.m in Sources */,
+				0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
 				0F48B6E51CD92DF1008A7F3D /* main.m in Sources */,
 				0F3DE0041CE515610048DFAE /* FWMainScreenViewController.m in Sources */,
@@ -322,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */,
 				0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
@@ -334,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */,
 				0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FWMainScreenViewController.h"
 
 @interface FWGamesTableViewController : UITableViewController
+
+@property (weak, nonatomic) FWMainScreenViewController *mainVC;
 
 @end
