@@ -9,6 +9,7 @@
 #import "FWMainScreenViewController.h"
 #import "FWTurnBasedMatch.h"
 #import "FWGameScreenViewController.h"
+#import "FWGamesTableViewController.h"
 
 @interface FWMainScreenViewController () <FWTurnBasedMatchDelegate>
 
@@ -68,7 +69,7 @@
 
 -(void)takeTurnInGame:(GKTurnBasedMatch *)match
 {
-//    [self presentViewController:self.gameVC animated:YES completion:nil];
+    [self presentViewController:self.gameVC animated:YES completion:nil];
     
     [self.gameVC takeTurnInMatch:match];
 }
@@ -81,9 +82,7 @@
     
     [self presentViewController:self.gameVC animated:NO completion:nil];
     
-//    [self performSegueWithIdentifier:@"loginMainSegue" sender:self];
-//
-//    [self.gameVC layoutCurrentMatch:match];
+    [self.gameVC layoutCurrentMatch:match];
     
 //    [[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
  
@@ -116,14 +115,19 @@
 //}
 
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"PresentGamesTableViewController"]) {
+        UINavigationController *nc = (UINavigationController *) segue.destinationViewController;
+        
+        FWGamesTableViewController *gamesTableVC = (FWGamesTableViewController *)nc.viewControllers[0];
+        gamesTableVC.mainVC = self;
+    }
 }
-*/
 
 @end

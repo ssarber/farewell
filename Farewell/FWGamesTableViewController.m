@@ -120,10 +120,17 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.match = match;
+    cell.delegate = self;
     
     if ([match.matchData length] > 0) {
         NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
         cell.storyText.text = storyString;
+    }
+    
+    if (indexPath.section == FWGamesTableViewSectionGameEnded) {
+        [cell.quitButton setTitle:@"Remove" forState:UIControlStateNormal];
+    } else {
+        [cell.quitButton setTitle:@"Quit Game" forState:UIControlStateNormal];
     }
     
     return cell;

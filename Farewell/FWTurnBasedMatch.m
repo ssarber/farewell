@@ -171,13 +171,15 @@
             self.currentMatch = match;
             [self.delegate layoutMatch:match];
         }
-    } else {
-        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
-            [self.delegate sendNotice:@"it's your turn for another match." forMatch:match];
-        } else {
-            //It's not the current match and someone else's turn
-        }
     }
+    
+//    else {
+//        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
+//            [self.delegate sendNotice:@"it's your turn for another match." forMatch:match];
+//        } else {
+//            //It's not the current match and someone else's turn
+//        }
+//    }
 }
 
 - (void)player:(GKPlayer *)player matchEnded:(GKTurnBasedMatch *)match

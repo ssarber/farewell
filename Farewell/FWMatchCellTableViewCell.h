@@ -19,6 +19,8 @@
 
 @property (strong, nonatomic) GKTurnBasedMatch *match;
 @property (weak, nonatomic) IBOutlet UITextView *storyText;
+@property (weak, nonatomic) IBOutlet UIButton *quitButton;
+
 @property (weak, nonatomic) id <FWMatchCellTableViewCellDelegate> delegate;
 
 @end

@@ -16,7 +16,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIButton *loadGamesButton;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end
@@ -31,17 +30,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     self.navigationBar.topItem.leftBarButtonItem = backButton;
     
-    [self.textInputField setReturnKeyType:UIReturnKeyDone];
-    
+    [self.textInputField setReturnKeyType:UIReturnKeyDone];    
     self.textInputField.delegate = self;
-    
-    [self.loadGamesButton setTitle:@"Begin" forState:UIControlStateNormal];
-    
     self.characterCountLabel.hidden = YES;
-    
-    self.statusLabel.text = @"Welcome. Press Begin to get started";
-    
-//    [FWTurnBasedMatch sharedInstance].delegate = self;
 }
 
 
@@ -169,7 +160,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)takeTurnInMatch:(GKTurnBasedMatch *)match
 {
-    [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
+    NSLog(@"Viewing a match where it is our turn...");
     
     NSString *statusString = [NSString stringWithFormat:@"Your turn."];
     
@@ -196,11 +187,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)layoutCurrentMatch:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Viewing match where it's not our turn...");
+    NSLog(@"Viewing a match where it's not our turn...");
     
-    self.textInputField.hidden = NO;
-    [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
-    
+    self.textInputField.hidden = YES;
+
     NSString *statusString;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
