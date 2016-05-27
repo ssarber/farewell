@@ -121,10 +121,40 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error
 { 
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+- (void)player:(GKPlayer *)player wantsToQuitMatch:(GKTurnBasedMatch *)match
+{
+    NSLog(@"Aww, player %@ wants to quit from match %@", match.currentParticipant, match);
+    
+    NSUInteger currentIndex = [match.participants indexOfObject:match.currentParticipant];
+    
+    GKTurnBasedParticipant *participant;
+    
+    NSMutableArray *nextParticipants = [NSMutableArray array];
+    for (participant in match.participants) {
+        NSUInteger index = [match.participants indexOfObject:participant];
+        participant = [match.participants objectAtIndex:(currentIndex + 1 + index) % match.participants.count];
+        
+        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
+            [nextParticipants addObject:participant];
+        }
+    }
+    
+    [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
+        [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit
+                               nextParticipants:nextParticipants turnTimeout:600
+                                      matchData:matchData completionHandler:nil];
+    }];
+    
+    NSLog(@"Player quit form match");
+}
+
 
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match
 {

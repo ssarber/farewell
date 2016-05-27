@@ -11,6 +11,8 @@
 
 @interface FWGameScreenViewController : UIViewController
 
+@property (strong, nonatomic) GKTurnBasedMatch *match;
+
 - (void)enterNewGame:(GKTurnBasedMatch *)match;
 - (void)takeTurnInMatch:(GKTurnBasedMatch *)match;
 - (void)layoutCurrentMatch:(GKTurnBasedMatch *)match;

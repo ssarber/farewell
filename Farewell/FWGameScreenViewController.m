@@ -26,13 +26,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed:)];
-    
-    self.navigationBar.topItem.leftBarButtonItem = backButton;
-    
-    [self.textInputField setReturnKeyType:UIReturnKeyDone];    
     self.textInputField.delegate = self;
+    self.textInputField.enablesReturnKeyAutomatically = YES;
+    [self.textInputField becomeFirstResponder];
+    
     self.characterCountLabel.hidden = YES;
+    
+    [self.statusLabel sizeToFit];
 }
 
 
@@ -75,7 +75,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSString *newGameString;
     newGameString = [self.textInputField.text length] > 140? [self.textInputField.text substringToIndex:139] : self.textInputField.text;
     
-    NSString *sendString = [self.mainTextView.text stringByAppendingString:newGameString];
+//    NSString *sendString = [self.mainTextView.text stringByAppendingString:newGameString];
+//    
+    NSString *sendString = [@[self.mainTextView.text, newGameString] componentsJoinedByString:@" "];
     
     NSData *data = [sendString dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -110,8 +112,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
                 
                 self.statusLabel.text = @"Oops, something went wrong. Try that again.";
             } else {
-                self.statusLabel.text = @"Your turn is over.";
-                self.textInputField.enabled = NO;
+                self.statusLabel.text = @"Nice. Your turn is over for now. Let's wait for your co-writer to take turn.";
+                self.textInputField.hidden = YES;
             }
         }];
     }
@@ -123,6 +125,43 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.characterCountLabel.textColor = [UIColor blackColor];
 }
 
+
+- (IBAction)menuButtonPressed:(id)sender
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* quitAction = [UIAlertAction actionWithTitle:@"Quit Game..." style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self quitGame];
+    }];
+    
+    [alert addAction:quitAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)quitGame
+{
+    // If quitting a game where it's our turn
+    if ([self.match.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+        [[FWTurnBasedMatch sharedInstance] player:self.match.currentParticipant.player wantsToQuitMatch:self.match];
+    } else {
+        
+        // Resigns the player from the match when that player is not the current player. This action does not end the match
+        [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
+            if (error) {
+                NSLog(@"Error quitting game: %@", error.localizedDescription);
+            }
+        }];
+    }
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - UITextFieldDelegate Protocol methods
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -140,6 +179,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     return YES;
 }
 
+# pragma mark - Updating characters left counter
 
 - (void)updateCharactersLeftCount:(NSData *)matchData
 {
@@ -153,8 +193,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Entering new game");
-    self.mainTextView.text = @"Dear coworkers,\n";
+    NSLog(@"Inside FWGameScreenViewController -- enterNewGame:(GKTurnBasedMatch *)match");
+    self.mainTextView.text = @"Dear coworkers,\n\n";
 }
 
 

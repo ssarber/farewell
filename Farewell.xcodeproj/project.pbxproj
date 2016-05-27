@@ -27,6 +27,9 @@
 		0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
 		0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
 		0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
+		0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
+		0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
+		0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
 		0FAFCB1D1CEE2FA6009FE469 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAFCB1C1CEE2FA6009FE469 /* GameKit.framework */; };
 		0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
@@ -75,6 +78,8 @@
 		0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTurnBasedMatch.m; sourceTree = "<group>"; };
 		0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMatchCellTableViewCell.h; sourceTree = "<group>"; };
 		0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMatchCellTableViewCell.m; sourceTree = "<group>"; };
+		0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSegue.h; sourceTree = "<group>"; };
+		0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSegue.m; sourceTree = "<group>"; };
 		0FAFCB1C1CEE2FA6009FE469 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
 		0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGamesTableViewController.m; sourceTree = "<group>"; };
@@ -130,22 +135,15 @@
 		0F48B6E21CD92DF1008A7F3D /* Farewell */ = {
 			isa = PBXGroup;
 			children = (
+				0F97FFB31CF8DE0900924EA1 /* Custom Segues */,
+				0F97FFB01CF8CCD400924EA1 /* Storyboards */,
 				0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */,
 				0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */,
-				0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */,
-				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
-				0F3DE0021CE515610048DFAE /* FWMainScreenViewController.h */,
-				0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */,
-				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
-				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
-				0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */,
-				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
+				0F97FFAF1CF8CC8900924EA1 /* View Controllers */,
 				0F48B7161CD94E90008A7F3D /* FWTurnBasedMatch.h */,
 				0F48B7171CD94E90008A7F3D /* FWTurnBasedMatch.m */,
 				0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */,
 				0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */,
-				0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */,
-				0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */,
 				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
 				0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */,
 				0F48B6E31CD92DF1008A7F3D /* Supporting Files */,
@@ -177,6 +175,39 @@
 				0F48B70A1CD92DF1008A7F3D /* Info.plist */,
 			);
 			path = FarewellUITests;
+			sourceTree = "<group>";
+		};
+		0F97FFAF1CF8CC8900924EA1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */,
+				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
+				0F3DE0021CE515610048DFAE /* FWMainScreenViewController.h */,
+				0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */,
+				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
+				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
+				0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */,
+				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0F97FFB01CF8CCD400924EA1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */,
+				0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		0F97FFB31CF8DE0900924EA1 /* Custom Segues */ = {
+			isa = PBXGroup;
+			children = (
+				0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */,
+				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
+			);
+			name = "Custom Segues";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +350,7 @@
 				0F48B6E81CD92DF1008A7F3D /* FWAppDelegate.m in Sources */,
 				0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
+				0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0F48B6E51CD92DF1008A7F3D /* main.m in Sources */,
 				0F3DE0041CE515610048DFAE /* FWMainScreenViewController.m in Sources */,
 				0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
@@ -334,6 +366,7 @@
 				0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */,
 				0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
+				0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
 				0F3DE0051CE515610048DFAE /* FWMainScreenViewController.m in Sources */,
 			);
@@ -347,6 +380,7 @@
 				0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */,
 				0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
+				0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0FAFCB311CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
 				0F3DE0061CE515610048DFAE /* FWMainScreenViewController.m in Sources */,
 			);

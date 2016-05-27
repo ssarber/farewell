@@ -33,10 +33,12 @@
     self.beginButton.hidden = YES;
 }
 
+
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
 }
+
 
 - (NSArray *)textArray {
     if (!_textArray) {
@@ -65,13 +67,16 @@
     return _textArray;
 }
 
+
 - (IBAction)changeText:(id)sender
 {
     
-    [UIView transitionWithView:self.label duration:0.5 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+    [UIView transitionWithView:self.label duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         self.label.text = [self text];
     } completion:nil];
 }
+
 
 - (NSString *)text
 {
@@ -84,22 +89,13 @@
     }
     if (self.textIndex == self.textArray.count - 1) {
         
-        [UIView transitionWithView: self.beginButton duration:4.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [UIView transitionWithView: self.beginButton duration:4.0
+                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             self.beginButton.hidden = NO;
             self.userHasSeenInitialFlow = YES;
         } completion:nil];
     }
     return self.textArray[self.textIndex];
 }
-
-- (IBAction)presentLandingViewController:(id)sender
-{
-    UIViewController *landingScreenVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FWLandingScreenViewControllerID"];
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:landingScreenVC];
-    
-    [self presentViewController:navController animated:YES completion:nil];
-}
-
 
 @end

@@ -21,9 +21,16 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)loadGameButtonPressed:(id)sender {
-    
+- (IBAction)loadGameButtonPressed:(id)sender
+{ 
     [self.delegate loadAMatch:self.match];
+}
+
+- (IBAction)quitButtonPressed:(id)sender
+{
+    [self.match removeWithCompletionHandler:^(NSError *error) {
+        NSLog(@"Removed match: %@", self.match);
+    }];
 }
 
 @end

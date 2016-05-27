@@ -8,6 +8,7 @@
 
 #import "FWGamesTableViewController.h"
 #import "FWMatchCellTableViewCell.h"
+#import "GameSegue.h"
 @import GameKit;
 
 typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
@@ -41,6 +42,12 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     [self reloadTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self reloadTableView];
+}
 
 - (void)cancelButtonPressed
 {
@@ -77,8 +84,6 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
             }
         }
         self.allMyMatches = @[myMatches, otherMatches, endedMatches];
-        
-        NSLog(@"Ooh, matches: %@", self.allMyMatches);
         
         [self.tableView reloadData];
     }];
@@ -139,7 +144,6 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
 
 - (void)loadAMatch:(GKTurnBasedMatch *)match
 {
-    [self.mainVC dismissViewControllerAnimated:YES completion:nil];
     [[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
 }
 

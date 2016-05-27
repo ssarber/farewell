@@ -58,10 +58,7 @@
 {
     NSLog(@"======== Entering new game ===========");
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
-
-    [self presentViewController:self.gameVC animated:YES completion:nil];
+//    [self.navigationController pushViewController:self.gameVC animated:NO];
     
     [self.gameVC enterNewGame:match];
 }
@@ -69,7 +66,16 @@
 
 -(void)takeTurnInGame:(GKTurnBasedMatch *)match
 {
-    [self presentViewController:self.gameVC animated:YES completion:nil];
+    self.gameVC.match = match;
+    
+    if (!self.gameVC.isViewLoaded || !self.gameVC.view.window) {
+        // viewController is visible
+        [self presentViewController:self.gameVC animated:YES completion:nil];
+    } else {
+        [self.navigationController pushViewController:self.gameVC animated:YES];
+    }
+//
+//    [self presentViewController:self.gameVC animated:YES completion:nil];
     
     [self.gameVC takeTurnInMatch:match];
 }
@@ -77,15 +83,10 @@
 
 - (void)layoutMatch:(GKTurnBasedMatch *)match
 {
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.navigationController pushViewController:self.gameVC animated:YES];
-    
-    [self presentViewController:self.gameVC animated:NO completion:nil];
+    self.gameVC.match = match;
+    [self presentViewController:self.gameVC animated:YES completion:nil];
     
     [self.gameVC layoutCurrentMatch:match];
-    
-//    [[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
- 
 }
 
 //-(void)loadAMatch:(GKTurnBasedMatch *)match {

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "FWMainScreenViewController.h"
+#import "FWGameScreenViewController.h"
 
 @interface FWGamesTableViewController : UITableViewController
 
 @property (weak, nonatomic) FWMainScreenViewController *mainVC;
+@property (weak, nonatomic) FWGameScreenViewController *gameVC;
 
 @end
