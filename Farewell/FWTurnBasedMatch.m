@@ -55,7 +55,7 @@
 }
 
 
-- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers viewController:(UIViewController *)viewController
+- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers showExistingMatches:(BOOL)show viewController:(UIViewController *)viewController
 {
     self.presentingViewController = viewController;
     
@@ -65,7 +65,7 @@
     
     GKTurnBasedMatchmakerViewController *matchMakerVC = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
     matchMakerVC.turnBasedMatchmakerDelegate = self;
-    matchMakerVC.showExistingMatches = YES;
+    matchMakerVC.showExistingMatches = show? YES : NO;
     
     [self.presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
 }
@@ -121,10 +121,40 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error
 { 
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+- (void)player:(GKPlayer *)player wantsToQuitMatch:(GKTurnBasedMatch *)match
+{
+    NSLog(@"Aww, player %@ wants to quit from match %@", match.currentParticipant, match);
+    
+    NSUInteger currentIndex = [match.participants indexOfObject:match.currentParticipant];
+    
+    GKTurnBasedParticipant *participant;
+    
+    NSMutableArray *nextParticipants = [NSMutableArray array];
+    for (participant in match.participants) {
+        NSUInteger index = [match.participants indexOfObject:participant];
+        participant = [match.participants objectAtIndex:(currentIndex + 1 + index) % match.participants.count];
+        
+        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
+            [nextParticipants addObject:participant];
+        }
+    }
+    
+    [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
+        [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit
+                               nextParticipants:nextParticipants turnTimeout:600
+                                      matchData:matchData completionHandler:nil];
+    }];
+    
+    NSLog(@"Player quit form match");
+}
+
 
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match
 {
@@ -171,13 +201,15 @@
             self.currentMatch = match;
             [self.delegate layoutMatch:match];
         }
-    } else {
-        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
-            [self.delegate sendNotice:@"it's your turn for another match." forMatch:match];
-        } else {
-            //It's not the current match and someone else's turn
-        }
     }
+    
+//    else {
+//        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
+//            [self.delegate sendNotice:@"it's your turn for another match." forMatch:match];
+//        } else {
+//            //It's not the current match and someone else's turn
+//        }
+//    }
 }
 
 - (void)player:(GKPlayer *)player matchEnded:(GKTurnBasedMatch *)match

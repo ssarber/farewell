@@ -6,48 +6,67 @@
 //  Copyright © 2016 Stan Sarber. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "FWTurnBasedMatch.h"
+#import "FWGameScreenViewController.h"
 
 NSUInteger const kMaxAllowedCharacters = 100;
 
-@interface ViewController () <UITextViewDelegate, UITextFieldDelegate, FWTurnBasedMatchDelegate>
+@interface FWGameScreenViewController () <UITextViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIButton *loadGamesButton;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end
 
-@implementation ViewController
+@implementation FWGameScreenViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[FWTurnBasedMatch sharedInstance] authenticateLocalUserFromController:self];
-    
-    [self.textInputField setReturnKeyType:UIReturnKeyDone];
-    
-    self.textInputField.hidden = YES;
     self.textInputField.delegate = self;
-    
-    [self.loadGamesButton setTitle:@"Begin" forState:UIControlStateNormal];
+    self.textInputField.enablesReturnKeyAutomatically = YES;
+    [self.textInputField becomeFirstResponder];
     
     self.characterCountLabel.hidden = YES;
     
-    self.statusLabel.text = @"Welcome. Press Begin to get started";
-    
-    [FWTurnBasedMatch sharedInstance].delegate = self;
+    [self.statusLabel sizeToFit];
 }
+
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+
+- (IBAction)backButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)doneButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (IBAction)presentGCTurnViewController:(id)sender
 {
-    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:4 viewController:self];
+    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:YES viewController:self];
     
 }
+
+
+- (IBAction)presentGCViewControllerForNewGame:(id)sender
+{
+    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
+    
+}
+
 
 - (IBAction)sendTurn:(id)sender
 {
@@ -56,7 +75,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSString *newGameString;
     newGameString = [self.textInputField.text length] > 140? [self.textInputField.text substringToIndex:139] : self.textInputField.text;
     
-    NSString *sendString = [self.mainTextView.text stringByAppendingString:newGameString];
+//    NSString *sendString = [self.mainTextView.text stringByAppendingString:newGameString];
+//    
+    NSString *sendString = [@[self.mainTextView.text, newGameString] componentsJoinedByString:@" "];
     
     NSData *data = [sendString dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -91,8 +112,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
                 
                 self.statusLabel.text = @"Oops, something went wrong. Try that again.";
             } else {
-                self.statusLabel.text = @"Your turn is over.";
-                self.textInputField.enabled = NO;
+                self.statusLabel.text = @"Nice. Your turn is over for now. Let's wait for your co-writer to take turn.";
+                self.textInputField.hidden = YES;
             }
         }];
     }
@@ -104,10 +125,49 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.characterCountLabel.textColor = [UIColor blackColor];
 }
 
+
+- (IBAction)menuButtonPressed:(id)sender
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* quitAction = [UIAlertAction actionWithTitle:@"Quit Game..." style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self quitGame];
+    }];
+    
+    [alert addAction:quitAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)quitGame
+{
+    // If quitting a game where it's our turn
+    if ([self.match.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+        [[FWTurnBasedMatch sharedInstance] player:self.match.currentParticipant.player wantsToQuitMatch:self.match];
+    } else {
+        
+        // Resigns the player from the match when that player is not the current player. This action does not end the match
+        [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
+            if (error) {
+                NSLog(@"Error quitting game: %@", error.localizedDescription);
+            }
+        }];
+    }
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - UITextFieldDelegate Protocol methods
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [textField resignFirstResponder];
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -119,6 +179,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     return YES;
 }
 
+# pragma mark - Updating characters left counter
 
 - (void)updateCharactersLeftCount:(NSData *)matchData
 {
@@ -132,13 +193,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Entering new game");
-    self.mainTextView.text = @"Dear coworkers,\n";
+    NSLog(@"Inside FWGameScreenViewController -- enterNewGame:(GKTurnBasedMatch *)match");
+    self.mainTextView.text = @"Dear coworkers,\n\n";
 }
 
--(void)takeTurnInGame:(GKTurnBasedMatch *)match
+
+- (void)takeTurnInMatch:(GKTurnBasedMatch *)match
 {
-    [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
+    NSLog(@"Viewing a match where it is our turn...");
     
     NSString *statusString = [NSString stringWithFormat:@"Your turn."];
     
@@ -162,13 +224,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
     }];
 }
 
-- (void)layoutMatch:(GKTurnBasedMatch *)match
+
+- (void)layoutCurrentMatch:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Viewing match where it's not our turn...");
+    NSLog(@"Viewing a match where it's not our turn...");
     
-    self.textInputField.hidden = NO;
-    [self.loadGamesButton setTitle: @"All Games" forState:UIControlStateNormal];
-    
+    self.textInputField.hidden = YES;
+
     NSString *statusString;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
@@ -196,6 +258,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     }];
 }
 
+
 - (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
@@ -209,9 +272,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+
 - (void)receiveEndGame:(GKTurnBasedMatch *)match
 {
-    [self layoutMatch:match];
+    [self layoutCurrentMatch:match];
 }
 
 @end

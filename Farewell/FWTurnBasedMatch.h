@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-@protocol FWTurnBasedMatchDelegate <NSObject>
+@protocol FWTurnBasedMatchDelegate
 - (void)enterNewGame:(GKTurnBasedMatch *)match;
 - (void)layoutMatch:(GKTurnBasedMatch *)match;
 - (void)takeTurnInGame:(GKTurnBasedMatch *)match;
@@ -33,6 +33,7 @@
 
 - (void)findMatchWithMinPlayers:(NSUInteger)minPlayers
                      maxPlayers:(NSUInteger)maxPlayers
+             showExistingMatches:(BOOL)show
                  viewController:(UIViewController *)viewController;
 
 @end

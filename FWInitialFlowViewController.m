@@ -7,6 +7,7 @@
 //
 
 #import "FWInitialFlowViewController.h"
+#import "FWMainScreenViewController.h"
 
 @interface FWInitialFlowViewController ()
 
@@ -18,21 +19,26 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *beginButton;
 
+@property (assign, nonatomic) BOOL userHasSeenInitialFlow;
+
 @end
 
 @implementation FWInitialFlowViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     _textIndex = -1;
-    self.beginButton.hidden= YES;
+    self.beginButton.hidden = YES;
 }
+
 
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
 }
+
 
 - (NSArray *)textArray {
     if (!_textArray) {
@@ -54,22 +60,27 @@
                       @"This place could use some honesty, quite honestly.",
                       @"Just say what's on your mind.",
                       @"Just write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything.",
-                      @"Then read what they wrote and add a couple sentences again. Doesn't it sound like fun?..",
+                      @"Then read what they wrote and add a couple sentences again. See if you can have some fun.",
                       @"Ready to begin?"];
     }
     
     return _textArray;
 }
 
-- (IBAction)changeText:(id)sender {
+
+- (IBAction)changeText:(id)sender
+{
     
-    [UIView transitionWithView:self.label duration:0.5 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+    [UIView transitionWithView:self.label duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         self.label.text = [self text];
     } completion:nil];
 }
 
-- (NSString *)text {
-    self.beginButton.hidden = YES;
+
+- (NSString *)text
+{
+    self.beginButton.hidden = self.userHasSeenInitialFlow? NO : YES;
     
     if (self.textIndex >= self.textArray.count - 1) {
         self.textIndex = 0;
@@ -78,8 +89,10 @@
     }
     if (self.textIndex == self.textArray.count - 1) {
         
-        [UIView transitionWithView: self.beginButton duration:4.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [UIView transitionWithView: self.beginButton duration:4.0
+                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             self.beginButton.hidden = NO;
+            self.userHasSeenInitialFlow = YES;
         } completion:nil];
     }
     return self.textArray[self.textIndex];
