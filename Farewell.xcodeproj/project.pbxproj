@@ -30,6 +30,9 @@
 		0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
 		0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
 		0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
+		0F97FFBB1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */; };
+		0F97FFBC1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */; };
+		0F97FFBD1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */; };
 		0FAFCB1D1CEE2FA6009FE469 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAFCB1C1CEE2FA6009FE469 /* GameKit.framework */; };
 		0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
@@ -80,6 +83,8 @@
 		0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMatchCellTableViewCell.m; sourceTree = "<group>"; };
 		0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSegue.h; sourceTree = "<group>"; };
 		0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSegue.m; sourceTree = "<group>"; };
+		0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Letters.h"; path = "../UIImageView+Letters.h"; sourceTree = "<group>"; };
+		0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Letters.m"; path = "../UIImageView+Letters.m"; sourceTree = "<group>"; };
 		0FAFCB1C1CEE2FA6009FE469 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
 		0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGamesTableViewController.m; sourceTree = "<group>"; };
@@ -154,6 +159,8 @@
 		0F48B6E31CD92DF1008A7F3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */,
+				0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */,
 				0F48B6E41CD92DF1008A7F3D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -348,6 +355,7 @@
 			files = (
 				0F48B6EB1CD92DF1008A7F3D /* FWGameScreenViewController.m in Sources */,
 				0F48B6E81CD92DF1008A7F3D /* FWAppDelegate.m in Sources */,
+				0F97FFBB1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
 				0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
 				0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */,
@@ -364,6 +372,7 @@
 			files = (
 				0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
+				0F97FFBC1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
 				0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */,
 				0F48B7191CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
 				0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */,
@@ -378,6 +387,7 @@
 			files = (
 				0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
+				0F97FFBD1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
 				0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */,
 				0F48B71A1CD94E90008A7F3D /* FWTurnBasedMatch.m in Sources */,
 				0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */,

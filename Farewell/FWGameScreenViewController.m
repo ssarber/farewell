@@ -130,14 +130,23 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:nil
-                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    alert.popoverPresentationController.sourceView = self.view;
+    alert.popoverPresentationController.sourceRect = self.view.bounds;
     
     UIAlertAction* quitAction = [UIAlertAction actionWithTitle:@"Quit Game..." style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self quitGame];
     }];
     
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             [alert dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
     [alert addAction:quitAction];
+    [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -261,11 +270,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
 {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
                                                                    message:@"Another email requires your immediate attention."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Oh, OK" style:UIAlertActionStyleDefault
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Oh, OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {}];
     
     [alert addAction:defaultAction];

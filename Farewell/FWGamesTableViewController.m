@@ -9,6 +9,7 @@
 #import "FWGamesTableViewController.h"
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
+#import "UIImageView+Letters.h"
 @import GameKit;
 
 typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
@@ -32,14 +33,14 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    
     self.tableView.rowHeight = 120;
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     
-    [self reloadTableView];
+//    [self reloadTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,6 +60,11 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
+        }
+        
+        for (GKTurnBasedMatch * match in matches) {
+            NSLog(@"MATCHES: %@", match.description);
+            NSLog(@"Playa: %@", match.currentParticipant.player.displayName);
         }
         
         NSMutableArray *myMatches = [NSMutableArray array];
@@ -130,21 +136,87 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     if ([match.matchData length] > 0) {
         NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
         cell.storyText.text = storyString;
-    }
-    
-    if (indexPath.section == FWGamesTableViewSectionGameEnded) {
-        [cell.quitButton setTitle:@"Remove" forState:UIControlStateNormal];
-    } else {
-        [cell.quitButton setTitle:@"Quit Game" forState:UIControlStateNormal];
+        
+//        for (GKTurnBasedParticipant *p in match.participants) {
+            [match.currentParticipant.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
+                if (photo != nil) {
+                    [cell.playerOnePhoto setImage:photo];
+                } else {
+                    [cell.playerOnePhoto setImageWithString:@"ZK" color:[UIColor redColor] circular:YES ];
+                }
+            }];
+        
+        for (GKTurnBasedParticipant *p in match.participants) {
+            // If current participant, set his photo to the left
+            if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
+                [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
+                    if (photo != nil) {
+                        [cell.playerOnePhoto setImage:photo];
+                    } else {
+                        NSString *userInitials;
+                        if ([self isLocalParticipant:p]) {
+                            userInitials = @"M E";
+                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                        } else {
+                            userInitials = p.player.displayName;
+                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                        }
+                    }
+                }];
+            } else { // if not this player's turn, set photo to the right
+                [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
+                    if (photo != nil) {
+                        [cell.playerTwoPhoto setImage:photo];
+                    } else {
+                        NSString *userInitials;
+                        // If local player, set initials to "ME", since the displayName is actually "Me"
+                        if ([self isLocalParticipant:p]) {
+                            userInitials = @"M E";
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                        } else {
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                        }
+                    }
+                }];
+            }
+        }
     }
     
     return cell;
 }
 
 
+- (BOOL)isLocalParticipant:(GKTurnBasedParticipant *)participant
+{
+    if ([participant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    [self loadAMatch:match];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //[[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
+}
+
+
 - (void)loadAMatch:(GKTurnBasedMatch *)match
 {
+//    [self.mainVC dismissViewControllerAnimated:YES completion:nil];
     [[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
+    
+    [self performSegueWithIdentifier:@"ToGameSegueID" sender:self];
+    
 }
 
 /*

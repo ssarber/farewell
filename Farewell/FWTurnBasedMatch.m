@@ -106,11 +106,13 @@
     // safe to assume we have a brand new match
     if (firstParticipant.lastTurnDate) {
         if ([match.currentParticipant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
+            // It's our turn to take a turn
             [self.delegate takeTurnInGame:match];
         } else {
             [self.delegate layoutMatch:match];
         }
     } else {
+        // We're in a new game
         [self.delegate enterNewGame:match];
     }
 }

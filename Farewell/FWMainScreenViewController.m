@@ -58,7 +58,9 @@
 {
     NSLog(@"======== Entering new game ===========");
     
-//    [self.navigationController pushViewController:self.gameVC animated:NO];
+    [self.navigationController pushViewController:self.gameVC animated:NO];
+    
+    self.gameVC.match = match;
     
     [self.gameVC enterNewGame:match];
 }
@@ -84,7 +86,7 @@
 - (void)layoutMatch:(GKTurnBasedMatch *)match
 {
     self.gameVC.match = match;
-    [self presentViewController:self.gameVC animated:YES completion:nil];
+//    [self presentViewController:self.gameVC animated:YES completion:nil];
     
     [self.gameVC layoutCurrentMatch:match];
 }
