@@ -16,7 +16,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userHasSeenInitialFlow = [defaults objectForKey:kFWUserHasSeenInitialFlowUserDefault];
+
+    NSString *storyboardId = [userHasSeenInitialFlow boolValue] == NO ? @"FWInitialFlowViewControllerID" : @"FWMainScreenViewControllerID";
+    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:storyboardId];
+    
     return YES;
 }
 
