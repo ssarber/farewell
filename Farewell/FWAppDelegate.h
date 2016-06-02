@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FWInitialFlowViewController.h"
 
 @interface FWAppDelegate : UIResponder <UIApplicationDelegate>
 

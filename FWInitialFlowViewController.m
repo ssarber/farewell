@@ -9,6 +9,8 @@
 #import "FWInitialFlowViewController.h"
 #import "FWMainScreenViewController.h"
 
+NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlowUserDefault";
+
 @interface FWInitialFlowViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -33,12 +35,29 @@
     self.beginButton.hidden = YES;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([self hasSeenInitialFlow] == NO) {
+        
+        // User has seen the initial flow, don't show again
+        [defaults setObject:[NSNumber numberWithBool: YES] forKey:kFWUserHasSeenInitialFlowUserDefault];
+        [defaults synchronize];
+    }
+}
 
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
+- (BOOL)hasSeenInitialFlow
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [[defaults objectForKey:kFWUserHasSeenInitialFlowUserDefault] boolValue];
+}
 
 - (NSArray *)textArray {
     if (!_textArray) {
