@@ -58,7 +58,8 @@
                     </view>
                     <connections>
                         <outlet property="beginButton" destination="u0S-os-fZu" id="uoO-hJ-GAb"/>
-                        <outlet property="label" destination="h93-Wb-HC3" id="28f-qs-JAm"/>
+                        <outlet property="textLabel" destination="h93-Wb-HC3" id="yU9-cF-pG3"/>
+                        <outlet property="textLabelButton" destination="d7a-57-Jdo" id="g6h-l4-TCv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJr-vi-h6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
