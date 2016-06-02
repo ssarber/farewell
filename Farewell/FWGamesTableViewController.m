@@ -7,6 +7,7 @@
 //
 
 #import "FWGamesTableViewController.h"
+#import "FWGameScreenViewController.h"
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
 #import "UIImageView+Letters.h"
@@ -21,6 +22,7 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
 @interface FWGamesTableViewController () <FWMatchCellTableViewCellDelegate>
 
 @property (nonatomic, strong) NSArray *allMyMatches;
+@property (nonatomic) GKTurnBasedMatchOutcome myOutcome;
 
 @end
 
@@ -61,25 +63,19 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
         }
-        
-        for (GKTurnBasedMatch * match in matches) {
-            NSLog(@"MATCHES: %@", match.description);
-            NSLog(@"Playa: %@", match.currentParticipant.player.displayName);
-        }
-        
+       
         NSMutableArray *myMatches = [NSMutableArray array];
         NSMutableArray *otherMatches = [NSMutableArray array];
         NSMutableArray *endedMatches = [NSMutableArray array];
         
         for (GKTurnBasedMatch *m in matches) {
-            GKTurnBasedMatchOutcome myOutcome;
             for (GKTurnBasedParticipant *p in m.participants) {
-                if ([p.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
-                    myOutcome = p.matchOutcome;
+                if ([p.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
+                    _myOutcome = p.matchOutcome;
                 }
             }
             
-            if (m.status != GKTurnBasedMatchStatusEnded && myOutcome != GKTurnBasedMatchOutcomeQuit) {
+            if (m.status != GKTurnBasedMatchStatusEnded && _myOutcome != GKTurnBasedMatchOutcomeQuit) {
                 if ([m.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
                     [myMatches addObject:m];
                 } else {
@@ -90,6 +86,10 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
             }
         }
         self.allMyMatches = @[myMatches, otherMatches, endedMatches];
+        for (GKTurnBasedMatch *myMatch in [self.allMyMatches objectAtIndex:0]){
+            NSString *dataString = [[NSString alloc] initWithData:myMatch.matchData encoding:NSUTF8StringEncoding];
+            NSLog(@"\n\nDATA: %@", dataString);
+        }
         
         [self.tableView reloadData];
     }];
@@ -136,15 +136,6 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     if ([match.matchData length] > 0) {
         NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
         cell.storyText.text = storyString;
-        
-//        for (GKTurnBasedParticipant *p in match.participants) {
-            [match.currentParticipant.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
-                if (photo != nil) {
-                    [cell.playerOnePhoto setImage:photo];
-                } else {
-                    [cell.playerOnePhoto setImageWithString:@"ZK" color:[UIColor redColor] circular:YES ];
-                }
-            }];
         
         for (GKTurnBasedParticipant *p in match.participants) {
             // If current participant, set his photo to the left
@@ -204,20 +195,11 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    //[[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
-}
-
-
 - (void)loadAMatch:(GKTurnBasedMatch *)match
 {
-//    [self.mainVC dismissViewControllerAnimated:YES completion:nil];
-    [[FWTurnBasedMatch sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
-    
-    [self performSegueWithIdentifier:@"ToGameSegueID" sender:self];
-    
+    [[FWGameCenterHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
 }
+
 
 /*
 // Override to support conditional editing of the table view.

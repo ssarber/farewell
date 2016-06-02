@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FWTurnBasedMatch.h"
+#import "FWGameCenterHelper.h"
 @import GameKit;
 
 @protocol FWMatchCellTableViewCellDelegate

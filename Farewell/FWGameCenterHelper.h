@@ -17,17 +17,17 @@
 - (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match;
 @end
 
-@interface FWTurnBasedMatch : NSObject <GKLocalPlayerListener, GKTurnBasedMatchmakerViewControllerDelegate>
+@interface FWGameCenterHelper : NSObject <GKLocalPlayerListener, GKTurnBasedMatchmakerViewControllerDelegate>
 
 @property (nonatomic, assign) BOOL userAuthenticated;
 
-@property (nonatomic, strong) UIViewController *presentingViewController;
+@property (nonatomic, strong) UIViewController *presentingVC;
 
 @property (nonatomic, strong) GKTurnBasedMatch *currentMatch;
 
 @property (nonatomic, weak) id <FWTurnBasedMatchDelegate> delegate;
 
-+ (FWTurnBasedMatch *)sharedInstance;
++ (FWGameCenterHelper *)sharedInstance;
 
 - (void)authenticateLocalUserFromController:(UIViewController *)controller;
 

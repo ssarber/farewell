@@ -56,27 +56,25 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)presentGCTurnViewController:(id)sender
 {
-    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:YES viewController:self];
+    [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:YES viewController:self];
     
 }
 
 
 - (IBAction)presentGCViewControllerForNewGame:(id)sender
 {
-    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
+    [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
     
 }
 
 
 - (IBAction)sendTurn:(id)sender
 {
-    GKTurnBasedMatch *currentMatch = [[FWTurnBasedMatch sharedInstance] currentMatch];
+    GKTurnBasedMatch *currentMatch = [[FWGameCenterHelper sharedInstance] currentMatch];
     
     NSString *newGameString;
     newGameString = [self.textInputField.text length] > 140? [self.textInputField.text substringToIndex:139] : self.textInputField.text;
-    
-//    NSString *sendString = [self.mainTextView.text stringByAppendingString:newGameString];
-//    
+ 
     NSString *sendString = [@[self.mainTextView.text, newGameString] componentsJoinedByString:@" "];
     
     NSData *data = [sendString dataUsingEncoding:NSUTF8StringEncoding];
@@ -156,7 +154,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     // If quitting a game where it's our turn
     if ([self.match.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
-        [[FWTurnBasedMatch sharedInstance] player:self.match.currentParticipant.player wantsToQuitMatch:self.match];
+        [[FWGameCenterHelper sharedInstance] player:self.match.currentParticipant.player wantsToQuitMatch:self.match];
     } else {
         
         // Resigns the player from the match when that player is not the current player. This action does not end the match
@@ -218,7 +216,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.textInputField.enabled = YES;
     
     __weak typeof(self) weakSelf = self;
-    
+
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
         if ([matchData bytes]) {
             NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
@@ -256,7 +254,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     __weak typeof(self) weakSelf = self;
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
-        if (matchData) {
+        if (matchData != nil) {
             NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextView.text = gameTextSoFar;
