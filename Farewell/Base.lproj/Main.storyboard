@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IBA-AX-aFQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hHK-Lt-Qwy">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,7 +9,7 @@
         <!--Initial Flow View Controller-->
         <scene sceneID="oLr-Qp-GgI">
             <objects>
-                <viewController id="hHK-Lt-Qwy" customClass="FWInitialFlowViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FWInitialFlowViewControllerID" id="hHK-Lt-Qwy" customClass="FWInitialFlowViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JHG-9F-8i2"/>
                         <viewControllerLayoutGuide type="bottom" id="8sV-P1-dn6"/>
@@ -58,7 +58,8 @@
                     </view>
                     <connections>
                         <outlet property="beginButton" destination="u0S-os-fZu" id="uoO-hJ-GAb"/>
-                        <outlet property="label" destination="h93-Wb-HC3" id="28f-qs-JAm"/>
+                        <outlet property="textLabel" destination="h93-Wb-HC3" id="yU9-cF-pG3"/>
+                        <outlet property="textLabelButton" destination="d7a-57-Jdo" id="g6h-l4-TCv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJr-vi-h6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,7 +250,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="g30-IN-lAC">
             <objects>
-                <viewController storyboardIdentifier="FWLandingScreenViewControllerID" id="IBA-AX-aFQ" customClass="FWMainScreenViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FWMainScreenViewControllerID" id="IBA-AX-aFQ" customClass="FWMainScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s5f-Kp-7aU"/>
                         <viewControllerLayoutGuide type="bottom" id="npX-rO-ghN"/>

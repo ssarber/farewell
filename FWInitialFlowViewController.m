@@ -9,15 +9,16 @@
 #import "FWInitialFlowViewController.h"
 #import "FWMainScreenViewController.h"
 
+NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlowUserDefault";
+
 @interface FWInitialFlowViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UIButton *textLabelButton;
+@property (weak, nonatomic) IBOutlet UIButton *beginButton;
 
 @property (strong, nonatomic) NSArray *textArray;
-
 @property (nonatomic) NSUInteger textIndex;
-
-@property (weak, nonatomic) IBOutlet UIButton *beginButton;
 
 @property (assign, nonatomic) BOOL userHasSeenInitialFlow;
 
@@ -33,12 +34,29 @@
     self.beginButton.hidden = YES;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([self hasSeenInitialFlow] == NO) {
+        
+        // User has seen the initial flow, don't show again
+        [defaults setObject:[NSNumber numberWithBool: YES] forKey:kFWUserHasSeenInitialFlowUserDefault];
+        [defaults synchronize];
+    }
+}
 
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
+- (BOOL)hasSeenInitialFlow
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [[defaults objectForKey:kFWUserHasSeenInitialFlowUserDefault] boolValue];
+}
 
 - (NSArray *)textArray {
     if (!_textArray) {
@@ -70,15 +88,14 @@
 
 - (IBAction)changeText:(id)sender
 {
-    
-    [UIView transitionWithView:self.label duration:0.5
+    [UIView transitionWithView:self.textLabel duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        self.label.text = [self text];
+        self.textLabel.text = [self newSentence];
     } completion:nil];
 }
 
 
-- (NSString *)text
+- (NSString *)newSentence
 {
     self.beginButton.hidden = self.userHasSeenInitialFlow? NO : YES;
     
@@ -88,12 +105,17 @@
         self.textIndex = self.textIndex + 1;
     }
     if (self.textIndex == self.textArray.count - 1) {
+        void (^initialFlowFinishedBlock)() = ^{
+            self.userHasSeenInitialFlow = YES;
+            self.textLabelButton.userInteractionEnabled = NO;
+        };
+   
         
         [UIView transitionWithView: self.beginButton duration:4.0
                            options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            self.beginButton.hidden = NO;
-            self.userHasSeenInitialFlow = YES;
-        } completion:nil];
+                                    self.beginButton.hidden = NO;
+                                    initialFlowFinishedBlock();
+                           } completion:nil];
     }
     return self.textArray[self.textIndex];
 }
