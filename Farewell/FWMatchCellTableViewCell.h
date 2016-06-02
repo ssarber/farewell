@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FWTurnBasedMatch.h"
+#import "FWGameCenterHelper.h"
 @import GameKit;
 
 @protocol FWMatchCellTableViewCellDelegate
@@ -19,7 +19,8 @@
 
 @property (strong, nonatomic) GKTurnBasedMatch *match;
 @property (weak, nonatomic) IBOutlet UITextView *storyText;
-@property (weak, nonatomic) IBOutlet UIButton *quitButton;
+@property (weak, nonatomic) IBOutlet UIImageView *playerOnePhoto;
+@property (weak, nonatomic) IBOutlet UIImageView *playerTwoPhoto;
 
 @property (weak, nonatomic) id <FWMatchCellTableViewCellDelegate> delegate;
 

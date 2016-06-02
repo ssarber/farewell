@@ -7,7 +7,7 @@
 //
 
 #import "FWMainScreenViewController.h"
-#import "FWTurnBasedMatch.h"
+#import "FWGameCenterHelper.h"
 #import "FWGameScreenViewController.h"
 #import "FWGamesTableViewController.h"
 
@@ -23,9 +23,9 @@
 {
     [super viewDidLoad];
     
-    [[FWTurnBasedMatch sharedInstance] authenticateLocalUserFromController:self];
+    [[FWGameCenterHelper sharedInstance] authenticateLocalUserFromController:self];
     
-    [FWTurnBasedMatch sharedInstance].delegate = self;
+    [FWGameCenterHelper sharedInstance].delegate = self;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -41,14 +41,14 @@
 
 - (IBAction)presentGCViewControllerForNewGame:(id)sender
 {
-    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
+    [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
     
 }
 
 
 - (IBAction)presentGCTurnViewControllerForAllGames:(id)sender
 {
-    [[FWTurnBasedMatch sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:YES viewController:self];
+    [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:YES viewController:self];
     
 }
 
@@ -57,8 +57,6 @@
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
     NSLog(@"======== Entering new game ===========");
-    
-//    [self.navigationController pushViewController:self.gameVC animated:NO];
     
     [self.gameVC enterNewGame:match];
 }
@@ -74,8 +72,6 @@
     } else {
         [self.navigationController pushViewController:self.gameVC animated:YES];
     }
-//
-//    [self presentViewController:self.gameVC animated:YES completion:nil];
     
     [self.gameVC takeTurnInMatch:match];
 }

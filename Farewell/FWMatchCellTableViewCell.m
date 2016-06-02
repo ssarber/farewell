@@ -7,12 +7,22 @@
 //
 
 #import "FWMatchCellTableViewCell.h"
+#import "UIImageView+Letters.h"
 
 @implementation FWMatchCellTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+
+//    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+//    self.profileImageView.clipsToBounds = YES;
+    self.playerOnePhoto.layer.cornerRadius = self.playerOnePhoto.frame.size.width / 2;
+    self.playerOnePhoto.clipsToBounds = YES;
+    
+    self.playerTwoPhoto.layer.cornerRadius = self.playerTwoPhoto.frame.size.width / 2;
+    self.playerTwoPhoto.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

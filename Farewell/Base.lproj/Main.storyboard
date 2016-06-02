@@ -79,40 +79,44 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tcb-Eh-VPa" id="bd0-ip-Wig">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="95.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9c-PO-d9c">
-                                            <rect key="frame" x="8" y="65" width="93" height="30"/>
-                                            <state key="normal" title="Load Game"/>
-                                            <connections>
-                                                <action selector="loadGameButtonPressed:" destination="Tcb-Eh-VPa" eventType="touchUpInside" id="T1i-3w-ywb"/>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="v2w-FS-J5K"/>
-                                            </connections>
-                                        </button>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lorem ipsum" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h54-a4-Kxg">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="49"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Lorem ipsum" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h54-a4-Kxg">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBe-NE-a69">
-                                            <rect key="frame" x="407" y="65" width="185" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbv-qN-wJk">
-                                            <rect key="frame" x="109" y="65" width="83" height="30"/>
-                                            <state key="normal" title="Quitt"/>
-                                            <connections>
-                                                <action selector="quitButtonPressed:" destination="Tcb-Eh-VPa" eventType="touchUpInside" id="trg-IF-MGq"/>
-                                            </connections>
-                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FQB-qn-s4h">
+                                            <rect key="frame" x="13" y="38" width="42" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="43" id="1dV-NH-wPl"/>
+                                                <constraint firstAttribute="width" constant="42" id="R1S-tz-EkW"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wOm-fe-30g">
+                                            <rect key="frame" x="71" y="37" width="42" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="Uos-QZ-Hhn"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="h54-a4-Kxg" firstAttribute="leading" secondItem="bd0-ip-Wig" secondAttribute="leadingMargin" id="2bG-Rw-ti8"/>
+                                        <constraint firstItem="h54-a4-Kxg" firstAttribute="trailing" secondItem="bd0-ip-Wig" secondAttribute="trailingMargin" id="DGp-li-E7j"/>
+                                        <constraint firstItem="FQB-qn-s4h" firstAttribute="leading" secondItem="bd0-ip-Wig" secondAttribute="leadingMargin" constant="5" id="N4x-Tw-bTN"/>
+                                        <constraint firstItem="wOm-fe-30g" firstAttribute="leading" secondItem="FQB-qn-s4h" secondAttribute="trailing" constant="16" id="OGl-bK-v6I"/>
+                                        <constraint firstItem="wOm-fe-30g" firstAttribute="centerY" secondItem="FQB-qn-s4h" secondAttribute="centerY" id="OTY-qH-Fzo"/>
+                                        <constraint firstItem="FQB-qn-s4h" firstAttribute="top" secondItem="h54-a4-Kxg" secondAttribute="bottom" constant="8" symbolic="YES" id="PC2-D5-DwL"/>
+                                        <constraint firstItem="h54-a4-Kxg" firstAttribute="top" secondItem="bd0-ip-Wig" secondAttribute="top" id="Sg9-k7-u1J"/>
+                                        <constraint firstItem="wOm-fe-30g" firstAttribute="bottom" secondItem="FQB-qn-s4h" secondAttribute="bottom" id="cVr-KH-pGL"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="FQB-qn-s4h" secondAttribute="bottom" constant="6.5" id="km7-tN-Llf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="quitButton" destination="hbv-qN-wJk" id="qBL-sk-qci"/>
+                                    <outlet property="playerOnePhoto" destination="FQB-qn-s4h" id="ZBY-A0-Ojq"/>
+                                    <outlet property="playerTwoPhoto" destination="wOm-fe-30g" id="MSt-2x-zpV"/>
                                     <outlet property="storyText" destination="h54-a4-Kxg" id="qkQ-H0-PmS"/>
                                 </connections>
                             </tableViewCell>
@@ -123,6 +127,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Jpg-xD-AIt"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ToGameSegueID" id="2WK-vx-A1g"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMz-8R-yfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,7 +276,7 @@
                                 </constraints>
                                 <state key="normal" title="All Emails"/>
                                 <connections>
-                                    <segue destination="f1I-jn-iiA" kind="presentation" id="R9C-GN-per"/>
+                                    <segue destination="f1I-jn-iiA" kind="show" id="R9C-GN-per"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -294,6 +301,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f1I-jn-iiA" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="3OX-Kn-8LQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VoF-SU-qr2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

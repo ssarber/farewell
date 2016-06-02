@@ -6,15 +6,15 @@
 //  Copyright © 2016 Stan Sarber. All rights reserved.
 //
 
-#import "FWTurnBasedMatch.h"
+#import "FWGameCenterHelper.h"
 
-@implementation FWTurnBasedMatch
+@implementation FWGameCenterHelper
 
 #pragma mark Initialization
 
-+ (FWTurnBasedMatch *)sharedInstance
++ (FWGameCenterHelper *)sharedInstance
 {
-    static FWTurnBasedMatch *sharedInstance = nil;
+    static FWGameCenterHelper *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self class] alloc] init];
@@ -26,7 +26,7 @@
 
 - (void)authenticateLocalUserFromController:(UIViewController *)authenticationPresentingVC
 {
-    self.presentingViewController = authenticationPresentingVC;
+    self.presentingVC = authenticationPresentingVC;
     
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
     
@@ -57,7 +57,7 @@
 
 - (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers showExistingMatches:(BOOL)show viewController:(UIViewController *)viewController
 {
-    self.presentingViewController = viewController;
+    self.presentingVC = viewController;
     
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.minPlayers = minPlayers;
@@ -67,14 +67,14 @@
     matchMakerVC.turnBasedMatchmakerDelegate = self;
     matchMakerVC.showExistingMatches = show? YES : NO;
     
-    [self.presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
+    [self.presentingVC presentViewController:matchMakerVC animated:YES completion:nil];
 }
 
 #pragma mark - GKTurnBasedMatchmakerViewControllerDelegate methods
 
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
     
     NSMutableArray *stillPlaying = [NSMutableArray array];
     
@@ -106,11 +106,13 @@
     // safe to assume we have a brand new match
     if (firstParticipant.lastTurnDate) {
         if ([match.currentParticipant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
+            // It's our turn to take a turn
             [self.delegate takeTurnInGame:match];
         } else {
             [self.delegate layoutMatch:match];
         }
     } else {
+        // We're in a new game
         [self.delegate enterNewGame:match];
     }
 }
@@ -118,13 +120,13 @@
 
 - (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error
 { 
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -223,11 +225,11 @@
 
 -(void)player:(GKPlayer *)player didRequestMatchWithOtherPlayers:(NSArray *)playersToInvite
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     
     request.recipients = playersToInvite;
-    request.maxPlayers = 4;
+    request.maxPlayers = 2;
     request.minPlayers = 2;
     
     GKTurnBasedMatchmakerViewController *matchMakerVC = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
@@ -236,7 +238,7 @@
     
     matchMakerVC.turnBasedMatchmakerDelegate = self;
     
-    [self.presentingViewController presentViewController:matchMakerVC animated:YES completion:nil];
+    [self.presentingVC presentViewController:matchMakerVC animated:YES completion:nil];
 }
 
 
