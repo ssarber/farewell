@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     
-//    [self reloadTableView];
+    [self reloadTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
