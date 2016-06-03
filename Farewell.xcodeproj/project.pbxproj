@@ -140,18 +140,13 @@
 		0F48B6E21CD92DF1008A7F3D /* Farewell */ = {
 			isa = PBXGroup;
 			children = (
+				0F97FFAF1CF8CC8900924EA1 /* View Controllers */,
+				0FC041A61D00E05B003BE002 /* Helpers */,
 				0F97FFB31CF8DE0900924EA1 /* Custom Segues */,
 				0F97FFB01CF8CCD400924EA1 /* Storyboards */,
-				0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */,
-				0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */,
-				0F97FFAF1CF8CC8900924EA1 /* View Controllers */,
-				0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */,
-				0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */,
-				0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */,
-				0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */,
-				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
-				0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */,
+				0FC041A51D00E030003BE002 /* Custom Cells */,
 				0F48B6E31CD92DF1008A7F3D /* Supporting Files */,
+				0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */,
 			);
 			path = Farewell;
 			sourceTree = "<group>";
@@ -159,6 +154,8 @@
 		0F48B6E31CD92DF1008A7F3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */,
+				0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */,
 				0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */,
 				0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */,
 				0F48B6E41CD92DF1008A7F3D /* main.m */,
@@ -191,10 +188,10 @@
 				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
 				0F3DE0021CE515610048DFAE /* FWMainScreenViewController.h */,
 				0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */,
-				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
-				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
 				0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */,
 				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
+				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
+				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -215,6 +212,25 @@
 				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
 			);
 			name = "Custom Segues";
+			sourceTree = "<group>";
+		};
+		0FC041A51D00E030003BE002 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */,
+				0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		0FC041A61D00E05B003BE002 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */,
+				0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */,
+				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

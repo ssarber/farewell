@@ -74,6 +74,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ut4-5s-fv6">
+                            <rect key="frame" x="0.0" y="188" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="43" id="CFk-QE-Fqe"/>
+                                <constraint firstAttribute="width" constant="42" id="Vwp-aG-5RC"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="CFk-QE-Fqe"/>
+                                    <exclude reference="Vwp-aG-5RC"/>
+                                </mask>
+                            </variation>
+                        </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FWMatchCellTableViewCell" rowHeight="96" id="Tcb-Eh-VPa" customClass="FWMatchCellTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="96"/>
@@ -83,35 +97,32 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Lorem ipsum" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h54-a4-Kxg">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="30"/>
+                                            <rect key="frame" x="8" y="0.0" width="584" height="33"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FQB-qn-s4h">
-                                            <rect key="frame" x="13" y="38" width="42" height="43"/>
+                                            <rect key="frame" x="13" y="41" width="44" height="44"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="43" id="1dV-NH-wPl"/>
-                                                <constraint firstAttribute="width" constant="42" id="R1S-tz-EkW"/>
+                                                <constraint firstAttribute="width" constant="44" id="N2B-7X-SzC"/>
+                                                <constraint firstAttribute="height" constant="44" id="WEW-78-Aoa"/>
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wOm-fe-30g">
-                                            <rect key="frame" x="71" y="37" width="42" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="Uos-QZ-Hhn"/>
-                                            </constraints>
+                                            <rect key="frame" x="71" y="41" width="44" height="44"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="h54-a4-Kxg" firstAttribute="leading" secondItem="bd0-ip-Wig" secondAttribute="leadingMargin" id="2bG-Rw-ti8"/>
+                                        <constraint firstItem="wOm-fe-30g" firstAttribute="height" secondItem="FQB-qn-s4h" secondAttribute="height" id="4iN-9R-0x6"/>
+                                        <constraint firstItem="wOm-fe-30g" firstAttribute="width" secondItem="FQB-qn-s4h" secondAttribute="width" id="CAZ-Sh-p8Y"/>
                                         <constraint firstItem="h54-a4-Kxg" firstAttribute="trailing" secondItem="bd0-ip-Wig" secondAttribute="trailingMargin" id="DGp-li-E7j"/>
-                                        <constraint firstItem="FQB-qn-s4h" firstAttribute="leading" secondItem="bd0-ip-Wig" secondAttribute="leadingMargin" constant="5" id="N4x-Tw-bTN"/>
-                                        <constraint firstItem="wOm-fe-30g" firstAttribute="leading" secondItem="FQB-qn-s4h" secondAttribute="trailing" constant="16" id="OGl-bK-v6I"/>
-                                        <constraint firstItem="wOm-fe-30g" firstAttribute="centerY" secondItem="FQB-qn-s4h" secondAttribute="centerY" id="OTY-qH-Fzo"/>
-                                        <constraint firstItem="FQB-qn-s4h" firstAttribute="top" secondItem="h54-a4-Kxg" secondAttribute="bottom" constant="8" symbolic="YES" id="PC2-D5-DwL"/>
                                         <constraint firstItem="h54-a4-Kxg" firstAttribute="top" secondItem="bd0-ip-Wig" secondAttribute="top" id="Sg9-k7-u1J"/>
-                                        <constraint firstItem="wOm-fe-30g" firstAttribute="bottom" secondItem="FQB-qn-s4h" secondAttribute="bottom" id="cVr-KH-pGL"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="FQB-qn-s4h" secondAttribute="bottom" constant="6.5" id="km7-tN-Llf"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="FQB-qn-s4h" secondAttribute="bottom" constant="3" id="f6q-4e-SD4"/>
+                                        <constraint firstItem="wOm-fe-30g" firstAttribute="leading" secondItem="FQB-qn-s4h" secondAttribute="trailing" constant="14" id="hRm-ah-it3"/>
+                                        <constraint firstItem="FQB-qn-s4h" firstAttribute="leading" secondItem="bd0-ip-Wig" secondAttribute="leadingMargin" constant="5" id="qZH-4M-baT"/>
+                                        <constraint firstItem="wOm-fe-30g" firstAttribute="top" secondItem="FQB-qn-s4h" secondAttribute="top" id="yUc-Ad-uHc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

@@ -136,40 +136,41 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     if ([match.matchData length] > 0) {
         NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
         cell.storyText.text = storyString;
-        
+
         for (GKTurnBasedParticipant *p in match.participants) {
-            // If current participant, set his photo to the left
-            if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
                 [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
-                    if (photo != nil) {
-                        [cell.playerOnePhoto setImage:photo];
-                    } else {
-                        NSString *userInitials;
-                        if ([self isLocalParticipant:p]) {
-                            userInitials = @"M E";
-                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                    
+                    // Handle case for current participant -- this user's turn (photo on the left)
+                    if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
+                        if (photo != nil) {
+                            [cell.playerOnePhoto setImage:photo];
                         } else {
-                            userInitials = p.player.displayName;
-                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                            NSString *userInitials;
+                            if ([self isLocalParticipant:p]) {
+                                userInitials = @"M E";
+                                [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                            } else {
+                                userInitials = p.player.displayName;
+                                [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                            }
                         }
-                    }
-                }];
-            } else { // if not this player's turn, set photo to the right
-                [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
-                    if (photo != nil) {
-                        [cell.playerTwoPhoto setImage:photo];
-                    } else {
-                        NSString *userInitials;
-                        // If local player, set initials to "ME", since the displayName is actually "Me"
-                        if ([self isLocalParticipant:p]) {
-                            userInitials = @"M E";
-                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                    } else { // if not this player's turn, set photo to the right
+                
+                        if (photo != nil) {
+                            [cell.playerTwoPhoto setImage:photo];
                         } else {
-                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
-                        }
+                            NSString *userInitials;
+                            // If local player, set initials to "ME", since the displayName is actually "Me"
+                            if ([self isLocalParticipant:p]) {
+                                userInitials = @"M E";
+                                [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
+                            } else {
+                                userInitials = p.player.displayName;
+                                [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
+                            }
                     }
-                }];
-            }
+                }
+            }];
         }
     }
     
