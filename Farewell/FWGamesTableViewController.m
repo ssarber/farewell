@@ -199,6 +199,7 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
 - (void)loadAMatch:(GKTurnBasedMatch *)match
 {
     [[FWGameCenterHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
+    
 }
 
 

@@ -119,7 +119,6 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
-				0F97FFBE1CFE58DA00924EA1 /* GameKit.framework */,
 				0F48B6E21CD92DF1008A7F3D /* Farewell */,
 				0F48B6FC1CD92DF1008A7F3D /* FarewellTests */,
 				0F48B7071CD92DF1008A7F3D /* FarewellUITests */,
@@ -140,6 +139,7 @@
 		0F48B6E21CD92DF1008A7F3D /* Farewell */ = {
 			isa = PBXGroup;
 			children = (
+				0F97FFBE1CFE58DA00924EA1 /* GameKit.framework */,
 				0F97FFAF1CF8CC8900924EA1 /* View Controllers */,
 				0FC041A61D00E05B003BE002 /* Helpers */,
 				0F97FFB31CF8DE0900924EA1 /* Custom Segues */,
@@ -154,6 +154,7 @@
 		0F48B6E31CD92DF1008A7F3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
 				0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */,
 				0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */,
 				0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */,
@@ -209,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */,
-				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
 			);
 			name = "Custom Segues";
 			sourceTree = "<group>";
@@ -537,8 +537,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = Farewell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Farewell",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
+				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -551,8 +564,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Farewell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Farewell",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

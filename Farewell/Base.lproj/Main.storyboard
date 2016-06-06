@@ -138,9 +138,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Jpg-xD-AIt"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="ToGameSegueID" id="2WK-vx-A1g"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMz-8R-yfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,9 +181,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25A-g8-Qpd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2M-Rp-rhH">
                                 <rect key="frame" x="9" y="7" width="58" height="30"/>
                                 <constraints>
@@ -226,7 +220,6 @@
                             <constraint firstItem="GGi-YA-K6c" firstAttribute="trailing" secondItem="v0z-TU-hZl" secondAttribute="trailing" id="3dq-zT-w3L"/>
                             <constraint firstItem="MxV-sh-ybX" firstAttribute="top" secondItem="0RI-6d-4sZ" secondAttribute="topMargin" constant="7" id="42b-oI-C5W"/>
                             <constraint firstItem="v0z-TU-hZl" firstAttribute="trailing" secondItem="qV4-24-P65" secondAttribute="trailing" id="7EU-zi-0m3"/>
-                            <constraint firstItem="25A-g8-Qpd" firstAttribute="centerY" secondItem="MxV-sh-ybX" secondAttribute="centerY" id="8ux-R0-XkZ"/>
                             <constraint firstItem="GGi-YA-K6c" firstAttribute="trailing" secondItem="0RI-6d-4sZ" secondAttribute="trailingMargin" id="AyZ-yk-yrM"/>
                             <constraint firstItem="66G-Ds-tra" firstAttribute="leading" secondItem="0RI-6d-4sZ" secondAttribute="leadingMargin" id="JeF-vG-Rwa"/>
                             <constraint firstItem="66G-Ds-tra" firstAttribute="leading" secondItem="GGi-YA-K6c" secondAttribute="leading" id="KB7-TH-5hM"/>
@@ -236,11 +229,8 @@
                             <constraint firstItem="qV4-24-P65" firstAttribute="top" secondItem="v0z-TU-hZl" secondAttribute="bottom" constant="21" id="QdI-kJ-0wN"/>
                             <constraint firstItem="W2M-Rp-rhH" firstAttribute="top" secondItem="MxV-sh-ybX" secondAttribute="top" id="SYs-iq-Xrd"/>
                             <constraint firstItem="KHD-Ya-oW7" firstAttribute="top" secondItem="qV4-24-P65" secondAttribute="bottom" constant="228" id="TX8-Yn-KlI"/>
-                            <constraint firstItem="25A-g8-Qpd" firstAttribute="leading" secondItem="0RI-6d-4sZ" secondAttribute="leading" id="VdT-he-yS1"/>
                             <constraint firstItem="W2M-Rp-rhH" firstAttribute="leading" secondItem="0RI-6d-4sZ" secondAttribute="leadingMargin" constant="-11" id="Zv3-Vi-RWP"/>
                             <constraint firstItem="W2M-Rp-rhH" firstAttribute="bottom" secondItem="MxV-sh-ybX" secondAttribute="bottom" id="ao4-d6-quL"/>
-                            <constraint firstItem="25A-g8-Qpd" firstAttribute="centerX" secondItem="GGi-YA-K6c" secondAttribute="centerX" id="eiN-rV-nUx"/>
-                            <constraint firstItem="66G-Ds-tra" firstAttribute="top" secondItem="25A-g8-Qpd" secondAttribute="bottom" constant="32" id="mMd-dy-Hig"/>
                             <constraint firstItem="GGi-YA-K6c" firstAttribute="top" secondItem="66G-Ds-tra" secondAttribute="bottom" constant="8" id="qX8-6Z-WDH"/>
                             <constraint firstItem="v0z-TU-hZl" firstAttribute="top" secondItem="GGi-YA-K6c" secondAttribute="bottom" constant="-8" id="tRX-uo-yW6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="66G-Ds-tra" secondAttribute="trailing" constant="-6" id="uVn-od-h5h"/>
@@ -248,8 +238,7 @@
                     </view>
                     <connections>
                         <outlet property="characterCountLabel" destination="v0z-TU-hZl" id="uFU-ie-PnK"/>
-                        <outlet property="mainTextView" destination="66G-Ds-tra" id="83E-k0-G2x"/>
-                        <outlet property="navigationBar" destination="25A-g8-Qpd" id="hyN-Jc-3Ii"/>
+                        <outlet property="mainTextField" destination="66G-Ds-tra" id="gyD-RU-0zc"/>
                         <outlet property="statusLabel" destination="GGi-YA-K6c" id="iD4-oB-cMv"/>
                         <outlet property="textInputField" destination="qV4-24-P65" id="ajn-1Z-GnO"/>
                     </connections>

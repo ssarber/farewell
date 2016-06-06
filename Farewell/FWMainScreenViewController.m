@@ -66,13 +66,8 @@
 {
     self.gameVC.match = match;
     
-    if (!self.gameVC.isViewLoaded || !self.gameVC.view.window) {
-        // viewController is visible
-        [self presentViewController:self.gameVC animated:YES completion:nil];
-    } else {
-        [self.navigationController pushViewController:self.gameVC animated:YES];
-    }
-    
+    [self presentViewController:self.gameVC animated:YES completion:nil];
+
     [self.gameVC takeTurnInMatch:match];
 }
 

@@ -12,7 +12,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 @interface FWGameScreenViewController () <UITextViewDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *mainTextView;
+@property (weak, nonatomic) IBOutlet UITextView *mainTextField;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
@@ -28,7 +28,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     self.textInputField.delegate = self;
     self.textInputField.enablesReturnKeyAutomatically = YES;
-    [self.textInputField becomeFirstResponder];
+    
+//    Might activate the keyboard on load
+//    [self.textInputField becomeFirstResponder];
     
     self.characterCountLabel.hidden = YES;
     
@@ -75,11 +77,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSString *newGameString;
     newGameString = [self.textInputField.text length] > 140? [self.textInputField.text substringToIndex:139] : self.textInputField.text;
  
-    NSString *sendString = [@[self.mainTextView.text, newGameString] componentsJoinedByString:@" "];
+    NSString *sendString = [@[self.mainTextField.text, newGameString] componentsJoinedByString:@" "];
     
     NSData *data = [sendString dataUsingEncoding:NSUTF8StringEncoding];
     
-    self.mainTextView.text = sendString;
+    self.mainTextField.text = sendString;
 
     NSUInteger currentIndex = [currentMatch.participants indexOfObject:currentMatch.currentParticipant];
     NSMutableArray *nextParticipants = [NSMutableArray array];
@@ -201,13 +203,16 @@ NSUInteger const kMaxAllowedCharacters = 100;
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
     NSLog(@"Inside FWGameScreenViewController -- enterNewGame:(GKTurnBasedMatch *)match");
-    self.mainTextView.text = @"Dear coworkers,\n\n";
+    self.mainTextField.text = @"Dear coworkers,\n\n";
 }
 
 
 - (void)takeTurnInMatch:(GKTurnBasedMatch *)match
 {
     NSLog(@"Viewing a match where it is our turn...");
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"SELF: %@", self);
+    NSLog(@"TEXT FIELD: %@", self.mainTextField);
     
     NSString *statusString = [NSString stringWithFormat:@"Your turn."];
     
@@ -223,12 +228,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
             
             // Update the UI on the main thread
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.mainTextView.text = gameTextSoFar;
+                weakSelf.mainTextField.text = gameTextSoFar;
             });
             
             [self updateCharactersLeftCount:match.matchData];
         }
     }];
+    
+    [self.view setNeedsDisplay];
 }
 
 
@@ -257,7 +264,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
         if (matchData != nil) {
             NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.mainTextView.text = gameTextSoFar;
+                weakSelf.mainTextField.text = gameTextSoFar;
             });
             
             [self updateCharactersLeftCount:match.matchData];
