@@ -235,11 +235,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    [self updateCounterLabel];
-    return YES;
+    if ([self updateCounterLabel]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
-- (void)updateCounterLabel
+- (BOOL)updateCounterLabel
 {
     NSInteger len = [_textInputField.text length];
     NSLog(@"LEEEEEEN: %ld", (long)len);
@@ -248,8 +251,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSCharacterSet *separators = [NSCharacterSet alphanumericCharacterSet];
     NSArray *words = [self.textInputField.text componentsSeparatedByCharactersInSet:separators];
     
+    NSLog(@"WORDS: %@", words);
+    
     NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        return [obj isEqualToString:@"."];
+        return ([obj isEqualToString:@". "] || [obj isEqualToString:@"."]);
     }];
     
 //    return [words count] - [separatorIndexes count];
@@ -262,9 +267,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     if ([separatorIndexes count] == 2) {
         _characterCountLabel.text = @"0";
-        
-        self.textInputField.enabled = NO;
+        return NO;
     }
+    
+    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
