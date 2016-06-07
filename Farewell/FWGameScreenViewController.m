@@ -32,7 +32,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    [self.textInputField becomeFirstResponder];
     
     self.characterCountLabel.hidden = NO;
-    
+    self.characterCountLabel.text = @"2";
     
     [self.statusLabel sizeToFit];
 }
@@ -117,7 +117,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"Send Turn, %@, %@", data, nextParticipants);
     
     self.textInputField.text = @"";
-    self.characterCountLabel.text = @"140";
+    self.characterCountLabel.text = @"2";
     self.characterCountLabel.textColor = [UIColor blackColor];
 }
 
@@ -245,7 +245,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"LEEEEEEN: %ld", (long)len);
     
     
-    NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSCharacterSet *separators = [NSCharacterSet alphanumericCharacterSet];
     NSArray *words = [self.textInputField.text componentsSeparatedByCharactersInSet:separators];
     
     NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
@@ -254,8 +254,16 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
 //    return [words count] - [separatorIndexes count];
     
+    NSLog(@"INDEXES COUNT: %lu", (unsigned long)[separatorIndexes count]);
+    
     if ([separatorIndexes count] == 1) {
             _characterCountLabel.text = @"1";
+    }
+    
+    if ([separatorIndexes count] == 2) {
+        _characterCountLabel.text = @"0";
+        
+        self.textInputField.enabled = NO;
     }
 }
 
