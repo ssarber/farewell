@@ -23,6 +23,9 @@
     
     self.playerTwoPhoto.layer.cornerRadius = self.playerTwoPhoto.frame.size.width / 2;
     self.playerTwoPhoto.clipsToBounds = YES;
+    
+    self.playerThreePhoto.layer.cornerRadius = self.playerTwoPhoto.frame.size.width / 2;
+    self.playerThreePhoto.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

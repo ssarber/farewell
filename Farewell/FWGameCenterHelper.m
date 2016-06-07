@@ -154,7 +154,7 @@
                                       matchData:matchData completionHandler:nil];
     }];
     
-    NSLog(@"Player quit form match");
+    NSLog(@"Player quit from match.");
 }
 
 

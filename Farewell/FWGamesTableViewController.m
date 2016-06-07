@@ -35,10 +35,10 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    
-    self.tableView.rowHeight = 120;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    self.tableView.rowHeight = 120;
+
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     
@@ -101,10 +101,31 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource Protocol methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    
+//    header.backgroundView.backgroundColor = [UIColor clearColor];
+//    header.textLabel.textColor = [UIColor grayColor];
+    header.textLabel.font = [UIFont boldSystemFontOfSize:18];
+    CGRect headerFrame = header.frame;
+    header.textLabel.frame = headerFrame;
+    header.textLabel.textAlignment = NSTextAlignmentLeft;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    // Hide section header if section is empty
+    if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
+        return 0;
+    } else {
+        return 44;
+    }
 }
 
 
@@ -113,9 +134,9 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     if (section == FWGamesTableViewSectionMyTurn) {
         return @"My Turn";
     } else if (section == FWGamesTableViewSectionTheirTurn) {
-        return @"Their Turn";
+        return @"Co-writer's Turn";
     } else {
-        return @"Game Ended";
+        return @"Compeleted Emails";
     }
 }
 

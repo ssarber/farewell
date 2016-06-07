@@ -16,7 +16,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end
 
@@ -32,9 +31,16 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    Might activate the keyboard on load
 //    [self.textInputField becomeFirstResponder];
     
-    self.characterCountLabel.hidden = YES;
+    self.characterCountLabel.hidden = NO;
+    
     
     [self.statusLabel sizeToFit];
+}
+
+
+- (BOOL)isPresented
+{
+    return [self isViewLoaded] && self.view.window;
 }
 
 
@@ -75,7 +81,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     GKTurnBasedMatch *currentMatch = [[FWGameCenterHelper sharedInstance] currentMatch];
     
     NSString *newGameString;
-    newGameString = [self.textInputField.text length] > 140? [self.textInputField.text substringToIndex:139] : self.textInputField.text;
+    //newGameString = [self.textInputField.text length] > 140? [self.textInputField.text substringToIndex:139] : self.textInputField.text;
+    
+    newGameString = self.textInputField.text;
  
     NSString *sendString = [@[self.mainTextField.text, newGameString] componentsJoinedByString:@" "];
     
@@ -94,29 +102,17 @@ NSUInteger const kMaxAllowedCharacters = 100;
         }
         
     }
-    
-    if ([data length] > kMaxAllowedCharacters) {
-        for (GKTurnBasedParticipant *participant in currentMatch.participants) {
-            participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
+    [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault
+                                    matchData:data completionHandler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Got error: %@", error);
+            
+            self.statusLabel.text = @"Oops, something went wrong. Try that again.";
+        } else {
+            self.statusLabel.text = @"Nice. Your turn is over for now. Let's wait for your co-writer to take turn.";
+            self.textInputField.hidden = YES;
         }
-        [currentMatch endMatchInTurnWithMatchData:data completionHandler:^(NSError *error) {
-            if (error) {
-                NSLog(@"Um, got this error: %@", error);
-            }
-        }];
-        self.statusLabel.text = @"Game Over.";
-    } else {
-        [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault matchData:data completionHandler:^(NSError *error) {
-            if (error) {
-                NSLog(@"Got error: %@", error);
-                
-                self.statusLabel.text = @"Oops, something went wrong. Try that again.";
-            } else {
-                self.statusLabel.text = @"Nice. Your turn is over for now. Let's wait for your co-writer to take turn.";
-                self.textInputField.hidden = YES;
-            }
-        }];
-    }
+    }];
 
     NSLog(@"Send Turn, %@, %@", data, nextParticipants);
     
@@ -128,24 +124,56 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)menuButtonPressed:(id)sender
 {
+    NSLog(@"DIS MTCH status: %ld", (long)self.match.status);
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:nil
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    //FIXME: For iPad... Doesn't work?
     alert.popoverPresentationController.sourceView = self.view;
     alert.popoverPresentationController.sourceRect = self.view.bounds;
     
-    UIAlertAction* quitAction = [UIAlertAction actionWithTitle:@"Quit Game..." style:UIAlertActionStyleDefault
+    UIAlertAction* quitAction = [UIAlertAction actionWithTitle:@"Complete Email" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                              [self quitGame];
-    }];
+                                                              [self confirmQuit];
+                                                          }];
+    
+    UIAlertAction* removeAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             [self confirmRemoval];
+                                                         }];
     
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction *action) {
                                                              [alert dismissViewControllerAnimated:YES completion:nil];
-    }];
+                                                         }];
     
-    [alert addAction:quitAction];
+    if (self.match.status == GKTurnBasedMatchStatusEnded) {
+        [alert addAction:removeAction];
+    } else {
+        [alert addAction:quitAction];
+    }
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)confirmQuit
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
+                                                                    message:@"It's OK; don't let self-doubt interfere with your plans to improve your life."
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Complete" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [self quitGame];
+                                                       }];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Um, not yet" style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             [alert dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+    [alert addAction:confirmAction];
     [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:nil];
@@ -166,11 +194,70 @@ NSUInteger const kMaxAllowedCharacters = 100;
             }
         }];
     }
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
+- (void)confirmRemoval
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Remove this email forever?"
+                                                                   message:@"It will also disappear from all your co-workers' and your boss's computers. Nice!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self removeFinishedGame];
+                                                          }];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Um, not yet" style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             [alert dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+    [alert addAction:confirmAction];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)removeFinishedGame
+{
+    [self.match removeWithCompletionHandler:^(NSError *error) {
+        NSLog(@"Removed match: %@", self.match);
+        
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
+
 #pragma mark - UITextFieldDelegate Protocol methods
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [self updateCounterLabel];
+    return YES;
+}
+
+- (void)updateCounterLabel
+{
+    NSInteger len = [_textInputField.text length];
+    NSLog(@"LEEEEEEN: %ld", (long)len);
+    
+    
+    NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSArray *words = [self.textInputField.text componentsSeparatedByCharactersInSet:separators];
+    
+    NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return [obj isEqualToString:@"."];
+    }];
+    
+//    return [words count] - [separatorIndexes count];
+    
+    if ([separatorIndexes count] == 1) {
+            _characterCountLabel.text = @"1";
+    }
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -188,22 +275,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
     return YES;
 }
 
-# pragma mark - Updating characters left counter
-
-- (void)updateCharactersLeftCount:(NSData *)matchData
-{
-    if ([matchData length]) {
-        self.statusLabel.text = [NSString stringWithFormat:@"%@, %lu characters left.",
-                                 self.statusLabel.text,  kMaxAllowedCharacters - [matchData length]];
-    }
-}
-
 # pragma mark - FWTurnBasedMatchDelegate protocol methods
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Inside FWGameScreenViewController -- enterNewGame:(GKTurnBasedMatch *)match");
+    NSLog(@"Inside FWGameScreenViewController --> enterNewGame");
     self.mainTextField.text = @"Dear coworkers,\n\n";
+    
+    [self.view setNeedsDisplay];
 }
 
 
@@ -214,7 +293,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"SELF: %@", self);
     NSLog(@"TEXT FIELD: %@", self.mainTextField);
     
-    NSString *statusString = [NSString stringWithFormat:@"Your turn."];
+    NSString *statusString = [NSString stringWithFormat:@"Go shorty, it's your turn."];
     
     self.statusLabel.text = statusString;
     self.textInputField.hidden = NO;
@@ -230,8 +309,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextField.text = gameTextSoFar;
             });
-            
-            [self updateCharactersLeftCount:match.matchData];
         }
     }];
     
@@ -248,6 +325,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSString *statusString;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
+        
+        NSLog(@"MAtch ended: %@", match.description);
         statusString = @"Match ended.";
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
@@ -266,8 +345,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextField.text = gameTextSoFar;
             });
-            
-            [self updateCharactersLeftCount:match.matchData];
         }
     }];
 }
@@ -291,5 +368,17 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     [self layoutCurrentMatch:match];
 }
+
+
+//- (NSUInteger)wordCount {
+//    NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+//    NSArray *words = [self componentsSeparatedByCharactersInSet:separators];
+//    
+//    NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+//        return [obj isEqualToString:@"."];
+//    }];
+//    
+//    return [words count] - [separatorIndexes count];
+//}
 
 @end

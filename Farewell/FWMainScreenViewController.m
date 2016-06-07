@@ -66,7 +66,9 @@
 {
     self.gameVC.match = match;
     
-    [self presentViewController:self.gameVC animated:YES completion:nil];
+    if (![self.gameVC isPresented]) {
+        [self presentViewController:self.gameVC animated:YES completion:nil];
+    }
 
     [self.gameVC takeTurnInMatch:match];
 }

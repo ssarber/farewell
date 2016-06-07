@@ -17,5 +17,7 @@
 - (void)takeTurnInMatch:(GKTurnBasedMatch *)match;
 - (void)layoutCurrentMatch:(GKTurnBasedMatch *)match;
 
+- (BOOL)isPresented;
+
 @end
 

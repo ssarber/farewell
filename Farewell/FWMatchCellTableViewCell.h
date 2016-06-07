@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *storyText;
 @property (weak, nonatomic) IBOutlet UIImageView *playerOnePhoto;
 @property (weak, nonatomic) IBOutlet UIImageView *playerTwoPhoto;
+@property (weak, nonatomic) IBOutlet UIImageView *playerThreePhoto;
+
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *playerPhotos;
 
 @property (weak, nonatomic) id <FWMatchCellTableViewCellDelegate> delegate;
 
