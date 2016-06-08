@@ -62,6 +62,15 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
+            
+            
+#warning Remove before shipping
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading matches:"
+                                                                           message:error.localizedDescription
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+
         }
        
         NSMutableArray *myMatches = [NSMutableArray array];

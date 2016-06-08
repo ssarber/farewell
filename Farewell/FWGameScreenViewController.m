@@ -32,7 +32,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    [self.textInputField becomeFirstResponder];
     
     self.characterCountLabel.hidden = NO;
-    self.characterCountLabel.text = @"2";
+    self.characterCountLabel.text = @"2 sentences remaining.";
     
     [self.statusLabel sizeToFit];
 }
@@ -110,15 +110,16 @@ NSUInteger const kMaxAllowedCharacters = 100;
             self.statusLabel.text = @"Oops, something went wrong. Try that again.";
         } else {
             self.statusLabel.text = @"Nice. Your turn is over for now. Let's wait for your co-writer to take turn.";
-            self.textInputField.hidden = YES;
         }
     }];
-
-    NSLog(@"Send Turn, %@, %@", data, nextParticipants);
     
     self.textInputField.text = @"";
-    self.characterCountLabel.text = @"2";
-    self.characterCountLabel.textColor = [UIColor blackColor];
+    self.textInputField.hidden = YES;
+
+    self.characterCountLabel.text = @"2 sentences remaining.";
+    self.characterCountLabel.hidden = YES;
+    
+    NSLog(@"Send Turn, %@, %@", data, nextParticipants);
 }
 
 
@@ -191,6 +192,15 @@ NSUInteger const kMaxAllowedCharacters = 100;
         [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
             if (error) {
                 NSLog(@"Error quitting game: %@", error.localizedDescription);
+                
+#warning Remove before shipping
+                
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error completing email:"
+                                                                               message:error.localizedDescription
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                
+                [self presentViewController:alert animated:YES completion:nil];
+
             }
         }];
     }
@@ -254,24 +264,23 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"WORDS: %@", words);
     
     NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        return ([obj isEqualToString:@". "] || [obj isEqualToString:@"."]);
+        return ([obj isEqualToString:@". "] || [obj isEqualToString:@"."] || [obj isEqualToString:@"! "] || [obj isEqualToString:@"!"]);
     }];
-    
-//    return [words count] - [separatorIndexes count];
     
     NSLog(@"INDEXES COUNT: %lu", (unsigned long)[separatorIndexes count]);
     
     if ([separatorIndexes count] == 1) {
-            _characterCountLabel.text = @"1";
+            _characterCountLabel.text = @"1 sentence remaining.";
     }
     
     if ([separatorIndexes count] == 2) {
-        _characterCountLabel.text = @"0";
+        _characterCountLabel.text = @"0 sentences remaining.";
         return NO;
     }
     
     return YES;
 }
+
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -312,6 +321,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.statusLabel.text = statusString;
     self.textInputField.hidden = NO;
     self.textInputField.enabled = YES;
+    
+    self.characterCountLabel.hidden = NO;
+    self.characterCountLabel.text = @"2 sentences remaining.";
     
     __weak typeof(self) weakSelf = self;
 
@@ -382,17 +394,5 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     [self layoutCurrentMatch:match];
 }
-
-
-//- (NSUInteger)wordCount {
-//    NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-//    NSArray *words = [self componentsSeparatedByCharactersInSet:separators];
-//    
-//    NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-//        return [obj isEqualToString:@"."];
-//    }];
-//    
-//    return [words count] - [separatorIndexes count];
-//}
 
 @end
