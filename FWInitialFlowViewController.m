@@ -7,7 +7,6 @@
 //
 
 #import "FWInitialFlowViewController.h"
-#import "FWMainScreenViewController.h"
 
 NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlowUserDefault";
 

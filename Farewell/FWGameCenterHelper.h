@@ -36,4 +36,6 @@
              showExistingMatches:(BOOL)show
                  viewController:(UIViewController *)viewController;
 
+- (void)loadAMatch:(GKTurnBasedMatch *)match;
+
 @end

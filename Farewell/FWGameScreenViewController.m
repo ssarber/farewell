@@ -52,7 +52,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)backButtonPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -120,6 +120,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.characterCountLabel.hidden = YES;
     
     NSLog(@"Send Turn, %@, %@", data, nextParticipants);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
 }
 
 
@@ -300,7 +302,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 # pragma mark - FWTurnBasedMatchDelegate protocol methods
 
-- (void)enterNewGame:(GKTurnBasedMatch *)match
+- (void)enterNewGameForMatch:(GKTurnBasedMatch *)match
 {
     NSLog(@"Inside FWGameScreenViewController --> enterNewGame");
     self.mainTextField.text = @"Dear coworkers,\n\n";
@@ -352,7 +354,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
         
-        NSLog(@"MAtch ended: %@", match.description);
+        NSLog(@"Match ended: %@", match.description);
         statusString = @"Match ended.";
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
@@ -373,20 +375,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
             });
         }
     }];
-}
-
-
-- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
-                                                                   message:@"Another email requires your immediate attention."
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Oh, OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
-    
-    [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

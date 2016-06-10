@@ -19,9 +19,14 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     FWGamesTableViewSectionGameEnded  = 2
 };
 
-@interface FWGamesTableViewController () <FWMatchCellTableViewCellDelegate>
+@interface FWGamesTableViewController () <UITableViewDelegate, UITableViewDataSource,
+FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
-@property (nonatomic, strong) NSArray *allMyMatches;
+@property (strong, nonatomic) FWGameScreenViewController *gameVC;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSArray *allMyMatches;
 @property (nonatomic) GKTurnBasedMatchOutcome myOutcome;
 
 @end
@@ -37,25 +42,42 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.tableView.rowHeight = 120;
-
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
-    self.navigationItem.leftBarButtonItem = cancelButton;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
+    [[FWGameCenterHelper sharedInstance] authenticateLocalUserFromController:self];
+    
+    [FWGameCenterHelper sharedInstance].delegate = self;
+    
+    self.tableView.rowHeight = 120;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
+
     [self reloadTableView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
+                                                 name:@"StateOfMatchesHasChangedNotification" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
+                                                 name:@"ReceivedTurnEventNotification" object:nil];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self reloadTableView];
+    [self.tableView reloadData];
 }
 
-- (void)cancelButtonPressed
+
+- (BOOL)prefersStatusBarHidden
 {
-    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    return YES;
 }
+
 
 - (void)reloadTableView
 {
@@ -228,8 +250,67 @@ typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
 
 - (void)loadAMatch:(GKTurnBasedMatch *)match
 {
-    [[FWGameCenterHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
+//    [[FWGameCenterHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
     
+    [[FWGameCenterHelper sharedInstance] loadAMatch:match];
+    
+}
+
+
+- (IBAction)presentGCViewControllerForNewGame:(id)sender
+{
+    [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
+    
+}
+
+
+# pragma mark - FWTurnBasedMatchDelegate protocol methods
+
+- (void)enterNewGame:(GKTurnBasedMatch *)match
+{
+    NSLog(@"======== Entering new game ===========");
+    
+    if (![self.gameVC isPresented] || ![self.gameVC isBeingPresented]) {
+        [self presentViewController:self.gameVC animated:YES completion:nil];
+    }
+
+    [self.gameVC enterNewGameForMatch:match];
+}
+
+
+-(void)takeTurnInGame:(GKTurnBasedMatch *)match
+{
+    self.gameVC.match = match;
+    
+    if ([self.gameVC isPresented] == NO) {
+        [self presentViewController:self.gameVC animated:YES completion:nil];
+    }
+    
+    [self.gameVC takeTurnInMatch:match];
+}
+
+
+- (void)layoutMatch:(GKTurnBasedMatch *)match
+{
+    self.gameVC.match = match;
+    [self presentViewController:self.gameVC animated:YES completion:nil];
+    
+    [self.gameVC layoutCurrentMatch:match];
+}
+
+
+
+- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
+                                                                   message:@"Another email requires your immediate attention."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Oh, OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
