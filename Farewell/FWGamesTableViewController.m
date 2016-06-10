@@ -244,17 +244,17 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 {
     GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
-    [self loadAMatch:match];
-}
-
-
-- (void)loadAMatch:(GKTurnBasedMatch *)match
-{
-//    [[FWGameCenterHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
-    
     [[FWGameCenterHelper sharedInstance] loadAMatch:match];
-    
 }
+
+
+//- (void)loadAMatch:(GKTurnBasedMatch *)match
+//{
+////    [[FWGameCenterHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
+//    
+//    [[FWGameCenterHelper sharedInstance] loadAMatch:match];
+//    
+//}
 
 
 - (IBAction)presentGCViewControllerForNewGame:(id)sender
@@ -269,10 +269,10 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
     NSLog(@"======== Entering new game ===========");
-    
-    if (![self.gameVC isPresented] || ![self.gameVC isBeingPresented]) {
-        [self presentViewController:self.gameVC animated:YES completion:nil];
-    }
+
+//    if (![self.gameVC isPresented] || ![self.gameVC isBeingPresented]) {
+//        [self presentViewController:self.gameVC animated:YES completion:nil];
+//    }
 
     [self.gameVC enterNewGameForMatch:match];
 }
