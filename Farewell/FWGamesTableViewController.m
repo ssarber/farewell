@@ -24,6 +24,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 @property (strong, nonatomic) FWGameScreenViewController *gameVC;
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *allMyMatches;
@@ -41,6 +42,13 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_headerView.bounds];
+    _headerView.layer.masksToBounds = NO;
+    _headerView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _headerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    _headerView.layer.shadowOpacity = 0.3f;
+    _headerView.layer.shadowPath = shadowPath.CGPath;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -192,7 +200,13 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
         for (GKTurnBasedParticipant *p in match.participants) {
                 [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
                     
-                    // Handle case for current participant -- this user's turn (photo on the left)
+                    
+                    // If awaing an auto-matched user, no player id yet
+                    if (match.status == GKTurnBasedParticipantStatusMatching) {
+                        UIImage *questionMarkImage = [UIImage imageNamed:@"question-mark-icon.png"];
+                        [cell.playerOnePhoto setImage:questionMarkImage];
+                    }
+                    // Handle case for current participant -- photo on the left
                     if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
                         if (photo != nil) {
                             [cell.playerOnePhoto setImage:photo];
@@ -206,6 +220,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                                 [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
                             }
                         }
+                        
                     } else { // if not this player's turn, set photo to the right
                 
                         if (photo != nil) {
@@ -243,6 +258,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSLog(@"MATCH: %@", match);
     
     [[FWGameCenterHelper sharedInstance] loadAMatch:match];
 }

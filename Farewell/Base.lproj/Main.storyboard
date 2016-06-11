@@ -180,6 +180,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dx0-7A-vUp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inbox" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECW-dT-UKa">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ECW-dT-UKa" secondAttribute="trailing" id="E1O-6G-AzO"/>
+                                    <constraint firstItem="ECW-dT-UKa" firstAttribute="leading" secondItem="Dx0-7A-vUp" secondAttribute="leading" id="eqp-IW-Wn0"/>
+                                    <constraint firstItem="ECW-dT-UKa" firstAttribute="top" secondItem="Dx0-7A-vUp" secondAttribute="top" id="ie3-AV-6J0"/>
+                                    <constraint firstAttribute="bottom" secondItem="ECW-dT-UKa" secondAttribute="bottom" constant="-6" id="kD8-vR-dyW"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bx-dh-uDJ">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
@@ -210,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JL1-vG-hQF" id="cMn-AX-Sh5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="95.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Lorem ipsum" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbZ-F5-08v">
@@ -261,17 +279,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Dx0-7A-vUp" firstAttribute="leading" secondItem="PSZ-6w-veh" secondAttribute="leading" id="0Gz-7l-25A"/>
+                            <constraint firstItem="Dx0-7A-vUp" firstAttribute="top" secondItem="PSZ-6w-veh" secondAttribute="top" id="1bJ-tN-9fj"/>
                             <constraint firstItem="AdH-gj-qyQ" firstAttribute="leading" secondItem="PSZ-6w-veh" secondAttribute="leading" id="3RQ-oe-pd5"/>
                             <constraint firstItem="AdH-gj-qyQ" firstAttribute="centerY" secondItem="PSZ-6w-veh" secondAttribute="centerY" id="DDB-pW-o9f"/>
                             <constraint firstAttribute="trailing" secondItem="AdH-gj-qyQ" secondAttribute="trailing" id="Q4o-ph-Lln"/>
                             <constraint firstItem="uqc-62-9sP" firstAttribute="top" secondItem="9Bx-dh-uDJ" secondAttribute="bottom" id="SP2-J8-ESr"/>
+                            <constraint firstItem="AdH-gj-qyQ" firstAttribute="top" secondItem="Dx0-7A-vUp" secondAttribute="bottom" constant="8" id="WGd-gs-eTl"/>
                             <constraint firstItem="9Bx-dh-uDJ" firstAttribute="top" secondItem="AdH-gj-qyQ" secondAttribute="bottom" constant="-1" id="WKc-f7-0EC"/>
                             <constraint firstItem="AdH-gj-qyQ" firstAttribute="centerX" secondItem="PSZ-6w-veh" secondAttribute="centerX" id="hC5-CU-AV9"/>
+                            <constraint firstAttribute="trailing" secondItem="Dx0-7A-vUp" secondAttribute="trailing" id="n06-Df-ZRS"/>
                             <constraint firstItem="9Bx-dh-uDJ" firstAttribute="leading" secondItem="PSZ-6w-veh" secondAttribute="leading" id="sqf-KK-Upd"/>
                             <constraint firstAttribute="trailing" secondItem="9Bx-dh-uDJ" secondAttribute="trailing" id="t3d-37-Qle"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="headerView" destination="Dx0-7A-vUp" id="lKT-yu-Zec"/>
                         <outlet property="tableView" destination="AdH-gj-qyQ" id="aM1-9O-ibP"/>
                     </connections>
                 </viewController>
