@@ -20,7 +20,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *userHasSeenInitialFlow = [defaults objectForKey:kFWUserHasSeenInitialFlowUserDefault];
 
-    NSString *storyboardId = [userHasSeenInitialFlow boolValue] == NO ? @"FWInitialFlowViewControllerID" : @"FWMainScreenViewControllerID";
+    NSString *storyboardId = [userHasSeenInitialFlow boolValue] == NO ? @"FWInitialFlowViewControllerID" : @"FWGamesTableViewControllerID";
     self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:storyboardId];
     
     return YES;

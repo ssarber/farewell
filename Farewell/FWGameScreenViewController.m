@@ -37,6 +37,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [self.statusLabel sizeToFit];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
 
 - (BOOL)isPresented
 {
@@ -52,7 +57,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)backButtonPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    // Reset the current match if we go back to main screen
+    [FWGameCenterHelper sharedInstance].currentMatch = nil;
+    
+    // Reload the table view just in case?
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
 }
 
 
@@ -102,6 +113,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
         }
         
     }
+    [currentMatch setLocalizableMessageWithKey:@"Yo, it's your turn to add 2 sentences!"
+                                     arguments:nil];
+    
     [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault
                                     matchData:data completionHandler:^(NSError *error) {
         if (error) {
@@ -112,6 +126,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
             self.statusLabel.text = @"Nice. Your turn is over for now. Let's wait for your co-writer to take turn.";
         }
     }];
+        
+    self.statusLabel.hidden = NO;
     
     self.textInputField.text = @"";
     self.textInputField.hidden = YES;
@@ -119,7 +135,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.characterCountLabel.text = @"2 sentences remaining.";
     self.characterCountLabel.hidden = YES;
     
+    [self.view setNeedsDisplay];
+    
     NSLog(@"Send Turn, %@, %@", data, nextParticipants);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
 }
 
 
@@ -204,6 +224,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
             }
         }];
     }
+    
+    // Reload the table view
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -300,10 +323,19 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 # pragma mark - FWTurnBasedMatchDelegate protocol methods
 
-- (void)enterNewGame:(GKTurnBasedMatch *)match
+- (void)enterNewGameForMatch:(GKTurnBasedMatch *)match
 {
     NSLog(@"Inside FWGameScreenViewController --> enterNewGame");
     self.mainTextField.text = @"Dear coworkers,\n\n";
+    
+    NSString *statusString = [NSString stringWithFormat:@"Go shorty, it's your turn."];
+    self.statusLabel.text = statusString;
+    
+    self.textInputField.hidden = NO;
+    self.textInputField.enabled = YES;
+    
+    self.characterCountLabel.hidden = NO;
+    self.characterCountLabel.text = @"2 sentences remaining.";
     
     [self.view setNeedsDisplay];
 }
@@ -335,6 +367,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextField.text = gameTextSoFar;
             });
+        } else {
+            weakSelf.mainTextField.text = @"Dear co-workers,\n\n";
         }
     }];
     
@@ -352,12 +386,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
         
-        NSLog(@"MAtch ended: %@", match.description);
+        NSLog(@"Match ended: %@", match.description);
         statusString = @"Match ended.";
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
         NSUInteger playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
-        statusString = playerName? [NSString stringWithFormat:@"%@'s turn", playerName] :
+        statusString = playerName? [NSString stringWithFormat:@"%@'s turn.", playerName] :
             [NSString stringWithFormat: @"Player %ld's turn.", playerNum];
     }
     
@@ -373,20 +407,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
             });
         }
     }];
-}
-
-
-- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Um, hello?"
-                                                                   message:@"Another email requires your immediate attention."
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Oh, OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
-    
-    [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

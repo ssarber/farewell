@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) GKTurnBasedMatch *match;
 
-- (void)enterNewGame:(GKTurnBasedMatch *)match;
+- (void)enterNewGameForMatch:(GKTurnBasedMatch *)match;
 - (void)takeTurnInMatch:(GKTurnBasedMatch *)match;
 - (void)layoutCurrentMatch:(GKTurnBasedMatch *)match;
 

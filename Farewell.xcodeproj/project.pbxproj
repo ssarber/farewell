@@ -10,9 +10,6 @@
 		0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
 		0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
 		0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
-		0F3DE0041CE515610048DFAE /* FWMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */; };
-		0F3DE0051CE515610048DFAE /* FWMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */; };
-		0F3DE0061CE515610048DFAE /* FWMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */; };
 		0F48B6E51CD92DF1008A7F3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6E41CD92DF1008A7F3D /* main.m */; };
 		0F48B6E81CD92DF1008A7F3D /* FWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */; };
 		0F48B6EB1CD92DF1008A7F3D /* FWGameScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */; };
@@ -59,8 +56,6 @@
 /* Begin PBXFileReference section */
 		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWInitialFlowViewController.h; path = ../FWInitialFlowViewController.h; sourceTree = "<group>"; };
 		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWInitialFlowViewController.m; path = ../FWInitialFlowViewController.m; sourceTree = "<group>"; };
-		0F3DE0021CE515610048DFAE /* FWMainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMainScreenViewController.h; sourceTree = "<group>"; };
-		0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMainScreenViewController.m; sourceTree = "<group>"; };
 		0F48B6E01CD92DF1008A7F3D /* Farewell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farewell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F48B6E41CD92DF1008A7F3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWAppDelegate.h; sourceTree = "<group>"; };
@@ -187,8 +182,6 @@
 			children = (
 				0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */,
 				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
-				0F3DE0021CE515610048DFAE /* FWMainScreenViewController.h */,
-				0F3DE0031CE515610048DFAE /* FWMainScreenViewController.m */,
 				0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */,
 				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
 				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
@@ -376,7 +369,6 @@
 				0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
 				0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0F48B6E51CD92DF1008A7F3D /* main.m in Sources */,
-				0F3DE0041CE515610048DFAE /* FWMainScreenViewController.m in Sources */,
 				0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F48B7181CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
 			);
@@ -393,7 +385,6 @@
 				0F48B7191CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
 				0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
-				0F3DE0051CE515610048DFAE /* FWMainScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +399,6 @@
 				0F48B71A1CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
 				0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0FAFCB311CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
-				0F3DE0061CE515610048DFAE /* FWMainScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -76,6 +76,36 @@
 {
     [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
     
+        self.currentMatch = match;
+    
+        GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
+    
+        // If the first participant doesn't have lastTurnDate set yet, it should be
+        // safe to assume we have a brand new match
+        if (firstParticipant.lastTurnDate) {
+    
+            if ([match.currentParticipant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
+                // It's our turn to take a turn
+                [self.delegate takeTurnInGame:match];
+            } else {
+                [self.delegate layoutMatch:match];
+            }
+        } else {
+            _newMatch = YES;
+    
+            // We're in a new game
+            [self.delegate enterNewGame:match];
+        }
+
+}
+
+- (void)loadAMatch:(GKTurnBasedMatch *)match;
+{
+    
+    NSLog(@"did find match");
+    
+    [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
+    
     NSMutableArray *stillPlaying = [NSMutableArray array];
     
     for (GKTurnBasedParticipant *p in match.participants) {
@@ -101,6 +131,7 @@
     self.currentMatch = match;
     
     GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
+    GKTurnBasedParticipant *secondParticipant = [match.participants objectAtIndex:1];
     
     // If the first participant doesn't have lastTurnDate set yet, it should be
     // safe to assume we have a brand new match
@@ -111,6 +142,12 @@
         } else {
             [self.delegate layoutMatch:match];
         }
+        
+    // We have a match, but this player has not taken a turn yet
+    } else if (secondParticipant.status == GKTurnBasedParticipantStatusInvited) {
+        
+        [self.delegate takeTurnInGame:match];
+        
     } else {
         // We're in a new game
         [self.delegate enterNewGame:match];
@@ -190,28 +227,19 @@
 
 - (void)player:(GKPlayer *)player receivedTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive
 {
-    NSString *localPlayerID = [GKLocalPlayer localPlayer].playerID;
-    
+ 
     if ([match.matchID isEqualToString:self.currentMatch.matchID]) {
-        
-        // It's the current match and our turn now
-        if ([match.currentParticipant.player.playerID isEqual:localPlayerID]) {
+        if ([match.currentParticipant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
             self.currentMatch = match;
             [self.delegate takeTurnInGame:match];
         } else {
-            // It's the cureent match, but some else's turn
             self.currentMatch = match;
             [self.delegate layoutMatch:match];
         }
     }
     
-//    else {
-//        if ([match.currentParticipant.player.playerID isEqualToString:localPlayerID]) {
-//            [self.delegate sendNotice:@"it's your turn for another match." forMatch:match];
-//        } else {
-//            //It's not the current match and someone else's turn
-//        }
-//    }
+    // To refresh the table view
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
 }
 
 - (void)player:(GKPlayer *)player matchEnded:(GKTurnBasedMatch *)match

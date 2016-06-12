@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FWMainScreenViewController.h"
 #import "FWGameScreenViewController.h"
 
-@interface FWGamesTableViewController : UITableViewController
+@interface FWGamesTableViewController : UIViewController
 
-@property (weak, nonatomic) FWMainScreenViewController *mainVC;
-@property (weak, nonatomic) FWGameScreenViewController *gameVC;
+- (void)layoutMatch:(GKTurnBasedMatch *)match;
 
 @end

@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) UIViewController *presentingVC;
 
+@property (nonatomic, assign) BOOL newMatch;
+
 @property (nonatomic, strong) GKTurnBasedMatch *currentMatch;
 
 @property (nonatomic, weak) id <FWTurnBasedMatchDelegate> delegate;
@@ -35,5 +37,7 @@
                      maxPlayers:(NSUInteger)maxPlayers
              showExistingMatches:(BOOL)show
                  viewController:(UIViewController *)viewController;
+
+- (void)loadAMatch:(GKTurnBasedMatch *)match;
 
 @end
