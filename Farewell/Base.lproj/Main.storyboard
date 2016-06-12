@@ -201,12 +201,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bx-dh-uDJ">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBS-ei-0ff">
-                                        <rect key="frame" x="478" y="4" width="110" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBS-ei-0ff">
+                                        <rect key="frame" x="485" y="0.0" width="102" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="RKs-0I-kfF"/>
+                                            <constraint firstAttribute="width" constant="102" id="RKs-0I-kfF"/>
                                         </constraints>
-                                        <state key="normal" title="+ NEW EMAIL"/>
+                                        <state key="normal" image="write-icon-bold"/>
                                         <connections>
                                             <action selector="presentGCViewControllerForNewGame:" destination="RSr-VE-SpA" eventType="touchUpInside" id="uby-ux-ohm"/>
                                         </connections>
@@ -215,9 +215,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CFt-hu-DJo"/>
-                                    <constraint firstAttribute="trailing" secondItem="FBS-ei-0ff" secondAttribute="trailing" constant="12" id="V7a-oA-9DO"/>
+                                    <constraint firstAttribute="trailing" secondItem="FBS-ei-0ff" secondAttribute="trailing" constant="13" id="V7a-oA-9DO"/>
                                     <constraint firstItem="FBS-ei-0ff" firstAttribute="centerY" secondItem="9Bx-dh-uDJ" secondAttribute="centerY" id="bOq-yD-8fW"/>
-                                    <constraint firstItem="FBS-ei-0ff" firstAttribute="top" secondItem="9Bx-dh-uDJ" secondAttribute="top" constant="4" id="wPX-h2-3L0"/>
+                                    <constraint firstItem="FBS-ei-0ff" firstAttribute="top" secondItem="9Bx-dh-uDJ" secondAttribute="top" id="wPX-h2-3L0"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AdH-gj-qyQ">
@@ -272,6 +272,8 @@
                                             <outlet property="playerOnePhoto" destination="nBW-wQ-Yqz" id="25G-yf-dl2"/>
                                             <outlet property="playerTwoPhoto" destination="ere-RZ-qX3" id="dlY-1p-9KH"/>
                                             <outlet property="storyText" destination="AbZ-F5-08v" id="q2G-5m-6LS"/>
+                                            <outletCollection property="playerPhotos" destination="nBW-wQ-Yqz" id="f9b-QR-XXS"/>
+                                            <outletCollection property="playerPhotos" destination="ere-RZ-qX3" id="5Sw-V8-4uk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -305,5 +307,6 @@
     </scenes>
     <resources>
         <image name="icon-chevron-left" width="13" height="23"/>
+        <image name="write-icon-bold" width="48" height="48"/>
     </resources>
 </document>

@@ -131,6 +131,7 @@
     self.currentMatch = match;
     
     GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
+    GKTurnBasedParticipant *secondParticipant = [match.participants objectAtIndex:1];
     
     // If the first participant doesn't have lastTurnDate set yet, it should be
     // safe to assume we have a brand new match
@@ -141,6 +142,12 @@
         } else {
             [self.delegate layoutMatch:match];
         }
+        
+    // We have a match, but this player has not taken a turn yet
+    } else if (secondParticipant.status == GKTurnBasedParticipantStatusInvited) {
+        
+        [self.delegate takeTurnInGame:match];
+        
     } else {
         // We're in a new game
         [self.delegate enterNewGame:match];

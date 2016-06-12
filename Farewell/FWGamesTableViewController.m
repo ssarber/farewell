@@ -196,49 +196,71 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     if ([match.matchData length] > 0) {
         NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
         cell.storyText.text = storyString;
-
-        for (GKTurnBasedParticipant *p in match.participants) {
-                [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
-                    
-                    
-                    // If awaing an auto-matched user, no player id yet
-                    if (match.status == GKTurnBasedParticipantStatusMatching) {
-                        UIImage *questionMarkImage = [UIImage imageNamed:@"question-mark-icon.png"];
-                        [cell.playerOnePhoto setImage:questionMarkImage];
-                    }
-                    // Handle case for current participant -- photo on the left
-                    if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
-                        if (photo != nil) {
-                            [cell.playerOnePhoto setImage:photo];
-                        } else {
-                            NSString *userInitials;
-                            if ([self isLocalParticipant:p]) {
-                                userInitials = @"M E";
-                                [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
-                            } else {
-                                userInitials = p.player.displayName;
-                                [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
-                            }
-                        }
-                        
-                    } else { // if not this player's turn, set photo to the right
+    } else {
+        cell.storyText.text = @"Awaiting your turn!";
+    }
+    NSUInteger index = 0;
+    for (GKTurnBasedParticipant *p in match.participants) {
+            [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
                 
-                        if (photo != nil) {
-                            [cell.playerTwoPhoto setImage:photo];
+                
+                // If awaing an auto-matched user, no player id yet, but this will be the current
+                // participant, so set a question mark image on the left
+                if (match.status == GKTurnBasedParticipantStatusMatching) {
+                    UIImage *questionMarkImage = [UIImage imageNamed:@"question-mark-icon.png"];
+                    [cell.playerOnePhoto setImage:questionMarkImage];
+                }
+                
+                     
+                // Handle case for current participant -- photo on the left
+                if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
+                    if (photo != nil) {
+                        [cell.playerOnePhoto setImage:photo];
+                    } else {
+                        NSString *userInitials;
+                        if ([self isLocalParticipant:p]) {
+                            userInitials = @"M E";
+                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
                         } else {
-                            NSString *userInitials;
-                            // If local player, set initials to "ME", since the displayName is actually "Me"
-                            if ([self isLocalParticipant:p]) {
-                                userInitials = @"M E";
-                                [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
-                            } else {
-                                userInitials = p.player.displayName;
-                                [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
-                            }
+                            userInitials = p.player.displayName;
+                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                        }
+                    }
+                    
+                } else { // if not this player's turn, set photo to the right
+            
+                    if (photo != nil) {
+                        [cell.playerTwoPhoto setImage:photo];
+                    } else {
+                        NSString *userInitials;
+                        // If local player, set initials to "ME", since the displayName is actually "Me"
+                        if ([self isLocalParticipant:p]) {
+                            userInitials = @"M E";
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
+                        } else {
+                            userInitials = p.player.displayName;
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
+                        }
+                }
+                    
+                // Completed Emails section
+                if (match.status == GKTurnBasedMatchStatusEnded) {
+                    if (photo) {
+                        [[cell.playerPhotos objectAtIndex:index] setImage:photo];
+                    } else {
+                        NSString *userInitials;
+                        if ([self isLocalParticipant:p]) {
+                            userInitials = @"M E";
+                            [[cell.playerPhotos objectAtIndex:index] setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                        } else {
+                            userInitials = p.player.displayName;
+                            [[cell.playerPhotos objectAtIndex:index] setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                        }
                     }
                 }
-            }];
-        }
+            }
+        }];
+        index = index + 1;
     }
     
     return cell;
@@ -264,15 +286,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 }
 
 
-//- (void)loadAMatch:(GKTurnBasedMatch *)match
-//{
-////    [[FWGameCenterHelper sharedInstance] turnBasedMatchmakerViewController:nil didFindMatch:match];
-//    
-//    [[FWGameCenterHelper sharedInstance] loadAMatch:match];
-//    
-//}
-
-
 - (IBAction)presentGCViewControllerForNewGame:(id)sender
 {
     [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self];
@@ -285,8 +298,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
     NSLog(@"======== Entering new game ===========");
-
-//    if (![self.gameVC isPresented] || ![self.gameVC isBeingPresented]) {
+//
+//    if ([self.gameVC isPresented] == NO) {
 //        [self presentViewController:self.gameVC animated:YES completion:nil];
 //    }
 

@@ -61,6 +61,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     // Reset the current match if we go back to main screen
     [FWGameCenterHelper sharedInstance].currentMatch = nil;
+    
+    // Reload the table view just in case?
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
 }
 
 
@@ -222,6 +225,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
         }];
     }
     
+    // Reload the table view
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -361,6 +367,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextField.text = gameTextSoFar;
             });
+        } else {
+            weakSelf.mainTextField.text = @"Dear co-workers,\n\n";
         }
     }];
     
