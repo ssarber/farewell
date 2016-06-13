@@ -12,6 +12,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 @interface FWGameScreenViewController () <UITextViewDelegate, UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITextView *mainTextField;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
@@ -31,6 +32,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    Might activate the keyboard on load
 //    [self.textInputField becomeFirstResponder];
     
+    
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_headerView.bounds];
+    _headerView.layer.masksToBounds = NO;
+    _headerView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _headerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    _headerView.layer.shadowOpacity = 0.3f;
+    _headerView.layer.shadowPath = shadowPath.CGPath;
+    
     self.characterCountLabel.hidden = NO;
     self.characterCountLabel.text = @"2 sentences remaining.";
     
@@ -42,6 +51,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [super viewDidAppear:animated];
     
 }
+
 
 - (BOOL)isPresented
 {
@@ -261,6 +271,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
         
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
+    
+    // Reload the table view
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
 }
 
 

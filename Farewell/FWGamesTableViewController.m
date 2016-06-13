@@ -13,6 +13,8 @@
 #import "UIImageView+Letters.h"
 @import GameKit;
 
+NSString *const kFWUserHasSeenInitialTutorialUserDefault = @"FWUserHasSeenInitialTutorialUserDefault";
+
 typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
     FWGamesTableViewSectionMyTurn   = 0,
     FWGamesTableViewSectionTheirTurn   = 1,
@@ -24,8 +26,17 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 @property (strong, nonatomic) FWGameScreenViewController *gameVC;
 
+@property (assign, nonatomic) BOOL userHasSeenInitialTutorial;
+
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+// Tutorial
+@property (weak, nonatomic) IBOutlet UILabel *tutorialLabel;
+@property (weak, nonatomic) IBOutlet UIButton *textLabelButton;
+@property (strong, nonatomic) NSArray *textArray;
+@property (nonatomic) NSUInteger textIndex;
+@property (weak, nonatomic) IBOutlet UIButton *writeButton;
 
 @property (strong, nonatomic) NSArray *allMyMatches;
 @property (nonatomic) GKTurnBasedMatchOutcome myOutcome;
@@ -42,6 +53,11 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [[FWGameCenterHelper sharedInstance] authenticateLocalUserFromController:self];
+    
+    [FWGameCenterHelper sharedInstance].delegate = self;
+    
+    [self reloadTableView];
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_headerView.bounds];
     _headerView.layer.masksToBounds = NO;
@@ -50,26 +66,77 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     _headerView.layer.shadowOpacity = 0.3f;
     _headerView.layer.shadowPath = shadowPath.CGPath;
     
+    self.writeButton.tintColor = self.view.tintColor;
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    [[FWGameCenterHelper sharedInstance] authenticateLocalUserFromController:self];
-    
-    [FWGameCenterHelper sharedInstance].delegate = self;
-    
+
     self.tableView.rowHeight = 120;
+    
+    // Hide empty cells
+    self.tableView.tableFooterView = [UIView new];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
-
-    [self reloadTableView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
                                                  name:@"StateOfMatchesHasChangedNotification" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
                                                  name:@"ReceivedTurnEventNotification" object:nil];
+}
+
+- (NSArray *)textArray {
+    if (!_textArray) {
+        _textArray = @[@"The rules are simple.",
+                      @"You begin the email by writing first two sentences.",
+                      @"Then you pass the turn to your co-writer.",
+                      @"He (or she) will add his (or her) two sentences.",
+                      @"Let's get the ball rolling, yeah?",
+                      @"I can only show you the button at the bottom of screen, but you have to tap it."];
+    }
+    
+    return _textArray;
+}
+
+
+- (IBAction)changeText:(id)sender
+{
+    [UIView transitionWithView:self.tutorialLabel duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                           self.tutorialLabel.text = [self newSentence];
+                       } completion:nil];
+}
+
+
+- (NSString *)newSentence
+{
+    self.writeButton.hidden = self.userHasSeenInitialTutorial? NO : YES;
+    
+    if (self.textIndex >= self.textArray.count - 1) {
+        self.textIndex = 0;
+    } else {
+        self.textIndex = self.textIndex + 1;
+    }
+    if (self.textIndex == self.textArray.count - 1) {
+        void (^initialFlowFinishedBlock)() = ^{
+            self.userHasSeenInitialTutorial = YES;
+            self.textLabelButton.userInteractionEnabled = NO;
+        };
+        
+        [UIView transitionWithView: self.headerView duration:4.0
+                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                               self.headerView.hidden = NO;
+                           } completion:nil];
+        
+        [UIView transitionWithView: self.writeButton duration:4.0
+                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                               self.writeButton.hidden = NO;
+                               initialFlowFinishedBlock();
+                           } completion:nil];
+    }
+    return self.textArray[self.textIndex];
 }
 
 
@@ -81,6 +148,11 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 }
 
 
+- (BOOL)hasSeenInitialTutorial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [[defaults objectForKey:kFWUserHasSeenInitialTutorialUserDefault] boolValue];
+}
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -102,35 +174,62 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             [self presentViewController:alert animated:YES completion:nil];
 
         }
-       
-        NSMutableArray *myMatches = [NSMutableArray array];
-        NSMutableArray *otherMatches = [NSMutableArray array];
-        NSMutableArray *endedMatches = [NSMutableArray array];
-        
-        for (GKTurnBasedMatch *m in matches) {
-            for (GKTurnBasedParticipant *p in m.participants) {
-                if ([p.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
-                    _myOutcome = p.matchOutcome;
+        if (matches) {
+            _userHasSeenInitialTutorial = YES;
+            
+            if (self.tutorialLabel) {
+                [self.tutorialLabel removeFromSuperview];
+            };
+            
+            if (self.textLabelButton) {
+                [self.textLabelButton removeFromSuperview];
+            };
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                
+            // User has seen the initial flow, don't show again
+            [defaults setObject:[NSNumber numberWithBool: YES] forKey:kFWUserHasSeenInitialTutorialUserDefault];
+            [defaults synchronize];
+
+            NSMutableArray *myMatches = [NSMutableArray array];
+            NSMutableArray *otherMatches = [NSMutableArray array];
+            NSMutableArray *endedMatches = [NSMutableArray array];
+            
+            for (GKTurnBasedMatch *m in matches) {
+                for (GKTurnBasedParticipant *p in m.participants) {
+                    if ([p.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
+                        _myOutcome = p.matchOutcome;
+                    }
                 }
+                
+                if (m.status != GKTurnBasedMatchStatusEnded && _myOutcome != GKTurnBasedMatchOutcomeQuit) {
+                    if ([m.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+                        [myMatches addObject:m];
+                    } else {
+                        [otherMatches addObject:m];
+                    }
+                } else {
+                    [endedMatches addObject:m];
+                }
+            }
+            self.allMyMatches = @[myMatches, otherMatches, endedMatches];
+            for (GKTurnBasedMatch *myMatch in [self.allMyMatches objectAtIndex:0]){
+                NSString *dataString = [[NSString alloc] initWithData:myMatch.matchData encoding:NSUTF8StringEncoding];
+                NSLog(@"\n\nDATA: %@", dataString);
             }
             
-            if (m.status != GKTurnBasedMatchStatusEnded && _myOutcome != GKTurnBasedMatchOutcomeQuit) {
-                if ([m.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
-                    [myMatches addObject:m];
-                } else {
-                    [otherMatches addObject:m];
-                }
-            } else {
-                [endedMatches addObject:m];
+            [self.tableView reloadData];
+        } else {
+            // Set up tutorial
+            if (![self hasSeenInitialTutorial]) {
+                self.tutorialLabel.text = @"Touch me.";
+                [self.view bringSubviewToFront:self.tutorialLabel];
+                [self.view bringSubviewToFront:self.textLabelButton];
+                
+                self.headerView.hidden = YES;
+                self.writeButton.hidden = YES;
             }
         }
-        self.allMyMatches = @[myMatches, otherMatches, endedMatches];
-        for (GKTurnBasedMatch *myMatch in [self.allMyMatches objectAtIndex:0]){
-            NSString *dataString = [[NSString alloc] initWithData:myMatch.matchData encoding:NSUTF8StringEncoding];
-            NSLog(@"\n\nDATA: %@", dataString);
-        }
-        
-        [self.tableView reloadData];
     }];
 }
 
@@ -150,8 +249,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     
 //    header.backgroundView.backgroundColor = [UIColor clearColor];
-//    header.textLabel.textColor = [UIColor grayColor];
-    header.textLabel.font = [UIFont boldSystemFontOfSize:18];
+//    header.textLabel.textColor = self.view.tintColor;
+    header.textLabel.font = [UIFont boldSystemFontOfSize:19];
     CGRect headerFrame = header.frame;
     header.textLabel.frame = headerFrame;
     header.textLabel.textAlignment = NSTextAlignmentLeft;
@@ -303,6 +402,17 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 //        [self presentViewController:self.gameVC animated:YES completion:nil];
 //    }
 
+    // Finish with the initial tutorial
+    [self.tutorialLabel removeFromSuperview];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([self hasSeenInitialTutorial] == NO) {
+        
+        // User has seen the initial flow, don't show again
+        [defaults setObject:[NSNumber numberWithBool: YES] forKey:kFWUserHasSeenInitialTutorialUserDefault];
+        [defaults synchronize];
+    }
+    
     [self.gameVC enterNewGameForMatch:match];
 }
 
