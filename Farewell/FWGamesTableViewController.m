@@ -57,6 +57,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
     [FWGameCenterHelper sharedInstance].delegate = self;
     
+    self.writeButton.hidden = YES;
+    
     [self reloadTableView];
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_headerView.bounds];
@@ -94,7 +96,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                       @"Then you pass the turn to your co-writer.",
                       @"He (or she) will add his (or her) two sentences.",
                       @"Let's get the ball rolling, yeah?",
-                      @"I can only show you the button at the bottom of screen, but you have to tap it."];
+                      @"I can only show you the button at the bottom of this screen; you are the one that has to tap it."];
     }
     
     return _textArray;
@@ -128,13 +130,24 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
         [UIView transitionWithView: self.headerView duration:4.0
                            options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                                self.headerView.hidden = NO;
-                           } completion:nil];
-        
-        [UIView transitionWithView: self.writeButton duration:4.0
-                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                               self.writeButton.hidden = NO;
                                initialFlowFinishedBlock();
                            } completion:nil];
+                
+        [UIView transitionWithView:self.writeButton duration:0
+                           options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+                self.writeButton.imageView.alpha = 0;
+                self.writeButton.alpha = 0;
+
+        } completion:^ (BOOL finished){
+            [UIView animateWithDuration:1
+                                  delay:3.5
+                                options: UIViewAnimationOptionTransitionCrossDissolve
+                             animations:^{
+                                 self.writeButton.hidden =  NO;
+                                 self.writeButton.imageView.alpha = 1;
+                                 self.writeButton.alpha = 1;}
+                             completion:nil];
+        }];
     }
     return self.textArray[self.textIndex];
 }
@@ -176,6 +189,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
         }
         if (matches) {
             _userHasSeenInitialTutorial = YES;
+            self.headerView.hidden = NO;
+            self.writeButton.hidden = NO;
             
             if (self.tutorialLabel) {
                 [self.tutorialLabel removeFromSuperview];
