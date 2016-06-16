@@ -32,13 +32,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    Might activate the keyboard on load
 //    [self.textInputField becomeFirstResponder];
     
-    
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_headerView.bounds];
-    _headerView.layer.masksToBounds = NO;
-    _headerView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _headerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    _headerView.layer.shadowOpacity = 0.3f;
-    _headerView.layer.shadowPath = shadowPath.CGPath;
+    self.headerView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.headerView.layer.shadowOffset = CGSizeMake(0.0, 5);
+    self.headerView.layer.shadowRadius = 6;
+    self.headerView.layer.shadowOpacity = 0.5;    
+    self.headerView.layer.masksToBounds = NO;
     
     self.characterCountLabel.hidden = NO;
     self.characterCountLabel.text = @"2 sentences remaining.";
@@ -123,8 +121,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
         }
         
     }
-    [currentMatch setLocalizableMessageWithKey:@"Yo, it's your turn to add 2 sentences!"
-                                     arguments:nil];
+//    [currentMatch setLocalizableMessageWithKey:@"Yo, it's your turn to add 2 sentences!"
+//                                     arguments:nil];
     
     [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault
                                     matchData:data completionHandler:^(NSError *error) {

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Stan Sarber. All rights reserved.
 //
 
+#import "FWAppDelegate.h"
 #import "FWGamesTableViewController.h"
 #import "FWGameScreenViewController.h"
 #import "FWMatchCellTableViewCell.h"
@@ -48,6 +49,9 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    FWAppDelegate *appDelegate = (FWAppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.window.rootViewController = self;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -58,17 +62,23 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     [FWGameCenterHelper sharedInstance].delegate = self;
     
     self.writeButton.hidden = YES;
+    [self.tutorialLabel sizeToFit];
     
     [self reloadTableView];
     
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_headerView.bounds];
-    _headerView.layer.masksToBounds = NO;
-    _headerView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _headerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    _headerView.layer.shadowOpacity = 0.3f;
-    _headerView.layer.shadowPath = shadowPath.CGPath;
+    self.headerView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.headerView.layer.shadowOffset = CGSizeMake(0.0, 5);
+    self.headerView.layer.shadowRadius = 6;
+    self.headerView.layer.shadowOpacity = 0.5;
     
-    self.writeButton.tintColor = self.view.tintColor;
+    self.headerView.layer.masksToBounds = NO;
+    
+//    self.writeButton.tintColor = self.view.tintColor;
+    
+    self.writeButton.tintColor = [UIColor colorWithRed:255.0f/255.0f
+                                                 green:8.0f/255.0f
+                                                  blue:0.0f/255.0f
+                                                 alpha:1.0f];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -77,6 +87,11 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
     // Hide empty cells
     self.tableView.tableFooterView = [UIView new];
+    
+    // Pull to refresh
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -87,69 +102,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
                                                  name:@"ReceivedTurnEventNotification" object:nil];
-}
-
-- (NSArray *)textArray {
-    if (!_textArray) {
-        _textArray = @[@"The rules are simple.",
-                      @"You begin the email by writing first two sentences.",
-                      @"Then you pass the turn to your co-writer.",
-                      @"He (or she) will add his (or her) two sentences.",
-                      @"Let's get the ball rolling, yeah?",
-                      @"I can only show you the button at the bottom of this screen; you are the one that has to tap it."];
-    }
-    
-    return _textArray;
-}
-
-
-- (IBAction)changeText:(id)sender
-{
-    [UIView transitionWithView:self.tutorialLabel duration:0.5
-                       options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                           self.tutorialLabel.text = [self newSentence];
-                       } completion:nil];
-}
-
-
-- (NSString *)newSentence
-{
-    self.writeButton.hidden = self.userHasSeenInitialTutorial? NO : YES;
-    
-    if (self.textIndex >= self.textArray.count - 1) {
-        self.textIndex = 0;
-    } else {
-        self.textIndex = self.textIndex + 1;
-    }
-    if (self.textIndex == self.textArray.count - 1) {
-        void (^initialFlowFinishedBlock)() = ^{
-            self.userHasSeenInitialTutorial = YES;
-            self.textLabelButton.userInteractionEnabled = NO;
-        };
-        
-        [UIView transitionWithView: self.headerView duration:4.0
-                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                               self.headerView.hidden = NO;
-                               initialFlowFinishedBlock();
-                           } completion:nil];
-                
-        [UIView transitionWithView:self.writeButton duration:0
-                           options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-                self.writeButton.imageView.alpha = 0;
-                self.writeButton.alpha = 0;
-
-        } completion:^ (BOOL finished){
-            [UIView animateWithDuration:1
-                                  delay:3.5
-                                options: UIViewAnimationOptionTransitionCrossDissolve
-                             animations:^{
-                                 self.writeButton.hidden =  NO;
-                                 self.writeButton.imageView.alpha = 1;
-                                 self.writeButton.alpha = 1;}
-                             completion:nil];
-        }];
-    }
-    return self.textArray[self.textIndex];
 }
 
 
@@ -237,7 +189,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
         } else {
             // Set up tutorial
             if (![self hasSeenInitialTutorial]) {
-                self.tutorialLabel.text = @"Touch me.";
+                self.tutorialLabel.text = @"The rules are simple.";
                 [self.view bringSubviewToFront:self.tutorialLabel];
                 [self.view bringSubviewToFront:self.textLabelButton];
                 
@@ -248,11 +200,89 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     }];
 }
 
+#pragma mark - Secondary tutorial 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (NSArray *)textArray {
+    if (!_textArray) {
+        _textArray = @[@"You begin the email by writing first two sentences.",
+                       @"Then you pass the turn to your co-writer.",
+                       @"He (or she) will add his (or her) two sentences.",
+                       @"Let's get the ball rolling, yeah?",
+                       @"I can only show you the button at the bottom of this screen; you are the one that has to tap it."];
+    }
+    
+    return _textArray;
 }
+
+
+- (IBAction)changeText:(id)sender
+{
+    [UIView transitionWithView:self.tutorialLabel duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                           self.tutorialLabel.text = [self newSentence];
+                       } completion:nil];
+}
+
+
+- (NSString *)newSentence
+{
+    self.writeButton.hidden = self.userHasSeenInitialTutorial? NO : YES;
+    
+    if (self.textIndex >= self.textArray.count - 1) {
+        self.textIndex = 0;
+    } else {
+        self.textIndex = self.textIndex + 1;
+    }
+    if (self.textIndex == self.textArray.count - 1) {
+        void (^initialFlowFinishedBlock)() = ^{
+            self.userHasSeenInitialTutorial = YES;
+            self.textLabelButton.userInteractionEnabled = NO;
+        };
+        
+        [UIView transitionWithView: self.headerView duration:4.0
+                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                               self.headerView.hidden = NO;
+                               initialFlowFinishedBlock();
+                           } completion:nil];
+        
+        [UIView transitionWithView:self.writeButton duration:0
+                           options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+                               self.writeButton.imageView.alpha = 0;
+                               self.writeButton.alpha = 0;
+                               
+                           } completion:^ (BOOL finished){
+                               [UIView animateWithDuration:1
+                                                     delay:3.5
+                                                   options: UIViewAnimationOptionTransitionCrossDissolve
+                                                animations:^{
+                                                    self.writeButton.hidden =  NO;
+                                                    self.writeButton.imageView.alpha = 1;
+                                                    self.writeButton.alpha = 1;}
+                                                completion:nil];
+                           }];
+    }
+    return self.textArray[self.textIndex];
+}
+
+
+# pragma mark - Pull-to-refresh
+
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    [self reloadTableView];
+    [refreshControl endRefreshing];
+}
+
+
+- (void)scrolllTextViewToBottom:(UITextView *)textView
+{
+    if (textView.text.length > 0) {
+        NSRange bottom = NSMakeRange(textView.text.length - 1, 1);
+        [textView scrollRangeToVisible:bottom];
+    }
+}
+
 
 #pragma mark - UITableViewDataSource Protocol methods
 
@@ -264,8 +294,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     
 //    header.backgroundView.backgroundColor = [UIColor clearColor];
-//    header.textLabel.textColor = self.view.tintColor;
-    header.textLabel.font = [UIFont boldSystemFontOfSize:19];
+
+    header.textLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:23];
     CGRect headerFrame = header.frame;
     header.textLabel.frame = headerFrame;
     header.textLabel.textAlignment = NSTextAlignmentLeft;
@@ -298,6 +328,21 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     return [[self.allMyMatches objectAtIndex:section] count];
 }
 
+- (IBAction)cellContainerButtonPressed:(id)sender
+{
+//    CGPoint point = [sender convertPointToView:self.tableView];
+//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+//
+    CGPoint point = [self.tableView convertPoint:[sender center] fromView:sender];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    
+    GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSLog(@"MATCH: %@", match);
+    
+    [[FWGameCenterHelper sharedInstance] loadAMatch:match];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FWMatchCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FWMatchCellTableViewCell" forIndexPath:indexPath];
@@ -310,6 +355,9 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     if ([match.matchData length] > 0) {
         NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
         cell.storyText.text = storyString;
+        [self scrolllTextViewToBottom:cell.storyText];
+        // cell.storyText.textContainer.maximumNumberOfLines = 2;
+        
     } else {
         cell.storyText.text = @"Awaiting your turn!";
     }
@@ -381,16 +429,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 }
 
 
-- (BOOL)isLocalParticipant:(GKTurnBasedParticipant *)participant
-{
-    if ([participant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
@@ -406,6 +444,14 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
 }
 
+- (BOOL)isLocalParticipant:(GKTurnBasedParticipant *)participant
+{
+    if ([participant.player.playerID isEqual:[GKLocalPlayer localPlayer].playerID]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 # pragma mark - FWTurnBasedMatchDelegate protocol methods
 
@@ -447,7 +493,9 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (void)layoutMatch:(GKTurnBasedMatch *)match
 {
     self.gameVC.match = match;
-    [self presentViewController:self.gameVC animated:YES completion:nil];
+    if ([self.gameVC isPresented] == NO) {
+        [self presentViewController:self.gameVC animated:YES completion:nil];
+    }
     
     [self.gameVC layoutCurrentMatch:match];
 }

@@ -30,6 +30,7 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
 {
     [super viewDidLoad];
     _textIndex = -1;
+    [self.textLabel sizeToFit];
     self.beginButton.hidden = YES;
 }
 
@@ -59,10 +60,8 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
 
 - (NSArray *)textArray {
     if (!_textArray) {
-        _textArray= @[@"You come to work in the morning. Pour yourself a cup of coffee.",
-                      @"You settle into your chair and open Gmail.",
-                      @"Read all the stupid emails that dont't have a thing to do with you.",
-                      @"Go say hi to your friend from accounting.",
+        _textArray= @[@"You come to work in the morning. Pour yourself a cup of coffee, settle into your chair and open Gmail.",
+                      @"Read all the stupid emails that don't have a thing to do with you, go say hi to your friend from accounting.",
                       @"Discuss what idiots your bosses are and how they're running the company into the ground.",
                       @"But you know what, if you're such a genius, why are you still working here?",
                       @"Hmm, you do have a point.",
@@ -72,11 +71,8 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
                       @"OK, what do you do now?",
                       @"You need to write an email saying you hereby tender your resignation and wish everyone much success.",
                       @"Sounds kinda aweful. Kinda dull and cookie-cutter.",
-                      @"Doesn't it?",
-                      @"Well, why don't you use your imagination and write a better email?",
-                      @"This place could use some honesty, quite honestly.",
-                      @"Just say what's on your mind.",
-                      @"Just write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything.",
+                      @"Well, why don't you use your imagination and write a better email? This place could use some honesty, quite honestly.",
+                      @"Just say what's on your mind. Just write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything.",
                       @"Then read what they wrote and add a couple sentences again. See if you can have some fun.",
                       @"Ready to begin?"];
     }
@@ -106,15 +102,23 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
     if (self.textIndex == self.textArray.count - 1) {
         void (^initialFlowFinishedBlock)() = ^{
             self.userHasSeenInitialFlow = YES;
-            self.textLabelButton.userInteractionEnabled = NO;
+            self.beginButton.hidden =  NO;
+            self.beginButton.alpha = 1;
         };
-   
         
-        [UIView transitionWithView: self.beginButton duration:4.0
-                           options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                                    self.beginButton.hidden = NO;
-                                    initialFlowFinishedBlock();
-                           } completion:nil];
+        [UIView transitionWithView:self.beginButton duration:0
+                           options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+                               self.beginButton.alpha = 0;
+                               self.textLabelButton.userInteractionEnabled = NO;
+                               
+                           } completion:^ (BOOL finished){
+                               [UIView animateWithDuration:.75
+                                                     delay:2
+                                                   options: UIViewAnimationOptionTransitionCrossDissolve
+                                                animations:^{
+                                                    initialFlowFinishedBlock();
+                                                } completion:nil];
+                           }];
     }
     return self.textArray[self.textIndex];
 }
