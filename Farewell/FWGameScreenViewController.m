@@ -12,6 +12,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 @interface FWGameScreenViewController () <UITextViewDelegate, UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITextView *mainTextField;
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
@@ -31,6 +32,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    Might activate the keyboard on load
 //    [self.textInputField becomeFirstResponder];
     
+    self.headerView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.headerView.layer.shadowOffset = CGSizeMake(0.0, 5);
+    self.headerView.layer.shadowRadius = 6;
+    self.headerView.layer.shadowOpacity = 0.5;    
+    self.headerView.layer.masksToBounds = NO;
+    
     self.characterCountLabel.hidden = NO;
     self.characterCountLabel.text = @"2 sentences remaining.";
     
@@ -42,6 +49,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [super viewDidAppear:animated];
     
 }
+
 
 - (BOOL)isPresented
 {
@@ -113,8 +121,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
         }
         
     }
-    [currentMatch setLocalizableMessageWithKey:@"Yo, it's your turn to add 2 sentences!"
-                                     arguments:nil];
+//    [currentMatch setLocalizableMessageWithKey:@"Yo, it's your turn to add 2 sentences!"
+//                                     arguments:nil];
     
     [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault
                                     matchData:data completionHandler:^(NSError *error) {
@@ -261,6 +269,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
         
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
+    
+    // Reload the table view
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
 }
 
 
