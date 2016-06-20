@@ -14,9 +14,16 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITextView *mainTextField;
-@property (weak, nonatomic) IBOutlet UITextField *textInputField;
-@property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
+
+// Status label
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusLabelTop;
+
+@property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *characterCountLabelTop;
+
+@property (weak, nonatomic) IBOutlet UITextField *textInputField;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textInputFieldBottom;
 
 @end
 
@@ -38,10 +45,21 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.headerView.layer.shadowOpacity = 0.5;    
     self.headerView.layer.masksToBounds = NO;
     
+    
+    self.mainTextField.layer.borderWidth = 0.2;
+    self.mainTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
     self.characterCountLabel.hidden = NO;
     self.characterCountLabel.text = @"2 sentences remaining.";
     
     [self.statusLabel sizeToFit];
+    
+    self.textInputField.autocorrectionType = UITextAutocorrectionTypeNo;
+    [self.textInputField becomeFirstResponder];
+       
+    // Watch the keyboard frame..
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:)
+                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,6 +83,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)backButtonPressed:(id)sender
 {
+    [self.textInputField resignFirstResponder];
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     // Reset the current match if we go back to main screen
@@ -279,18 +299,25 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if ([self updateCounterLabel]) {
+    // Enable editing of text input textfield if user hasn't typed
+    // two sentences or else user taps "backspace". Otherwise disaable the textfield.
+    
+    // Ugh, this ugly code detects the backspace: http://lifesforlearning.com/detect-backspace-on-ios-textfield/
+    const char * _char = [string cStringUsingEncoding:NSUTF8StringEncoding];
+    int isBackSpace = strcmp(_char, "\b");
+    if (isBackSpace == -8 || [self shouldAllowToContinueWriting] == YES) {
         return YES;
     } else {
         return NO;
     }
 }
 
-- (BOOL)updateCounterLabel
+
+// Breaks up entered text into sentences. Updates sentence-counting label.
+// Retuns NO when 2 sentences are detected so that further editing is disabled.
+- (BOOL)shouldAllowToContinueWriting
 {
     NSInteger len = [_textInputField.text length];
-    NSLog(@"LEEEEEEN: %ld", (long)len);
-    
     
     NSCharacterSet *separators = [NSCharacterSet alphanumericCharacterSet];
     NSArray *words = [self.textInputField.text componentsSeparatedByCharactersInSet:separators];
@@ -304,7 +331,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"INDEXES COUNT: %lu", (unsigned long)[separatorIndexes count]);
     
     if ([separatorIndexes count] == 1) {
-            _characterCountLabel.text = @"1 sentence remaining.";
+        _characterCountLabel.text = @"1 sentence remaining.";
     }
     
     if ([separatorIndexes count] == 2) {
@@ -331,6 +358,64 @@ NSUInteger const kMaxAllowedCharacters = 100;
     }
     return YES;
 }
+
+
+#pragma mark - Keyboard
+
+// TODO: make this right, as demonstrated by commented-out code below
+- (void)keyboardFrameWillChange:(NSNotification *)notification
+{
+    CGRect keyboardEndFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect keyboardBeginFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    UIViewAnimationCurve animationCurve = [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    NSTimeInterval animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] integerValue];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    
+    CGRect newFrame = self.view.frame;
+    CGRect keyboardFrameEnd = [self.view convertRect:keyboardEndFrame toView:nil];
+    CGRect keyboardFrameBegin = [self.view convertRect:keyboardBeginFrame toView:nil];
+    
+//    newFrame.origin.y -= (keyboardFrameBegin.origin.y - keyboardFrameEnd.origin.y);
+//    self.view.frame = newFrame;
+    
+    [UIView commitAnimations];
+}
+
+
+//// See this link for a good summary of keyboard avoiding. With the ios8 keyboard gadgets
+//// you can't hardcode sizes anymore.
+//// http://stackoverflow.com/questions/26213681/ios-8-keyboard-hides-my-textview/26226732#26226732
+//- (void)keyboardFrameWillChange: (NSNotification*)notif
+//{
+//    CGRect keyboardEndFrame = [[[notif userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    UIViewAnimationCurve animationCurve = (UIViewAnimationCurve)[[[notif userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+//    NSTimeInterval animationDuration = [[[notif userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+//    
+//    if (_origLoginButtonBottom==0.0) {
+//        _origLoginButtonBottom = _loginButton.frame.origin.y + _loginButton.frame.size.height + 8.0;
+//    }
+//    
+//    CGFloat offsetNeeded = (_origLoginButtonBottom - keyboardEndFrame.origin.y);
+//    if (offsetNeeded < 0.0) {
+//        offsetNeeded = 0.0;
+//    }
+//    
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:animationDuration];
+//    [UIView setAnimationCurve:animationCurve];
+//    
+//    _logoTop.constant = _logoTopBase - offsetNeeded;
+//    
+//    _glowTop.constant = -(offsetNeeded * 2.0);
+//    _glowBottom.constant = (offsetNeeded * 2.0);
+//    
+//    
+//    [self.view layoutIfNeeded];
+//    [UIView commitAnimations];
+//}
 
 # pragma mark - FWTurnBasedMatchDelegate protocol methods
 

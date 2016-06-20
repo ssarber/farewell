@@ -66,7 +66,7 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
                       @"But you know what, if you're such a genius, why are you still working here?",
                       @"Hmm, you do have a point.",
                       @"Maybe you should quit?",
-                      @"Go do something meaningful, something you wanted to do up until you got that mortgage and car payments.",
+                      @"Go do something meaningful, something you'd always wanted to do up until you got that mortgage and car payments.",
                       @"You know what, maybe I will quit.",
                       @"OK, what do you do now?",
                       @"You need to write an email saying you hereby tender your resignation and wish everyone much success.",
@@ -104,6 +104,7 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
             self.userHasSeenInitialFlow = YES;
             self.beginButton.hidden =  NO;
             self.beginButton.alpha = 1;
+            self.view.backgroundColor = [UIColor blackColor];
         };
         
         [UIView transitionWithView:self.beginButton duration:0

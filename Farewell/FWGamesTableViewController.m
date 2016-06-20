@@ -195,6 +195,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                 
                 self.headerView.hidden = YES;
                 self.writeButton.hidden = YES;
+            } else { // Don't hide the write button is user has seen the tutorial but deleted all the matches
+                self.writeButton.hidden = NO;
             }
         }
     }];
@@ -205,7 +207,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 - (NSArray *)textArray {
     if (!_textArray) {
-        _textArray = @[@"You begin the email by writing first two sentences.",
+        _textArray = @[@"",
+                       @"You begin the email by writing the first two sentences.",
                        @"Then you pass the turn to your co-writer.",
                        @"He (or she) will add his (or her) two sentences.",
                        @"Let's get the ball rolling, yeah?",
@@ -328,11 +331,10 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     return [[self.allMyMatches objectAtIndex:section] count];
 }
 
+
+// Converts point of the button on every cell to indexPath. Used so that the entire cell is tappable.
 - (IBAction)cellContainerButtonPressed:(id)sender
 {
-//    CGPoint point = [sender convertPointToView:self.tableView];
-//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-//
     CGPoint point = [self.tableView convertPoint:[sender center] fromView:sender];
     
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
@@ -458,7 +460,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
     NSLog(@"======== Entering new game ===========");
-//
+
 //    if ([self.gameVC isPresented] == NO) {
 //        [self presentViewController:self.gameVC animated:YES completion:nil];
 //    }
