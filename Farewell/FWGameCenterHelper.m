@@ -179,19 +179,27 @@
     for (participant in match.participants) {
         NSUInteger index = [match.participants indexOfObject:participant];
         participant = [match.participants objectAtIndex:(currentIndex + 1 + index) % match.participants.count];
+        NSLog(@"PART: %@", participant);
         
         if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
+            participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
             [nextParticipants addObject:participant];
         }
     }
     
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
-        [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit
+        [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeTied
                                nextParticipants:nextParticipants turnTimeout:600
                                       matchData:matchData completionHandler:nil];
+//        [match endMatchInTurnWithMatchData:match.matchData completionHandler:^(NSError *error) {
+//            if (error) {
+//                NSLog(@"Error ending match: %@", error);
+//            }
+//        }];
     }];
     
     NSLog(@"Player quit from match.");
+    
 }
 
 

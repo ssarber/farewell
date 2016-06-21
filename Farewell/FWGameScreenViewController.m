@@ -62,12 +62,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
                                                  name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-}
-
 
 - (BOOL)isPresented
 {
@@ -173,7 +167,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)menuButtonPressed:(id)sender
 {
-    NSLog(@"DIS MTCH status: %ld", (long)self.match.status);
+//    NSLog(@"DIS MTCH status: %ld", (long)self.match.status);
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
@@ -186,6 +180,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
                                                               [self confirmQuit];
                                                           }];
     
+    UIAlertAction* shareAction = [UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             [self shareEmail];
+                                                         }];
+    
+    
     UIAlertAction* removeAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction *action) {
                                                              [self confirmRemoval];
@@ -197,11 +197,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
                                                          }];
     
     if (self.match.status == GKTurnBasedMatchStatusEnded) {
+        [alert addAction:shareAction];
         [alert addAction:removeAction];
     } else {
         [alert addAction:quitAction];
     }
     [alert addAction:cancelAction];
+    
+    alert.view.tintColor = [UIColor redColor];
     
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -228,7 +231,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-
+- (void)shareEmail
+{
+    UIActivityViewController *uiActivityVC = [[UIActivityViewController alloc] initWithActivityItems:@[self.mainTextField.text] applicationActivities:nil];
+    [self presentViewController:uiActivityVC animated:YES completion:nil];
+}
 - (void)quitGame
 {
     // If quitting a game where it's our turn
@@ -236,8 +243,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
         [[FWGameCenterHelper sharedInstance] player:self.match.currentParticipant.player wantsToQuitMatch:self.match];
     } else {
         
-        // Resigns the player from the match when that player is not the current player. This action does not end the match
-        [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
+        // Resigns the player from the match when that player is not the current player.
+        // This action does not end the match if there are more than two players remaining.
+        // But since only two players are currently supported, it will end the match.
+        [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeTied withCompletionHandler:^(NSError *error) {
             if (error) {
                 NSLog(@"Error quitting game: %@", error.localizedDescription);
                 
@@ -248,7 +257,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
                                                                         preferredStyle:UIAlertControllerStyleAlert];
                 
                 [self presentViewController:alert animated:YES completion:nil];
-
             }
         }];
     }
@@ -462,6 +470,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
             // Update the UI on the main thread
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextField.text = gameTextSoFar;
+            
+                NSLog(@"gameTextSoFar: %@", gameTextSoFar);
             });
         } else {
             weakSelf.mainTextField.text = @"Dear co-workers,\n\n";
@@ -476,6 +486,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     NSLog(@"Viewing a match where it's not our turn...");
     
+    NSLog(@"COMPLETED MATCH: %@", match);
+    
     self.textInputField.hidden = YES;
 
     NSString *statusString;
@@ -483,7 +495,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     if (match.status == GKTurnBasedMatchStatusEnded) {
         
         NSLog(@"Match ended: %@", match.description);
-        statusString = @"Match ended.";
+        statusString = @"One of the writers marked this email complete. If you think it's any good, share it by tapping the \"...\" above.* \
+            \n\n* Fine print: If you send it to your boss, fullfilling career and happiness may result.";
+        self.characterCountLabel.hidden = YES;
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
         NSUInteger playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;

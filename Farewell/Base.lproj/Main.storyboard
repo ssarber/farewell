@@ -85,9 +85,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxV-sh-ybX">
-                                        <rect key="frame" x="500" y="0.0" width="92" height="45"/>
+                                        <rect key="frame" x="487" y="0.0" width="105" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="92" id="MzQ-ee-97k"/>
+                                            <constraint firstAttribute="width" constant="105" id="MzQ-ee-97k"/>
                                             <constraint firstAttribute="height" constant="45" id="c4c-LW-wmw"/>
                                             <constraint firstAttribute="height" constant="30" id="cWY-XD-PE3"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="yJs-cc-rwx"/>
@@ -147,7 +147,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="GGi-YA-K6c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGi-YA-K6c">
                                 <rect key="frame" x="34" y="251" width="546" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="rpg-zF-SPc"/>

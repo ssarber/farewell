@@ -482,12 +482,18 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 -(void)takeTurnInGame:(GKTurnBasedMatch *)match
 {
+    self.gameVC = nil;
+    
+// FIXME: Reinstatiating game VC to battle weird "Tried to present an already presented VC crash"
+// Should probably be investigated further.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
     self.gameVC.match = match;
     
     if ([self.gameVC isPresented] == NO) {
         [self presentViewController:self.gameVC animated:YES completion:nil];
     }
-    
+
     [self.gameVC takeTurnInMatch:match];
 }
 
