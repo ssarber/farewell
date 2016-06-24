@@ -60,20 +60,16 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
 
 - (NSArray *)textArray {
     if (!_textArray) {
-        _textArray= @[@"You come to work in the morning. Pour yourself a cup of coffee, settle into your chair and open Gmail.",
-                      @"Read all the stupid emails that don't have a thing to do with you, go say hi to your friend from accounting.",
-                      @"Discuss what idiots your bosses are and how they're running the company into the ground.",
-                      @"But you know what, if you're such a genius, why are you still working here?",
-                      @"Hmm, you do have a point.",
-                      @"Maybe you should quit?",
-                      @"Go do something meaningful, something you'd always wanted to do up until you got that mortgage and car payments.",
-                      @"You know what, maybe I will quit.",
-                      @"OK, what do you do now?",
-                      @"You need to write an email saying you hereby tender your resignation and wish everyone much success.",
-                      @"Sounds kinda aweful. Kinda dull and cookie-cutter.",
-                      @"Well, why don't you use your imagination and write a better email? This place could use some honesty, quite honestly.",
-                      @"Just say what's on your mind. Just write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything.",
-                      @"Then read what they wrote and add a couple sentences again. See if you can have some fun.",
+        _textArray= @[@"You come to work in the morning. Pour yourself a cup of coffee, settle into your chair and open Gmail. \
+                      Read all the stupid emails that don't have a thing to do with you, go say hi to your friend from accounting. \
+                      Discuss what idiots your bosses are and how they're running the company into the ground. \
+                      But you know what, if you're such a genius, why are you still working here?",
+
+                      @"This is a game. It is not serious. You are tasked with writing a farewell email to all your co-workers. \
+                      This place could use some honesty, quite honestly. \
+                      Just say what's on your mind. Just write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything. \
+                      Then read what they wrote and add a couple sentences again. See if you can have some fun.",
+                      
                       @"Ready to begin?"];
     }
     
