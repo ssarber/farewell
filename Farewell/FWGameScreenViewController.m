@@ -333,7 +333,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"WORDS: %@", words);
     
     NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        return ([obj isEqualToString:@". "] || [obj isEqualToString:@"."] || [obj isEqualToString:@"! "] || [obj isEqualToString:@"!"]);
+//        NSString *dotQuoteString = @"." stringByAppendingString:"
+        return ([obj isEqualToString:@". "] || [obj isEqualToString:@"."] || [obj isEqualToString:@"! "] || [obj isEqualToString:@"!"] ||
+                [obj isEqualToString:@"Free at last\"."]);
     }];
     
     NSLog(@"INDEXES COUNT: %lu", (unsigned long)[separatorIndexes count]);
@@ -346,7 +348,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
         _characterCountLabel.text = @"0 sentences remaining.";
         return NO;
     }
-    
+//FIXME: hack for video recording. Fix!!
+    if ([_textInputField.text hasSuffix:@"\"."]) {
+        _characterCountLabel.text = @"0 sentences remaining.";
+        return NO;
+    }
+        
     return YES;
 }
 
