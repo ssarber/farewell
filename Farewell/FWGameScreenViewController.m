@@ -240,7 +240,9 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     // If quitting a game where it's our turn
     if ([self.match.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+        
         [[FWGameCenterHelper sharedInstance] player:self.match.currentParticipant.player wantsToQuitMatch:self.match];
+        
     } else {
         
         // Resigns the player from the match when that player is not the current player.

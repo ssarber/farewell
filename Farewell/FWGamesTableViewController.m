@@ -12,6 +12,7 @@
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
 #import "UIImageView+Letters.h"
+#import "PureLayout.h"
 @import GameKit;
 
 NSString *const kFWUserHasSeenInitialTutorialUserDefault = @"FWUserHasSeenInitialTutorialUserDefault";
@@ -130,6 +131,11 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
             
+            for (GKTurnBasedMatch  *match in matches) {
+                NSLog(@"reloadTableView \n");
+                NSLog(@"MATCH: %@", match);
+            }
+            
             
 #warning Remove before shipping
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading matches:"
@@ -145,7 +151,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             self.writeButton.hidden = NO;
             
             if (self.tutorialLabel) {
-                [self.tutorialLabel removeFromSuperview];
+//                [self.tutorialLabel removeFromSuperview];
+                self.tutorialLabel.hidden = YES;
             };
             
             if (self.textLabelButton) {
@@ -195,8 +202,13 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                 
                 self.headerView.hidden = YES;
                 self.writeButton.hidden = YES;
-            } else { // Don't hide the write button is user has seen the tutorial but deleted all the matches
+            } else {
+                // Don't hide the write button is user has seen the tutorial but deleted all the matches
+                // Use tutorial label to message the user
                 self.writeButton.hidden = NO;
+                self.tutorialLabel.hidden = NO;                
+                [self.view bringSubviewToFront:self.tutorialLabel];
+                self.tutorialLabel.text = @"No emails. You should write one. Right now.";
             }
         }
     }];
