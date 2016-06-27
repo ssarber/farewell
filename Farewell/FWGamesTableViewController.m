@@ -12,6 +12,7 @@
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
 #import "UIImageView+Letters.h"
+#import "PureLayout.h"
 @import GameKit;
 
 NSString *const kFWUserHasSeenInitialTutorialUserDefault = @"FWUserHasSeenInitialTutorialUserDefault";
@@ -130,6 +131,11 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
             
+            for (GKTurnBasedMatch  *match in matches) {
+                NSLog(@"reloadTableView \n");
+                NSLog(@"MATCH: %@", match);
+            }
+            
             
 #warning Remove before shipping
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading matches:"
@@ -145,7 +151,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             self.writeButton.hidden = NO;
             
             if (self.tutorialLabel) {
-                [self.tutorialLabel removeFromSuperview];
+//                [self.tutorialLabel removeFromSuperview];
+                self.tutorialLabel.hidden = YES;
             };
             
             if (self.textLabelButton) {
@@ -186,8 +193,10 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             }
             
             [self.tableView reloadData];
-        } else {
-            // Set up tutorial
+            
+        } else { // If no matches
+            
+            // Set up tutorial if user hasn't seen one already
             if (![self hasSeenInitialTutorial]) {
                 self.tutorialLabel.text = @"The rules are simple.";
                 [self.view bringSubviewToFront:self.tutorialLabel];
@@ -195,8 +204,13 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                 
                 self.headerView.hidden = YES;
                 self.writeButton.hidden = YES;
-            } else { // Don't hide the write button is user has seen the tutorial but deleted all the matches
+            } else {
+                // Don't hide the write button is user has seen the tutorial but deleted all the matches
+                // Use tutorial label to message the user to start a new game
                 self.writeButton.hidden = NO;
+                self.tutorialLabel.hidden = NO;                
+                [self.view bringSubviewToFront:self.tutorialLabel];
+                self.tutorialLabel.text = @"No emails. You should write one. Right now.";
             }
         }
     }];
@@ -409,16 +423,22 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                     
                 // Completed Emails section
                 if (match.status == GKTurnBasedMatchStatusEnded) {
-                    if (photo) {
-                        [[cell.playerPhotos objectAtIndex:index] setImage:photo];
+                    if (photo != nil) {
+
+                        if ([self isLocalParticipant:p]) {
+                            [cell.playerOnePhoto setImage:photo];
+                        } else {
+                            [cell.playerTwoPhoto setImage:photo];
+                        }
                     } else {
                         NSString *userInitials;
+                        // If local player, set initials to "ME", since the displayName is actually "Me"
                         if ([self isLocalParticipant:p]) {
                             userInitials = @"M E";
-                            [[cell.playerPhotos objectAtIndex:index] setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
                         } else {
                             userInitials = p.player.displayName;
-                            [[cell.playerPhotos objectAtIndex:index] setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
                         }
                     }
                 }
@@ -508,7 +528,10 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     [self.gameVC layoutCurrentMatch:match];
 }
 
-
+- (void)receiveEndGame:(GKTurnBasedMatch *)match
+{
+    [self.gameVC layoutCurrentMatch:match];
+}
 
 - (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
 {

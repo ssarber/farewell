@@ -169,37 +169,17 @@
 
 - (void)player:(GKPlayer *)player wantsToQuitMatch:(GKTurnBasedMatch *)match
 {
-    NSLog(@"Aww, player %@ wants to quit from match %@", match.currentParticipant, match);
-    
-    NSUInteger currentIndex = [match.participants indexOfObject:match.currentParticipant];
-    
-    GKTurnBasedParticipant *participant;
-    
-    NSMutableArray *nextParticipants = [NSMutableArray array];
-    for (participant in match.participants) {
-        NSUInteger index = [match.participants indexOfObject:participant];
-        participant = [match.participants objectAtIndex:(currentIndex + 1 + index) % match.participants.count];
-        NSLog(@"PART: %@", participant);
-        
-        if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
-            participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
-            [nextParticipants addObject:participant];
-        }
+    for (GKTurnBasedParticipant *participant in match.participants) {
+        participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
     }
-    
-    [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
-        [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeTied
-                               nextParticipants:nextParticipants turnTimeout:600
-                                      matchData:matchData completionHandler:nil];
-//        [match endMatchInTurnWithMatchData:match.matchData completionHandler:^(NSError *error) {
-//            if (error) {
-//                NSLog(@"Error ending match: %@", error);
-//            }
-//        }];
+
+    [match endMatchInTurnWithMatchData:match.matchData completionHandler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Error ending match: %@", error);
+        }
     }];
     
     NSLog(@"Player quit from match.");
-    
 }
 
 
