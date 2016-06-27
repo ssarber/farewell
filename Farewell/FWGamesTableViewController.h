@@ -12,5 +12,6 @@
 @interface FWGamesTableViewController : UIViewController
 
 - (void)layoutMatch:(GKTurnBasedMatch *)match;
+- (void)receiveEndGame:(GKTurnBasedMatch *)match;
 
 @end

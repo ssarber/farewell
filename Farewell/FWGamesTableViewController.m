@@ -193,8 +193,10 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             }
             
             [self.tableView reloadData];
-        } else {
-            // Set up tutorial
+            
+        } else { // If no matches
+            
+            // Set up tutorial if user hasn't seen one already
             if (![self hasSeenInitialTutorial]) {
                 self.tutorialLabel.text = @"The rules are simple.";
                 [self.view bringSubviewToFront:self.tutorialLabel];
@@ -204,7 +206,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                 self.writeButton.hidden = YES;
             } else {
                 // Don't hide the write button is user has seen the tutorial but deleted all the matches
-                // Use tutorial label to message the user
+                // Use tutorial label to message the user to start a new game
                 self.writeButton.hidden = NO;
                 self.tutorialLabel.hidden = NO;                
                 [self.view bringSubviewToFront:self.tutorialLabel];
@@ -520,7 +522,10 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     [self.gameVC layoutCurrentMatch:match];
 }
 
-
+- (void)receiveEndGame:(GKTurnBasedMatch *)match
+{
+    [self.gameVC layoutCurrentMatch:match];
+}
 
 - (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match
 {

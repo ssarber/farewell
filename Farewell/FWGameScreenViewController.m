@@ -167,7 +167,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (IBAction)menuButtonPressed:(id)sender
 {
-//    NSLog(@"DIS MTCH status: %ld", (long)self.match.status);
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
@@ -236,16 +235,28 @@ NSUInteger const kMaxAllowedCharacters = 100;
     UIActivityViewController *uiActivityVC = [[UIActivityViewController alloc] initWithActivityItems:@[self.mainTextField.text] applicationActivities:nil];
     [self presentViewController:uiActivityVC animated:YES completion:nil];
 }
+
 - (void)quitGame
 {
-    // If quitting a game where it's our turn
+    // If quitting a game where it's our turn, just end the match for now.
+    // When we add more players (3+), need to set loop over the participants
+    // and pass turn.
     if ([self.match.currentParticipant.player.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
         
-        [[FWGameCenterHelper sharedInstance] player:self.match.currentParticipant.player wantsToQuitMatch:self.match];
+        for (GKTurnBasedParticipant *participant in self.match.participants) {
+            participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
+        }
         
-    } else {
+        [self.match endMatchInTurnWithMatchData:self.match.matchData completionHandler:^(NSError *error) {
+            
+            if (error) {
+                NSLog(@"Error ending match: %@", error);
+            }
+        }];
         
-        // Resigns the player from the match when that player is not the current player.
+    } else { // If not this player's turn:
+    
+        // Resigns the player from the match.
         // This action does not end the match if there are more than two players remaining.
         // But since only two players are currently supported, it will end the match.
         [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeTied withCompletionHandler:^(NSError *error) {
@@ -263,7 +274,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
         }];
     }
     
-    // Reload the table view
+    // Notify to reload the table view
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StateOfMatchesHasChangedNotification" object:self];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -519,7 +530,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     __weak typeof(self) weakSelf = self;
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
-        if (matchData != nil) {
+        if ([matchData bytes]) {
             NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextField.text = gameTextSoFar;
