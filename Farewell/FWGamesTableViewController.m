@@ -423,16 +423,22 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                     
                 // Completed Emails section
                 if (match.status == GKTurnBasedMatchStatusEnded) {
-                    if (photo) {
-                        [[cell.playerPhotos objectAtIndex:index] setImage:photo];
+                    if (photo != nil) {
+
+                        if ([self isLocalParticipant:p]) {
+                            [cell.playerOnePhoto setImage:photo];
+                        } else {
+                            [cell.playerTwoPhoto setImage:photo];
+                        }
                     } else {
                         NSString *userInitials;
+                        // If local player, set initials to "ME", since the displayName is actually "Me"
                         if ([self isLocalParticipant:p]) {
                             userInitials = @"M E";
-                            [[cell.playerPhotos objectAtIndex:index] setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
                         } else {
                             userInitials = p.player.displayName;
-                            [[cell.playerPhotos objectAtIndex:index] setImageWithString:userInitials color:[UIColor lightGrayColor] circular:YES];
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
                         }
                     }
                 }
