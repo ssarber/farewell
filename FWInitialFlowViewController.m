@@ -60,15 +60,15 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
 
 - (NSArray *)textArray {
     if (!_textArray) {
-        _textArray= @[@"You come to work in the morning. Pour yourself a cup of coffee, settle into your chair and open Gmail. \
-                      Read all the stupid emails that don't have a thing to do with you, go say hi to your friend from accounting. \
-                      Discuss what idiots your bosses are and how they're running the company into the ground. \
+        _textArray= @[@"You come to work in the morning. Pour yourself a cup of coffee, settle into your chair and open Gmail.\
+                      Read all the stupid emails that don't have a thing to do with you, go say hi to your friend from accounting.\
+                      Discuss what idiots your bosses are and how they're running the company into the ground.\
                       But you know what, if you're such a genius, why are you still working here?",
 
-                      @"This is a game. It is not serious. You are tasked with writing a farewell email to all your co-workers. \
-                      This place could use some honesty, quite honestly. \
-                      Just say what's on your mind. Just write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything. \
-                      Then read what they wrote and add a couple sentences again. See if you can have some fun.",
+                      @"This is a game. It's not serious.\nYou are tasked with writing a farewell email to all your co-workers.\
+                      This place could use some honesty, quite honestly. Just say what's on your mind. Write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything. Then read what they wrote and add a couple sentences again. See if you can have some fun.",
+                      
+                      @"You are a wale of farewells. Some might even say, a farewale.",
                       
                       @"Ready to begin?"];
     }

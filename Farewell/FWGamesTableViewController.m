@@ -346,9 +346,9 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     if (section == FWGamesTableViewSectionMyTurn) {
         return @"My Turn";
     } else if (section == FWGamesTableViewSectionTheirTurn) {
-        return @"Co-writer's Turn";
+        return @"Co-writers' Turns";
     } else {
-        return @"Compeleted Emails";
+        return @"Completed Masterpieces";
     }
 }
 
