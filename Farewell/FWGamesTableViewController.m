@@ -136,15 +136,21 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                 NSLog(@"MATCH: %@", match);
             }
             
-            
-#warning Remove before shipping
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading matches:"
-                                                                           message:error.localizedDescription
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading emails."
+                                                                           message:@"Check your Internet connection and try again."
                                                                     preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                                                  }];
+            
+            [alert addAction:defaultAction];
             
             [self presentViewController:alert animated:YES completion:nil];
 
         }
+        
         if (matches) {
             _userHasSeenInitialTutorial = YES;
             self.headerView.hidden = NO;
@@ -189,7 +195,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             self.allMyMatches = @[myMatches, otherMatches, endedMatches];
             for (GKTurnBasedMatch *myMatch in [self.allMyMatches objectAtIndex:0]){
                 NSString *dataString = [[NSString alloc] initWithData:myMatch.matchData encoding:NSUTF8StringEncoding];
-                NSLog(@"\n\nDATA: %@", dataString);
+                NSLog(@"\n\nMy Match: %@", myMatch.description);
             }
             
             [self.tableView reloadData];
@@ -379,8 +385,16 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     }
     NSUInteger index = 0;
     for (GKTurnBasedParticipant *p in match.participants) {
+        
+            // If we're matching with a random player, but this player
+            // has not taken a turn yet
+            if (p.player.playerID == nil) {
+                UIImage *questionMarkImage = [UIImage imageNamed:@"question-mark-icon.png"];
+                [cell.playerTwoPhoto setImage:questionMarkImage];
+            }
+        
+            // Load and set players' photos
             [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
-                
                 
                 // If awaing an auto-matched user, no player id yet, but this will be the current
                 // participant, so set a question mark image on the left
@@ -389,7 +403,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                     [cell.playerOnePhoto setImage:questionMarkImage];
                 }
                 
-                     
                 // Handle case for current participant -- photo on the left
                 if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
                     if (photo != nil) {
@@ -417,7 +430,10 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                             [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
                         } else {
                             userInitials = p.player.displayName;
-                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
+                            if (userInitials) {
+                                [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
+                                
+                            }
                         }
                 }
                     

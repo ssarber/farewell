@@ -144,7 +144,7 @@
         }
         
     // We have a match, but this player has not taken a turn yet
-    } else if (secondParticipant.status == GKTurnBasedParticipantStatusInvited) {
+    } else if (secondParticipant.status == GKTurnBasedParticipantStatusInvited || secondParticipant.status == GKTurnBasedParticipantStatusMatching) {
         
         [self.delegate takeTurnInGame:match];
         

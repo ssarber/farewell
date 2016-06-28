@@ -211,8 +211,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)confirmQuit
 {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
-                                                                    message:@"It's OK; don't let self-doubt interfere with your plans to improve your life."
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Complete this email?"
+                                                                    message:nil
                                                              preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Complete" style:UIAlertActionStyleDefault
