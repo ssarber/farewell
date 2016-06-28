@@ -7,6 +7,7 @@
 //
 
 #import "FWGameScreenViewController.h"
+#import "PureLayout.h"
 
 NSUInteger const kMaxAllowedCharacters = 100;
 
@@ -174,7 +175,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     alert.popoverPresentationController.sourceView = self.view;
     alert.popoverPresentationController.sourceRect = self.view.bounds;
     
-    UIAlertAction* quitAction = [UIAlertAction actionWithTitle:@"Complete Email" style:UIAlertActionStyleDefault
+    UIAlertAction* completeAction = [UIAlertAction actionWithTitle:@"Complete Email" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self confirmQuit];
                                                           }];
@@ -195,12 +196,17 @@ NSUInteger const kMaxAllowedCharacters = 100;
                                                              [alert dismissViewControllerAnimated:YES completion:nil];
                                                          }];
     
-    if (self.match.status == GKTurnBasedMatchStatusEnded) {
+    
+    if (![self.match.participants objectAtIndex:0].lastTurnDate) { // If no turn has been taken, only provide remove option
+        [alert addAction:removeAction];
+    // Provide complete option to open or matching games where user has taken a turn
+    } else if (self.match.status == GKTurnBasedMatchStatusOpen || (self.match.status == GKTurnBasedMatchStatusMatching && [self.match.participants objectAtIndex:0].lastTurnDate != nil)) {
+        [alert addAction:completeAction];
+    } else if (self.match.status == GKTurnBasedMatchStatusEnded) {
         [alert addAction:shareAction];
         [alert addAction:removeAction];
-    } else {
-        [alert addAction:quitAction];
     }
+    
     [alert addAction:cancelAction];
     
     alert.view.tintColor = [UIColor redColor];
@@ -212,7 +218,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 - (void)confirmQuit
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Complete this email?"
-                                                                    message:nil
+                                                                    message:@"This will end the game."
                                                              preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Complete" style:UIAlertActionStyleDefault
@@ -259,6 +265,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
         // Resigns the player from the match.
         // This action does not end the match if there are more than two players remaining.
         // But since only two players are currently supported, it will end the match.
+        
+        for (GKTurnBasedParticipant *participant in self.match.participants) {
+            participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
+        }
+        
         [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeTied withCompletionHandler:^(NSError *error) {
             if (error) {
                 NSLog(@"Error quitting game: %@", error.localizedDescription);
@@ -506,17 +517,18 @@ NSUInteger const kMaxAllowedCharacters = 100;
 {
     NSLog(@"Viewing a match where it's not our turn...");
     
-    NSLog(@"COMPLETED MATCH: %@", match);
+    NSLog(@"MATCH: %@", match);
     
     self.textInputField.hidden = YES;
-
+    
+    // [self.statusLabel autoSetDimension:ALDimensionHeight toSize:100];
+    
     NSString *statusString;
     
     if (match.status == GKTurnBasedMatchStatusEnded) {
         
         NSLog(@"Match ended: %@", match.description);
-        statusString = @"One of the writers marked this email complete. If you think it's any good, share it by tapping the \"...\" above.* \
-            \n\n* Fine print: If you send it to your boss, fullfilling career and happiness may result.";
+        statusString = @"One of the writers marked this email complete. If you think it's any good, you can share it.";
         self.characterCountLabel.hidden = YES;
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;

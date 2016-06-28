@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-FarewellTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FarewellUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>PureLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -18,6 +28,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>09B7EE83AE41EC4488C34C02E8D672A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4B67AB0AD8E512AB7C377E5A888B95E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>73636CCA9EE81DB1F5AA37BE918115B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

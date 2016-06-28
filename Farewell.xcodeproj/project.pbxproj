@@ -35,6 +35,8 @@
 		0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FAFCB311CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
+		DD4C5F9F421C3DBF4CCAF2AC /* Pods_FarewellUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479EB7F75A9DABF272DF143 /* Pods_FarewellUITests.framework */; };
+		DE2BB84061FFD19FBBAF9519 /* Pods_FarewellTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F0975921D11EAFF00C42FC7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWInitialFlowViewController.h; path = ../FWInitialFlowViewController.h; sourceTree = "<group>"; };
 		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWInitialFlowViewController.m; path = ../FWInitialFlowViewController.m; sourceTree = "<group>"; };
@@ -85,8 +88,13 @@
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
 		0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGamesTableViewController.m; sourceTree = "<group>"; };
 		1B68615D816A2E6299CDDA61 /* Pods_Farewell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Farewell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25C59E781FBC25839042018E /* Pods-FarewellTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BA1F3FB434A0A24DE964C15 /* Pods-Farewell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Farewell.release.xcconfig"; path = "Pods/Target Support Files/Pods-Farewell/Pods-Farewell.release.xcconfig"; sourceTree = "<group>"; };
+		74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8479EB7F75A9DABF272DF143 /* Pods_FarewellUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests.release.xcconfig"; sourceTree = "<group>"; };
 		C42F5537F3E2E204C531E3FA /* Pods-Farewell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Farewell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Farewell/Pods-Farewell.debug.xcconfig"; sourceTree = "<group>"; };
+		EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2BB84061FFD19FBBAF9519 /* Pods_FarewellTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD4C5F9F421C3DBF4CCAF2AC /* Pods_FarewellUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				1B68615D816A2E6299CDDA61 /* Pods_Farewell.framework */,
+				0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */,
+				8479EB7F75A9DABF272DF143 /* Pods_FarewellUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,6 +258,10 @@
 			children = (
 				C42F5537F3E2E204C531E3FA /* Pods-Farewell.debug.xcconfig */,
 				4BA1F3FB434A0A24DE964C15 /* Pods-Farewell.release.xcconfig */,
+				25C59E781FBC25839042018E /* Pods-FarewellTests.debug.xcconfig */,
+				9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */,
+				74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */,
+				EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -277,9 +293,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellTests" */;
 			buildPhases = (
+				0E6E658D510E640614A16D3E /* [CP] Check Pods Manifest.lock */,
 				0F48B6F51CD92DF1008A7F3D /* Sources */,
 				0F48B6F61CD92DF1008A7F3D /* Frameworks */,
 				0F48B6F71CD92DF1008A7F3D /* Resources */,
+				5A1F995369CF433C02272322 /* [CP] Embed Pods Frameworks */,
+				AC18E8ADC95B759515FA6CA3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,9 +314,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellUITests" */;
 			buildPhases = (
+				AF61EE289955ECFC306F38AF /* [CP] Check Pods Manifest.lock */,
 				0F48B7001CD92DF1008A7F3D /* Sources */,
 				0F48B7011CD92DF1008A7F3D /* Frameworks */,
 				0F48B7021CD92DF1008A7F3D /* Resources */,
+				85629A5D8870E0C350E9F26A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -385,6 +406,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0E6E658D510E640614A16D3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		15EB15F4CD33E8BA3A3D49CD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -400,6 +436,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Farewell/Pods-Farewell-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5A1F995369CF433C02272322 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6217E59F704705F086A2D03B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,6 +464,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Farewell/Pods-Farewell-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85629A5D8870E0C350E9F26A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC18E8ADC95B759515FA6CA3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF61EE289955ECFC306F38AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E14B273B2FB9B9F19D6F5708 /* [CP] Check Pods Manifest.lock */ = {
@@ -552,6 +648,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				OTHER_LIBTOOLFLAGS = "$(inherited)";
 				"OTHER_LIBTOOLFLAGS[arch=*]" = "$(inherited)";
 				SDKROOT = iphoneos;
@@ -592,6 +690,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "$(inherited)";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				OTHER_LIBTOOLFLAGS = "$(inherited)";
 				"OTHER_LIBTOOLFLAGS[arch=*]" = "";
 				SDKROOT = iphoneos;
@@ -615,12 +715,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Farewell",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -642,6 +737,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Farewell",
 				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -650,6 +746,7 @@
 		};
 		0F48B7111CD92DF1008A7F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25C59E781FBC25839042018E /* Pods-FarewellTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FarewellTests/Info.plist;
@@ -662,6 +759,7 @@
 		};
 		0F48B7121CD92DF1008A7F3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FarewellTests/Info.plist;
@@ -674,6 +772,7 @@
 		};
 		0F48B7141CD92DF1008A7F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FarewellUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -685,6 +784,7 @@
 		};
 		0F48B7151CD92DF1008A7F3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FarewellUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

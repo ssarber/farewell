@@ -8,19 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		0E0AE9C0CE86819D10EDF0593B2C1C5D /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6990C47F02B6691DD4DA9D4504A36B /* ALView+PureLayout.m */; };
-		216D8C409E3C18AE4CB59F9AB8F1D854 /* Pods-Farewell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BB3003131FE9FF75B38921A9EA2D15E /* Pods-Farewell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		216D8C409E3C18AE4CB59F9AB8F1D854 /* Pods-Farewell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32635F42C46E61DBA29676978EE0E22B /* Pods-Farewell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2370320C6331E44CA0FB2B85B18875C6 /* NSArray+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 256CB866D56B919DA6C9ABF2C32B4D37 /* NSArray+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B6631D60C2C1418485CD6DF4706A800 /* Pods-FarewellUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CCBDA2B2690B5A50BEE52E10C68C7E /* Pods-FarewellUITests-dummy.m */; };
+		4599FAA90AE592E669A069F111ACA8F1 /* Pods-FarewellTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4B3EA7D8A4C07E61027A005243AFDD /* Pods-FarewellTests-dummy.m */; };
 		496C92B4DC79806C58F271E61AC758FE /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FD488738DACC6BD28A4B8007AC9E22 /* NSLayoutConstraint+PureLayout.m */; };
 		60CB2758CA9EB5493C39D14CE3C1AA08 /* PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 261FA9EFC65F5CA2F5CE7AF0D3ACE209 /* PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		794755E3CFF1E5203359A87DE3C25DFC /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D87500AA33CA4A933595B88AD6CA26C8 /* NSArray+PureLayout.m */; };
 		8951B5579909E42E4CE17C6E31F31E85 /* NSLayoutConstraint+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7D472071E15F7DC98E66B5980E1549 /* NSLayoutConstraint+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		930807E394332141E32434A5916B62B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		93DB4FC7F28CA0612A4CD70DE0CA96ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		A42D1E2059315CAB928904880B73E29E /* PureLayout+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA654F86E857710B01965E96AC15F25C /* PureLayout+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC2C505CC0407554F0F7569E2881E2BF /* PureLayoutDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B859CA7D3A83073EE3A0EFE2138F31B /* PureLayoutDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B331F5DDD4E2ECE9DC54CAC54A8943F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		B522904C656310FE15C8553A1D41B087 /* ALView+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = F3D3F05D324772E907DB1D4DA2C89AA2 /* ALView+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB86E634C4086A42941C845F87631116 /* PureLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EFEA95188E08BEB23065B2AB052E7BC /* PureLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD4C21C766788B0DA752AE2631693117 /* Pods-Farewell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 14998101ACD61AD10CED926683769BC5 /* Pods-Farewell-dummy.m */; };
+		C1C53A0ED0613BA6C65E64765D1A0C2D /* Pods-FarewellUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CC8B77535AA36DD9B1289276AFF62BE /* Pods-FarewellUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD4C21C766788B0DA752AE2631693117 /* Pods-Farewell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E124E323984B2F993D385D1C2E9CCAF6 /* Pods-Farewell-dummy.m */; };
+		E0F8488A8A11FA148E0068BFF755F5F3 /* Pods-FarewellTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 378921E8BAE67D3C4C911CC202ED54F4 /* Pods-FarewellTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECC635DFF8E61C175B08FD4CA5E16219 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		F4B6C434AED6E077816E36EA3BBF8E5B /* PureLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D9E17BE044F47037C6ABD6F65EE32 /* PureLayout-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -35,34 +41,56 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0124B43E3E8A5BE1BCC70A4EC24A3298 /* Pods-FarewellTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FarewellTests.debug.xcconfig"; sourceTree = "<group>"; };
 		01B056FE48A821CA3D3818E32A4CFEDF /* PureLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PureLayout.xcconfig; sourceTree = "<group>"; };
-		13F6C23C13476F7FFC8B32F02312F787 /* Pods-Farewell-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Farewell-resources.sh"; sourceTree = "<group>"; };
-		14998101ACD61AD10CED926683769BC5 /* Pods-Farewell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Farewell-dummy.m"; sourceTree = "<group>"; };
-		1EE722D0711C55154F00A1C12B938F57 /* Pods-Farewell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Farewell.release.xcconfig"; sourceTree = "<group>"; };
+		217E99F9508A39D8E38A527EBEC32894 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249938C44B3C707521E098F2C5086AD9 /* PureLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PureLayout.modulemap; sourceTree = "<group>"; };
 		256CB866D56B919DA6C9ABF2C32B4D37 /* NSArray+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+PureLayout.h"; path = "PureLayout/PureLayout/NSArray+PureLayout.h"; sourceTree = "<group>"; };
-		25AB7FD411AE494BCAC8683C6BC36F5B /* Pods-Farewell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Farewell.modulemap"; sourceTree = "<group>"; };
 		261FA9EFC65F5CA2F5CE7AF0D3ACE209 /* PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayout.h; path = PureLayout/PureLayout/PureLayout.h; sourceTree = "<group>"; };
-		2BB3003131FE9FF75B38921A9EA2D15E /* Pods-Farewell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Farewell-umbrella.h"; sourceTree = "<group>"; };
+		2EB731D177ED485DA6E74D672501E8DA /* Pods-Farewell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Farewell.debug.xcconfig"; sourceTree = "<group>"; };
+		2F5C449B0DE0A8E0D06CD77042D31EB0 /* Pods-Farewell-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Farewell-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2F7D472071E15F7DC98E66B5980E1549 /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+PureLayout.h"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
-		397A225B4D43A246C1985A629F02F9EB /* Pods-Farewell-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Farewell-acknowledgements.plist"; sourceTree = "<group>"; };
+		32635F42C46E61DBA29676978EE0E22B /* Pods-Farewell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Farewell-umbrella.h"; sourceTree = "<group>"; };
+		33831C63A9BED5C44118A7AE7E862E47 /* Pods-FarewellTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FarewellTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		378921E8BAE67D3C4C911CC202ED54F4 /* Pods-FarewellTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FarewellTests-umbrella.h"; sourceTree = "<group>"; };
+		39CCBDA2B2690B5A50BEE52E10C68C7E /* Pods-FarewellUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FarewellUITests-dummy.m"; sourceTree = "<group>"; };
+		3A2AA06950B3978757FAD0CC4AC8E1B8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F6990C47F02B6691DD4DA9D4504A36B /* ALView+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ALView+PureLayout.m"; path = "PureLayout/PureLayout/ALView+PureLayout.m"; sourceTree = "<group>"; };
-		440249FA352E8C6CAD825598363E6C18 /* Pods-Farewell-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Farewell-frameworks.sh"; sourceTree = "<group>"; };
+		46102302D6917BC92F2E10AAEDA04716 /* Pods-FarewellUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FarewellUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4AA1FCB17033F23FFD8FD8BFB1F2C2EB /* Pods-Farewell-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Farewell-resources.sh"; sourceTree = "<group>"; };
 		5B859CA7D3A83073EE3A0EFE2138F31B /* PureLayoutDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayoutDefines.h; path = PureLayout/PureLayout/PureLayoutDefines.h; sourceTree = "<group>"; };
+		5BCD0D6CEB1C24302685468708607A6E /* Pods-Farewell-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Farewell-acknowledgements.plist"; sourceTree = "<group>"; };
+		5BD045ACA0538EB7AFA54CCC869B071D /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60EA776E00BE4B764C548E9DE32DD6C7 /* Pods-FarewellUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FarewellUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		62FD488738DACC6BD28A4B8007AC9E22 /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+PureLayout.m"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		6AC4AD3052C322AFA886A7697A0DEA49 /* Pods-FarewellUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FarewellUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6D986837FA46C6AB4A8D72FCAA1B4454 /* PureLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-prefix.pch"; sourceTree = "<group>"; };
 		6EFEA95188E08BEB23065B2AB052E7BC /* PureLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-umbrella.h"; sourceTree = "<group>"; };
+		7F4B3EA7D8A4C07E61027A005243AFDD /* Pods-FarewellTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FarewellTests-dummy.m"; sourceTree = "<group>"; };
 		808D9E17BE044F47037C6ABD6F65EE32 /* PureLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PureLayout-dummy.m"; sourceTree = "<group>"; };
-		837641CD72A0F5230C2FF585BE5D07DB /* Pods-Farewell-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Farewell-acknowledgements.markdown"; sourceTree = "<group>"; };
+		81FB99E9F228D164459645E7B1BF9C36 /* Pods_FarewellUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CA1F179F8830E21A9F36114B503E6EF /* Pods-FarewellUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FarewellUITests.release.xcconfig"; sourceTree = "<group>"; };
+		90E0710A900EF988415549BC607EB33D /* Pods-FarewellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FarewellTests.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9CC8B77535AA36DD9B1289276AFF62BE /* Pods-FarewellUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FarewellUITests-umbrella.h"; sourceTree = "<group>"; };
+		9CE9D25E12F9252B5EAB3FAE8CBBD309 /* Pods-Farewell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Farewell.modulemap"; sourceTree = "<group>"; };
+		9D05A4427EE3DFA282A1E1595C2B69A0 /* Pods-FarewellUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FarewellUITests.modulemap"; sourceTree = "<group>"; };
+		A84E2D3D793E3F4ECB6E0BB2D05B8D46 /* Pods-FarewellUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FarewellUITests-resources.sh"; sourceTree = "<group>"; };
 		AA654F86E857710B01965E96AC15F25C /* PureLayout+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PureLayout+Internal.h"; path = "PureLayout/PureLayout/PureLayout+Internal.h"; sourceTree = "<group>"; };
-		C599FCE1DF8A58A7C719E9124ED25D38 /* Pods-Farewell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Farewell.debug.xcconfig"; sourceTree = "<group>"; };
-		CB1C2C19AD8CC53556F2C327512FE11E /* Pods_Farewell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Farewell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC113EE311763A709F16B3AEDFA89422 /* Pods-FarewellTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FarewellTests-resources.sh"; sourceTree = "<group>"; };
+		ACC33AC4003E82A4A9830A5FBC2B504A /* Pods-FarewellTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FarewellTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B3C126D073542B2D2F89A3246A9FAC7E /* Pods-FarewellTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FarewellTests.modulemap"; sourceTree = "<group>"; };
+		BB48344A3DE14AD0F30E9264DB342EA8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9ED1819A170381763024528AC43FA54 /* Pods_Farewell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Farewell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CFBE2060172DB24290C10E3F17A58377 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CECDFEC4385BE6337329C85F2841D157 /* Pods-FarewellTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FarewellTests-frameworks.sh"; sourceTree = "<group>"; };
+		D6A02B39951C91A49D3F31A65445F13D /* Pods_FarewellTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C65429B5570E26D39DB6954BFB3F85 /* Pods-Farewell-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Farewell-frameworks.sh"; sourceTree = "<group>"; };
 		D87500AA33CA4A933595B88AD6CA26C8 /* NSArray+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+PureLayout.m"; path = "PureLayout/PureLayout/NSArray+PureLayout.m"; sourceTree = "<group>"; };
 		DC48A19E2AA264922693A9C30BC30743 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB277840247BBDC0C6E3883384568D4B /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCD0A3F9271132EB0804CC78292B7E45 /* Pods-Farewell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Farewell.release.xcconfig"; sourceTree = "<group>"; };
+		E124E323984B2F993D385D1C2E9CCAF6 /* Pods-Farewell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Farewell-dummy.m"; sourceTree = "<group>"; };
+		EE4C0727E6590AC36774350E98195700 /* Pods-FarewellUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FarewellUITests-frameworks.sh"; sourceTree = "<group>"; };
 		F3D3F05D324772E907DB1D4DA2C89AA2 /* ALView+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ALView+PureLayout.h"; path = "PureLayout/PureLayout/ALView+PureLayout.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +100,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B331F5DDD4E2ECE9DC54CAC54A8943F8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD76253E002024FED2563FE15054A1FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECC635DFF8E61C175B08FD4CA5E16219 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F34351780B359B36DCBB84E8029A718F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93DB4FC7F28CA0612A4CD70DE0CA96ED /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,12 +144,22 @@
 			path = "../Target Support Files/PureLayout";
 			sourceTree = "<group>";
 		};
-		32CB99BBFEB118488171D4837A93414C /* Targets Support Files */ = {
+		3D8D2752E0785CBE2DB5F7E3CB1AAF9B /* Pods-FarewellTests */ = {
 			isa = PBXGroup;
 			children = (
-				E4B7FF324BAA4D33DC19C70A40F80115 /* Pods-Farewell */,
+				3A2AA06950B3978757FAD0CC4AC8E1B8 /* Info.plist */,
+				B3C126D073542B2D2F89A3246A9FAC7E /* Pods-FarewellTests.modulemap */,
+				33831C63A9BED5C44118A7AE7E862E47 /* Pods-FarewellTests-acknowledgements.markdown */,
+				ACC33AC4003E82A4A9830A5FBC2B504A /* Pods-FarewellTests-acknowledgements.plist */,
+				7F4B3EA7D8A4C07E61027A005243AFDD /* Pods-FarewellTests-dummy.m */,
+				CECDFEC4385BE6337329C85F2841D157 /* Pods-FarewellTests-frameworks.sh */,
+				AC113EE311763A709F16B3AEDFA89422 /* Pods-FarewellTests-resources.sh */,
+				378921E8BAE67D3C4C911CC202ED54F4 /* Pods-FarewellTests-umbrella.h */,
+				0124B43E3E8A5BE1BCC70A4EC24A3298 /* Pods-FarewellTests.debug.xcconfig */,
+				90E0710A900EF988415549BC607EB33D /* Pods-FarewellTests.release.xcconfig */,
 			);
-			name = "Targets Support Files";
+			name = "Pods-FarewellTests";
+			path = "Target Support Files/Pods-FarewellTests";
 			sourceTree = "<group>";
 		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
@@ -116,24 +170,33 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		48402C1D120BD47414FD88DFACD4B05B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CB1C2C19AD8CC53556F2C327512FE11E /* Pods_Farewell.framework */,
-				EB277840247BBDC0C6E3883384568D4B /* PureLayout.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				A2FDD832DA64F35B104DD4C55A31BF8E /* Pods */,
-				48402C1D120BD47414FD88DFACD4B05B /* Products */,
-				32CB99BBFEB118488171D4837A93414C /* Targets Support Files */,
+				A72AFE1083F78A4714BDF63AB2DB6223 /* Products */,
+				B0B6AF181CC252EF0A4A86F542C4EC26 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8C4AC80001CA11774754EBD9BB8225BE /* Pods-FarewellUITests */ = {
+			isa = PBXGroup;
+			children = (
+				217E99F9508A39D8E38A527EBEC32894 /* Info.plist */,
+				9D05A4427EE3DFA282A1E1595C2B69A0 /* Pods-FarewellUITests.modulemap */,
+				6AC4AD3052C322AFA886A7697A0DEA49 /* Pods-FarewellUITests-acknowledgements.markdown */,
+				60EA776E00BE4B764C548E9DE32DD6C7 /* Pods-FarewellUITests-acknowledgements.plist */,
+				39CCBDA2B2690B5A50BEE52E10C68C7E /* Pods-FarewellUITests-dummy.m */,
+				EE4C0727E6590AC36774350E98195700 /* Pods-FarewellUITests-frameworks.sh */,
+				A84E2D3D793E3F4ECB6E0BB2D05B8D46 /* Pods-FarewellUITests-resources.sh */,
+				9CC8B77535AA36DD9B1289276AFF62BE /* Pods-FarewellUITests-umbrella.h */,
+				46102302D6917BC92F2E10AAEDA04716 /* Pods-FarewellUITests.debug.xcconfig */,
+				8CA1F179F8830E21A9F36114B503E6EF /* Pods-FarewellUITests.release.xcconfig */,
+			);
+			name = "Pods-FarewellUITests";
+			path = "Target Support Files/Pods-FarewellUITests";
 			sourceTree = "<group>";
 		};
 		9C6F93A5AE4A9293598494393460DF93 /* PureLayout */ = {
@@ -161,6 +224,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A72AFE1083F78A4714BDF63AB2DB6223 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9ED1819A170381763024528AC43FA54 /* Pods_Farewell.framework */,
+				D6A02B39951C91A49D3F31A65445F13D /* Pods_FarewellTests.framework */,
+				81FB99E9F228D164459645E7B1BF9C36 /* Pods_FarewellUITests.framework */,
+				5BD045ACA0538EB7AFA54CCC869B071D /* PureLayout.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0B6AF181CC252EF0A4A86F542C4EC26 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E0DF5BCF6617617CCAE8F84EF1F4D5FE /* Pods-Farewell */,
+				3D8D2752E0785CBE2DB5F7E3CB1AAF9B /* Pods-FarewellTests */,
+				8C4AC80001CA11774754EBD9BB8225BE /* Pods-FarewellUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,19 +253,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E4B7FF324BAA4D33DC19C70A40F80115 /* Pods-Farewell */ = {
+		E0DF5BCF6617617CCAE8F84EF1F4D5FE /* Pods-Farewell */ = {
 			isa = PBXGroup;
 			children = (
-				CFBE2060172DB24290C10E3F17A58377 /* Info.plist */,
-				25AB7FD411AE494BCAC8683C6BC36F5B /* Pods-Farewell.modulemap */,
-				837641CD72A0F5230C2FF585BE5D07DB /* Pods-Farewell-acknowledgements.markdown */,
-				397A225B4D43A246C1985A629F02F9EB /* Pods-Farewell-acknowledgements.plist */,
-				14998101ACD61AD10CED926683769BC5 /* Pods-Farewell-dummy.m */,
-				440249FA352E8C6CAD825598363E6C18 /* Pods-Farewell-frameworks.sh */,
-				13F6C23C13476F7FFC8B32F02312F787 /* Pods-Farewell-resources.sh */,
-				2BB3003131FE9FF75B38921A9EA2D15E /* Pods-Farewell-umbrella.h */,
-				C599FCE1DF8A58A7C719E9124ED25D38 /* Pods-Farewell.debug.xcconfig */,
-				1EE722D0711C55154F00A1C12B938F57 /* Pods-Farewell.release.xcconfig */,
+				BB48344A3DE14AD0F30E9264DB342EA8 /* Info.plist */,
+				9CE9D25E12F9252B5EAB3FAE8CBBD309 /* Pods-Farewell.modulemap */,
+				2F5C449B0DE0A8E0D06CD77042D31EB0 /* Pods-Farewell-acknowledgements.markdown */,
+				5BCD0D6CEB1C24302685468708607A6E /* Pods-Farewell-acknowledgements.plist */,
+				E124E323984B2F993D385D1C2E9CCAF6 /* Pods-Farewell-dummy.m */,
+				D7C65429B5570E26D39DB6954BFB3F85 /* Pods-Farewell-frameworks.sh */,
+				4AA1FCB17033F23FFD8FD8BFB1F2C2EB /* Pods-Farewell-resources.sh */,
+				32635F42C46E61DBA29676978EE0E22B /* Pods-Farewell-umbrella.h */,
+				2EB731D177ED485DA6E74D672501E8DA /* Pods-Farewell.debug.xcconfig */,
+				DCD0A3F9271132EB0804CC78292B7E45 /* Pods-Farewell.release.xcconfig */,
 			);
 			name = "Pods-Farewell";
 			path = "Target Support Files/Pods-Farewell";
@@ -195,6 +279,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				216D8C409E3C18AE4CB59F9AB8F1D854 /* Pods-Farewell-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C0111100D5CE6D304849CE2F3878CD9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0F8488A8A11FA148E0068BFF755F5F3 /* Pods-FarewellTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6134FB240330C876E061D75F9493133 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1C53A0ED0613BA6C65E64765D1A0C2D /* Pods-FarewellUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +330,41 @@
 			);
 			name = "Pods-Farewell";
 			productName = "Pods-Farewell";
-			productReference = CB1C2C19AD8CC53556F2C327512FE11E /* Pods_Farewell.framework */;
+			productReference = C9ED1819A170381763024528AC43FA54 /* Pods_Farewell.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4B67AB0AD8E512AB7C377E5A888B95E0 /* Pods-FarewellTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2168DDB88EEC38C016E4C8DD20629957 /* Build configuration list for PBXNativeTarget "Pods-FarewellTests" */;
+			buildPhases = (
+				EE788C47988AC0789B1F18ACE29EA013 /* Sources */,
+				AD76253E002024FED2563FE15054A1FC /* Frameworks */,
+				8C0111100D5CE6D304849CE2F3878CD9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-FarewellTests";
+			productName = "Pods-FarewellTests";
+			productReference = D6A02B39951C91A49D3F31A65445F13D /* Pods_FarewellTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		73636CCA9EE81DB1F5AA37BE918115B3 /* Pods-FarewellUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95DFE83B566D3FD0EA9D6CAA770943ED /* Build configuration list for PBXNativeTarget "Pods-FarewellUITests" */;
+			buildPhases = (
+				769F0EC320C0EB23594FE988AA94186D /* Sources */,
+				F34351780B359B36DCBB84E8029A718F /* Frameworks */,
+				C6134FB240330C876E061D75F9493133 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-FarewellUITests";
+			productName = "Pods-FarewellUITests";
+			productReference = 81FB99E9F228D164459645E7B1BF9C36 /* Pods_FarewellUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C0E1BD80BEF8BFF60FBB0DAFE601F0E4 /* PureLayout */ = {
@@ -247,7 +381,7 @@
 			);
 			name = PureLayout;
 			productName = PureLayout;
-			productReference = EB277840247BBDC0C6E3883384568D4B /* PureLayout.framework */;
+			productReference = 5BD045ACA0538EB7AFA54CCC869B071D /* PureLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -267,17 +401,27 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 48402C1D120BD47414FD88DFACD4B05B /* Products */;
+			productRefGroup = A72AFE1083F78A4714BDF63AB2DB6223 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				09B7EE83AE41EC4488C34C02E8D672A9 /* Pods-Farewell */,
+				4B67AB0AD8E512AB7C377E5A888B95E0 /* Pods-FarewellTests */,
+				73636CCA9EE81DB1F5AA37BE918115B3 /* Pods-FarewellUITests */,
 				C0E1BD80BEF8BFF60FBB0DAFE601F0E4 /* PureLayout */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		769F0EC320C0EB23594FE988AA94186D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B6631D60C2C1418485CD6DF4706A800 /* Pods-FarewellUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94DA1BB8E0B2702800DC4590C7C5E727 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,6 +438,14 @@
 				794755E3CFF1E5203359A87DE3C25DFC /* NSArray+PureLayout.m in Sources */,
 				496C92B4DC79806C58F271E61AC758FE /* NSLayoutConstraint+PureLayout.m in Sources */,
 				F4B6C434AED6E077816E36EA3BBF8E5B /* PureLayout-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE788C47988AC0789B1F18ACE29EA013 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4599FAA90AE592E669A069F111ACA8F1 /* Pods-FarewellTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,9 +503,42 @@
 			};
 			name = Debug;
 		};
+		0BA210564BA75BF48F0A6E5DCAAE0439 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90E0710A900EF988415549BC607EB33D /* Pods-FarewellTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FarewellTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FarewellTests/Pods-FarewellTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FarewellTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		2E25601FA304ED7F676F945C5048BBD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C599FCE1DF8A58A7C719E9124ED25D38 /* Pods-Farewell.debug.xcconfig */;
+			baseConfigurationReference = 2EB731D177ED485DA6E74D672501E8DA /* Pods-Farewell.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -384,6 +569,72 @@
 			};
 			name = Debug;
 		};
+		486F7E839A94D9CE1088935F50CA8D07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CA1F179F8830E21A9F36114B503E6EF /* Pods-FarewellUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FarewellUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FarewellUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		58E3191F05546ABB2FF8E5C5345168BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0124B43E3E8A5BE1BCC70A4EC24A3298 /* Pods-FarewellTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FarewellTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FarewellTests/Pods-FarewellTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FarewellTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		94DE10458958C81B012988233585D844 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01B056FE48A821CA3D3818E32A4CFEDF /* PureLayout.xcconfig */;
@@ -405,6 +656,39 @@
 				MODULEMAP_FILE = "Target Support Files/PureLayout/PureLayout.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = PureLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C7172BAA8BDF669C7CD4B550B4E55DA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46102302D6917BC92F2E10AAEDA04716 /* Pods-FarewellUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FarewellUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FarewellUITests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -482,7 +766,7 @@
 		};
 		E9BFB36F8E0FE5144D52CE87CF7AC871 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EE722D0711C55154F00A1C12B938F57 /* Pods-Farewell.release.xcconfig */;
+			baseConfigurationReference = DCD0A3F9271132EB0804CC78292B7E45 /* Pods-Farewell.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -516,6 +800,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2168DDB88EEC38C016E4C8DD20629957 /* Build configuration list for PBXNativeTarget "Pods-FarewellTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58E3191F05546ABB2FF8E5C5345168BB /* Debug */,
+				0BA210564BA75BF48F0A6E5DCAAE0439 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -530,6 +823,15 @@
 			buildConfigurations = (
 				94DE10458958C81B012988233585D844 /* Debug */,
 				C8574A4AF9CB71D112CCBBD77935881E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95DFE83B566D3FD0EA9D6CAA770943ED /* Build configuration list for PBXNativeTarget "Pods-FarewellUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7172BAA8BDF669C7CD4B550B4E55DA5 /* Debug */,
+				486F7E839A94D9CE1088935F50CA8D07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

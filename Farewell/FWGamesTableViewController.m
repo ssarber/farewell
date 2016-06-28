@@ -127,7 +127,13 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 - (void)reloadTableView
 {
+    self.tutorialLabel.hidden = NO;
+    self.tutorialLabel.text = @"Loading...";
+    [self.view bringSubviewToFront:self.tutorialLabel];
+    
     [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
+        self.tutorialLabel.hidden = YES;
+        
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
             
