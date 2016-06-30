@@ -20,6 +20,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 // Status label
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusLabelTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusLabelBottom;
 
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *characterCountLabelTop;
@@ -153,13 +154,18 @@ NSUInteger const kMaxAllowedCharacters = 100;
             NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
 
             AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
-            utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-us"];
+            utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
             
             AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
             [synthesizer speakUtterance:utterance];
             
             self.statusLabel.text = randomMessage;
             
+            self.statusLabelBottom.constant = 50;
+            
+            [UIView animateWithDuration:1 animations:^{
+                [self.view setNeedsLayout];
+            }];
         }
     }];
         
@@ -370,7 +376,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"WORDS: %@", words);
     
     NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-//        NSString *dotQuoteString = @"." stringByAppendingString:"
         return ([obj isEqualToString:@". "] || [obj isEqualToString:@"."] || [obj isEqualToString:@"! "] || [obj isEqualToString:@"!"] ||
                 [obj isEqualToString:@"Free at last\"."]);
     }];
@@ -476,8 +481,23 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"Inside FWGameScreenViewController --> enterNewGame");
     self.mainTextField.text = @"Dear coworkers,\n\n";
     
-    NSString *statusString = [NSString stringWithFormat:@"Go shorty, it's your turn."];
-    self.statusLabel.text = statusString;
+//    NSArray *messagesArray = @[@"Here's an example to get your creative juices flowing:\nAs many of you probably know, today is my last day. But before I leave, I wanted to take this opportunity to let you know what a great and distinct pleasure it has been to type “Today is my last day.” "];
+//    NSUInteger randomIndex = arc4random() % [messagesArray count];
+//    NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
+//    
+//    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
+//    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
+//    
+//    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
+//    [synthesizer speakUtterance:utterance];
+//    
+    self.statusLabel.text = @"Your turn.";
+    
+//    self.statusLabelTop.constant = -50;
+    
+//    [UIView animateWithDuration:1 animations:^{
+//        [self.view setNeedsLayout];
+//    }];
     
     self.textInputField.hidden = NO;
     self.textInputField.enabled = YES;
