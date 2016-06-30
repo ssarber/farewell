@@ -121,7 +121,7 @@
         }
         [match endMatchInTurnWithMatchData:match.matchData completionHandler:^(NSError *error) {
             if (error) {
-                NSLog(@"Error ending match %@", error);
+                NSLog(@"Error ending match (in GC helper: loadAMatch) %@", error);
             }
             [self.delegate layoutMatch:match];
         }];
@@ -175,7 +175,7 @@
 
     [match endMatchInTurnWithMatchData:match.matchData completionHandler:^(NSError *error) {
         if (error) {
-            NSLog(@"Error ending match: %@", error);
+            NSLog(@"Error ending match (in GC helper) wantsToQuitMatch: %@", error);
         }
     }];
     

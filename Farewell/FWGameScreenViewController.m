@@ -7,6 +7,7 @@
 //
 
 #import "FWGameScreenViewController.h"
+#import <AVFoundation/AVFoundation.h>
 #import "PureLayout.h"
 
 NSUInteger const kMaxAllowedCharacters = 100;
@@ -146,7 +147,19 @@ NSUInteger const kMaxAllowedCharacters = 100;
             
             self.statusLabel.text = @"Oops, something went wrong. Try that again.";
         } else {
-            self.statusLabel.text = @"Nice. Your turn is over for now. Let's wait for your co-writer to take turn.";
+            
+            NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I will sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", ];
+            NSUInteger randomIndex = arc4random() % [messagesArray count];
+            NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
+
+            AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
+            utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-us"];
+            
+            AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
+            [synthesizer speakUtterance:utterance];
+            
+            self.statusLabel.text = randomMessage;
+            
         }
     }];
         
@@ -256,7 +269,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
         [self.match endMatchInTurnWithMatchData:self.match.matchData completionHandler:^(NSError *error) {
             
             if (error) {
-                NSLog(@"Error ending match: %@", error);
+                NSLog(@"Error ending match (in game screen vc): %@", error);
             }
         }];
         
@@ -270,7 +283,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
             participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
         }
         
-        [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeTied withCompletionHandler:^(NSError *error) {
+        [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
             if (error) {
                 NSLog(@"Error quitting game: %@", error.localizedDescription);
                 
@@ -528,7 +541,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     if (match.status == GKTurnBasedMatchStatusEnded) {
         
         NSLog(@"Match ended: %@", match.description);
-        statusString = @"One of the writers marked this email complete. If you think it's any good, you can share it.";
+        statusString = @"One of the writers marked this email complete. Share it!";
         self.characterCountLabel.hidden = YES;
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;

@@ -29,6 +29,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 @property (strong, nonatomic) FWGameScreenViewController *gameVC;
 
 @property (assign, nonatomic) BOOL userHasSeenInitialTutorial;
+@property (assign, nonatomic) BOOL initialTableViewLoad;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -61,6 +62,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     [[FWGameCenterHelper sharedInstance] authenticateLocalUserFromController:self];
     
     [FWGameCenterHelper sharedInstance].delegate = self;
+    
+    self.initialTableViewLoad = YES;
     
     self.writeButton.hidden = YES;
     [self.tutorialLabel sizeToFit];
@@ -127,9 +130,13 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 - (void)reloadTableView
 {
-    self.tutorialLabel.hidden = NO;
-    self.tutorialLabel.text = @"Loading...";
-    [self.view bringSubviewToFront:self.tutorialLabel];
+    
+    if(self.initialTableViewLoad == YES) {
+        
+        self.tutorialLabel.hidden = NO;
+        self.tutorialLabel.text = @"Loading...";
+        [self.view bringSubviewToFront:self.tutorialLabel];
+    }
     
     [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
         self.tutorialLabel.hidden = YES;
@@ -226,6 +233,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             }
         }
     }];
+    
+    self.initialTableViewLoad = NO;
 }
 
 #pragma mark - Secondary tutorial 

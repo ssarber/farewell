@@ -19,6 +19,8 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
 @property (strong, nonatomic) NSArray *textArray;
 @property (nonatomic) NSUInteger textIndex;
 
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipeGestureRecognizer;
+
 @property (assign, nonatomic) BOOL userHasSeenInitialFlow;
 
 @end
@@ -32,6 +34,10 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
     _textIndex = -1;
     [self.textLabel sizeToFit];
     self.beginButton.hidden = YES;
+    
+    self.swipeGestureRecognizer  = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(changeText:)];
+    self.swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -60,15 +66,14 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
 
 - (NSArray *)textArray {
     if (!_textArray) {
-        _textArray= @[@"You come to work in the morning. Pour yourself a cup of coffee, settle into your chair and open Gmail.\
-                      Read all the stupid emails that don't have a thing to do with you, go say hi to your friend from accounting.\
-                      Discuss what idiots your bosses are and how they're running the company into the ground.\
-                      But you know what, if you're such a genius, why are you still working here?",
-
-                      @"This is a game. It's not serious.\nYou are tasked with writing a farewell email to all your co-workers.\
-                      This place could use some honesty, quite honestly. Just say what's on your mind. Write a couple sentences to get started, then pass turn to your friend, see if he/she can add anything. Then read what they wrote and add a couple sentences again. See if you can have some fun.",
+        _textArray= @[@"You come to work in the morning. Settle into your chair and open Gmail. Read all the emails that don't have a thing to do with you.  Wow, it's lunchtime already?\
+                      Your friend from marketing stops by your desk and asks if you wanna grab some lunch. Should we get like a sandwich or like a soup?",
                       
-                      @"You are a wale of farewells. Some might even say, a farewale.",
+                      @"So you get to Quiznos, order your pathetic sandwich, sit down. Start discussing what idiots your bosses are and how they're running the company into the ground. How basically the whole place is still afloat cuz of you two.\nBut you know what, if you're such a genius, why are you still working here?",
+
+                      @"This is a game. It's not serious.\nWrite a farewell email to all your co-workers as if you were quitting your job TODAY.\nWrite a couple sentences to get started, then pass the turn to a friend or a random individual! Then read what they wrote and add a couple sentences again. See if you can have some fun.",
+                      
+                       @"The whole point is to have fun. When was the last time you had fun?",
                       
                       @"Ready to begin?"];
     }
