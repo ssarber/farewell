@@ -217,6 +217,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             
             // Set up tutorial if user hasn't seen one already
             if (![self hasSeenInitialTutorial]) {
+                self.tutorialLabel.hidden = NO;
                 self.tutorialLabel.text = @"The rules are simple.";
                 [self.view bringSubviewToFront:self.tutorialLabel];
                 [self.view bringSubviewToFront:self.textLabelButton];
@@ -290,13 +291,14 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                                self.writeButton.alpha = 0;
                                
                            } completion:^ (BOOL finished){
-                               [UIView animateWithDuration:1
-                                                     delay:3.5
-                                                   options: UIViewAnimationOptionTransitionCrossDissolve
+                               [UIView animateWithDuration:0.5
+                                                     delay:3.0
+                                                   options: UIViewAnimationOptionTransitionCurlUp
                                                 animations:^{
                                                     self.writeButton.hidden =  NO;
                                                     self.writeButton.imageView.alpha = 1;
-                                                    self.writeButton.alpha = 1;}
+                                                    self.writeButton.alpha = 1;
+                                                }
                                                 completion:nil];
                            }];
     }

@@ -42,15 +42,15 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    Might activate the keyboard on load
 //    [self.textInputField becomeFirstResponder];
     
-    self.headerView.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.headerView.layer.shadowOffset = CGSizeMake(0.0, 5);
-    self.headerView.layer.shadowRadius = 6;
-    self.headerView.layer.shadowOpacity = 0.5;    
-    self.headerView.layer.masksToBounds = NO;
+//    self.headerView.layer.shadowColor = [[UIColor blackColor] CGColor];
+//    self.headerView.layer.shadowOffset = CGSizeMake(0.0, 5);
+//    self.headerView.layer.shadowRadius = 6;
+//    self.headerView.layer.shadowOpacity = 0.5;    
+//    self.headerView.layer.masksToBounds = NO;
     
     
-    self.mainTextField.layer.borderWidth = 0.2;
-    self.mainTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.mainTextField.layer.borderWidth = 0.5;
+    self.mainTextField.layer.borderColor = [UIColor colorWithRed:(84/255.0) green:(222/255.0) blue:(167/255.0) alpha:1].CGColor;
     
     self.characterCountLabel.hidden = NO;
     self.characterCountLabel.text = @"2 sentences remaining.";
@@ -65,6 +65,16 @@ NSUInteger const kMaxAllowedCharacters = 100;
                                                  name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
+
+// placeholder position
+- (CGRect)textRectForBounds:(CGRect)bounds {
+    return CGRectInset(bounds, 10, 10);
+}
+
+// text position
+- (CGRect)editingRectForBounds:(CGRect)bounds {
+    return CGRectInset(bounds, 10, 10);
+}
 
 - (BOOL)isPresented
 {
@@ -155,6 +165,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
             AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
             utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
+            utterance.pitchMultiplier = .9;
+//            utterance.rate = 2;
             
             AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
             [synthesizer speakUtterance:utterance];

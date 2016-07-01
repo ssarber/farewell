@@ -105,7 +105,9 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
             self.userHasSeenInitialFlow = YES;
             self.beginButton.hidden =  NO;
             self.beginButton.alpha = 1;
-            self.view.backgroundColor = [UIColor blackColor];
+            
+            // I still like the black color!
+            //  self.view.backgroundColor = [UIColor blackColor];
         };
         
         [UIView transitionWithView:self.beginButton duration:0
