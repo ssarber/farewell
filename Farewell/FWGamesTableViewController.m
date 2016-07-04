@@ -9,6 +9,7 @@
 #import "FWAppDelegate.h"
 #import "FWGamesTableViewController.h"
 #import "FWGameScreenViewController.h"
+#import "FWPromptSelectionViewController.h"
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
 #import "UIImageView+Letters.h"
@@ -614,14 +615,17 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toPromptSelection"]) {
+
+        FWPromptSelectionViewController *promptsVC = (FWPromptSelectionViewController *)segue.destinationViewController;
+        promptsVC.gamesVC = self;
+    }
 }
-*/
 
 @end

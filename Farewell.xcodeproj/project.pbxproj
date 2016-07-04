@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		050BC95E9A4D01D49F5204A2 /* Pods_Farewell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68615D816A2E6299CDDA61 /* Pods_Farewell.framework */; };
 		0F0975931D11EAFF00C42FC7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0975921D11EAFF00C42FC7 /* GameKit.framework */; };
+		0F17D7591D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
+		0F17D75A1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
+		0F17D75B1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
 		0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
 		0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
 		0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
@@ -59,6 +62,8 @@
 /* Begin PBXFileReference section */
 		0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F0975921D11EAFF00C42FC7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPromptSelectionViewController.h; sourceTree = "<group>"; };
+		0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPromptSelectionViewController.m; sourceTree = "<group>"; };
 		0F2826DE1D27503300A80782 /* HexColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HexColors.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphonesimulator/HexColors/HexColors.framework"; sourceTree = "<group>"; };
 		0F35A7A61D274A870089AB4C /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
 		0F35A7A81D274AAE0089AB4C /* HexColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HexColors.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/HexColors/HexColors.framework"; sourceTree = "<group>"; };
@@ -211,6 +216,8 @@
 				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
 				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
 				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
+				0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */,
+				0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -555,6 +562,7 @@
 				0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0F48B6E51CD92DF1008A7F3D /* main.m in Sources */,
 				0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
+				0F17D7591D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */,
 				0F48B7181CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F17D75A1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */,
 				0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F97FFBC1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
@@ -577,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F17D75B1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */,
 				0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F97FFBD1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
