@@ -8,6 +8,7 @@
 
 #import "FWGameScreenViewController.h"
 #import <AVFoundation/AVFoundation.h>
+//#import "TSMessageView.h"
 #import "PureLayout.h"
 
 NSUInteger const kMaxAllowedCharacters = 100;
@@ -57,7 +58,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     [self.statusLabel sizeToFit];
     
-    self.textInputField.autocorrectionType = UITextAutocorrectionTypeNo;
     [self.textInputField becomeFirstResponder];
        
     // Watch the keyboard frame..
@@ -154,9 +154,24 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault
                                     matchData:data completionHandler:^(NSError *error) {
         if (error) {
-            NSLog(@"Got error: %@", error);
-            
+            NSLog(@"Got error: %@", error.localizedDescription);
             self.statusLabel.text = @"Oops, something went wrong. Try that again.";
+
+#warning Remove before shipping
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error sending turn."
+                                                                           message:error.localizedDescription
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                                                  }];
+            
+            [alert addAction:defaultAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
         } else {
             
             NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I will sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", ];
@@ -267,11 +282,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+
 - (void)shareEmail
 {
     UIActivityViewController *uiActivityVC = [[UIActivityViewController alloc] initWithActivityItems:@[self.mainTextField.text] applicationActivities:nil];
     [self presentViewController:uiActivityVC animated:YES completion:nil];
 }
+
 
 - (void)quitGame
 {
@@ -380,8 +397,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
 // Retuns NO when 2 sentences are detected so that further editing is disabled.
 - (BOOL)shouldAllowToContinueWriting
 {
-    NSInteger len = [_textInputField.text length];
-    
     NSCharacterSet *separators = [NSCharacterSet alphanumericCharacterSet];
     NSArray *words = [self.textInputField.text componentsSeparatedByCharactersInSet:separators];
     
@@ -396,6 +411,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     if ([separatorIndexes count] == 1) {
         _characterCountLabel.text = @"1 sentence remaining.";
+        
+//        [TSMessage showNotificationWithTitle:@"1 sentence remaining."
+//                                    subtitle:nil
+//                                        type:TSMessageNotificationTypeError];
     }
     
     if ([separatorIndexes count] == 2) {
@@ -565,6 +584,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"MATCH: %@", match);
     
     self.textInputField.hidden = YES;
+    self.characterCountLabel.hidden = YES;
     
     // [self.statusLabel autoSetDimension:ALDimensionHeight toSize:100];
     
@@ -577,10 +597,17 @@ NSUInteger const kMaxAllowedCharacters = 100;
         self.characterCountLabel.hidden = YES;
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
-        NSUInteger playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
-        statusString = playerName? [NSString stringWithFormat:@"%@'s turn.", playerName] :
-            [NSString stringWithFormat: @"Player %ld's turn.", playerNum];
+        //NSUInteger playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
+        statusString = playerName? [NSString stringWithFormat:@"\n\n%@'s turn.", playerName] :
+            [NSString stringWithFormat: @"\n\nWaiting to be matched with a random individual."];
     }
+    
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:statusString];
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
+
+    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
+    [synthesizer speakUtterance:utterance];
+
     
     self.statusLabel.text = statusString;
     self.textInputField.enabled = NO;

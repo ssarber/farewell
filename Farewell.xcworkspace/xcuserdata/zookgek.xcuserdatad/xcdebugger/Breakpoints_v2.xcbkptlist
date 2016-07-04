@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Farewell/FWGameScreenViewController.m"
-            timestampString = "489101352.438133"
+            timestampString = "489105462.31821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-quitGame"
             landmarkType = "5">
          </BreakpointContent>
@@ -64,6 +64,38 @@
             startingLineNumber = "221"
             endingLineNumber = "221"
             landmarkName = "-reloadTableView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Farewell/FWGameScreenViewController.m"
+            timestampString = "489105455.639068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
+            landmarkName = "-takeTurnInMatch:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Farewell/FWGameCenterHelper.m"
+            timestampString = "489109491.222212"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-turnBasedMatchmakerViewController:didFindMatch:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

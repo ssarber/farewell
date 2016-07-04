@@ -59,6 +59,13 @@
 /* Begin PBXFileReference section */
 		0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F0975921D11EAFF00C42FC7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0F2826DE1D27503300A80782 /* HexColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HexColors.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphonesimulator/HexColors/HexColors.framework"; sourceTree = "<group>"; };
+		0F35A7A61D274A870089AB4C /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
+		0F35A7A81D274AAE0089AB4C /* HexColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HexColors.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/HexColors/HexColors.framework"; sourceTree = "<group>"; };
+		0F35A7A91D274AAE0089AB4C /* TSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TSMessages.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/TSMessages/TSMessages.framework"; sourceTree = "<group>"; };
+		0F35A7AC1D274AED0089AB4C /* TSMessages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TSMessages; path = Pods/TSMessages; sourceTree = "<group>"; };
+		0F35A7AE1D274AF70089AB4C /* PureLayout */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PureLayout; path = Pods/PureLayout; sourceTree = "<group>"; };
+		0F35A7B01D274B2F0089AB4C /* TSMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSMessageView.h; path = Pods/TSMessages/Pod/Classes/TSMessageView.h; sourceTree = "<group>"; };
 		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWInitialFlowViewController.h; path = ../FWInitialFlowViewController.h; sourceTree = "<group>"; };
 		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWInitialFlowViewController.m; path = ../FWInitialFlowViewController.m; sourceTree = "<group>"; };
 		0F48B6E01CD92DF1008A7F3D /* Farewell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farewell.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +253,13 @@
 		C8541AA93D24A26F7D7DFD29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F2826DE1D27503300A80782 /* HexColors.framework */,
+				0F35A7B01D274B2F0089AB4C /* TSMessageView.h */,
+				0F35A7AE1D274AF70089AB4C /* PureLayout */,
+				0F35A7AC1D274AED0089AB4C /* TSMessages */,
+				0F35A7A81D274AAE0089AB4C /* HexColors.framework */,
+				0F35A7A91D274AAE0089AB4C /* TSMessages.framework */,
+				0F35A7A61D274A870089AB4C /* PureLayout.framework */,
 				1B68615D816A2E6299CDDA61 /* Pods_Farewell.framework */,
 				0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */,
 				8479EB7F75A9DABF272DF143 /* Pods_FarewellUITests.framework */,
@@ -715,7 +729,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Farewell",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "";
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -738,6 +752,7 @@
 					"$(PROJECT_DIR)/Farewell",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
+				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -7,6 +7,7 @@ target 'Farewell' do
 
   # Pods for Farewell
   pod 'PureLayout'
+#  pod 'TSMessages'
 
   target 'FarewellTests' do
     inherit! :search_paths
