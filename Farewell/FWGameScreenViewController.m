@@ -9,7 +9,7 @@
 #import "FWGameScreenViewController.h"
 #import <AVFoundation/AVFoundation.h>
 //#import "TSMessageView.h"
-#import "PureLayout.h"
+//#import "PureLayout.h"
 
 NSUInteger const kMaxAllowedCharacters = 100;
 
@@ -510,7 +510,10 @@ NSUInteger const kMaxAllowedCharacters = 100;
 - (void)enterNewGameForMatch:(GKTurnBasedMatch *)match
 {
     NSLog(@"Inside FWGameScreenViewController --> enterNewGame");
-    self.mainTextField.text = @"Dear coworkers,\n\n";
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *prompt = [defaults objectForKey:@"FWUserPromptSelectionDefault"];
+    self.mainTextField.text = prompt;
     
 //    NSArray *messagesArray = @[@"Here's an example to get your creative juices flowing:\nAs many of you probably know, today is my last day. But before I leave, I wanted to take this opportunity to let you know what a great and distinct pleasure it has been to type “Today is my last day.” "];
 //    NSUInteger randomIndex = arc4random() % [messagesArray count];
@@ -569,7 +572,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
                 NSLog(@"gameTextSoFar: %@", gameTextSoFar);
             });
         } else {
-            weakSelf.mainTextField.text = @"Dear co-workers,\n\n";
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *prompt = [defaults objectForKey:@"FWUserPromptSelectionDefault"];
+            
+            weakSelf.mainTextField.text = [NSString stringWithFormat:@"%@%@%@", @"Now let's talk about ", prompt, @"."];
         }
     }];
     

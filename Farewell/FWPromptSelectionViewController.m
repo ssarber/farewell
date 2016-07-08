@@ -25,16 +25,20 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.tableView.rowHeight = 120;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
+
 
 - (NSArray *)prompts {
     if (!_prompts ) {
-        _prompts = @[@"ATTTT", @"kjjdskjdk", @"KJDKJDSK", @"KJKJKJK", @"jkjdskdjks"];
+        _prompts = @[@"Grievances and Complaints", @"Relationships", @"Pets: Cats, Dogs, Alligators", @"Office Affairs", @"Guy At Work", @"Politics And Politicians",@"Family", @"Doughnuts", @"Zombies", @"Doughnuts and Zombies", @"Apocalypse", @"TV and Movies"];
     }
     
     return _prompts;
@@ -47,20 +51,9 @@
     return 1;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    
-    //    header.backgroundView.backgroundColor = [UIColor clearColor];
-    
-    header.textLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:23];
-    CGRect headerFrame = header.frame;
-    header.textLabel.frame = headerFrame;
-    header.textLabel.textAlignment = NSTextAlignmentLeft;
-}
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [self.prompts count];
 }
 
 
@@ -68,6 +61,14 @@
     
     static NSString *cellIdentifier = @"PromptCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    cell.textLabel.font = [UIFont fontWithName:@"AvenirNext-Medium" size:23];
+    
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.textLabel.allowsDefaultTighteningForTruncation = YES;
+    
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.minimumScaleFactor = .5;
 
     cell.textLabel.text = [self.prompts objectAtIndex:indexPath.row];
     
@@ -77,11 +78,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    GKTurnBasedMatch *match = [[self.allMyMatches objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-//    NSLog(@"MATCH: %@", match);
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:cell.textLabel.text forKey:@"FWUserPromptSelectionDefault"];
+    [defaults synchronize];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+    
     [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self.gamesVC];
 }
+
+
 - (IBAction)backButtonPressed:(id)sender {
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

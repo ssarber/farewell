@@ -1,0 +1,6 @@
+framework module Pods_KomicTests {
+  umbrella header "Pods-KomicTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

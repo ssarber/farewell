@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0F48B6DF1CD92DF1008A7F3D"
-               BuildableName = "Farewell.app"
-               BlueprintName = "Farewell"
-               ReferencedContainer = "container:Farewell.xcodeproj">
+               BuildableName = "Komic.app"
+               BlueprintName = "Komic"
+               ReferencedContainer = "container:Komic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0F48B6F81CD92DF1008A7F3D"
-               BuildableName = "FarewellTests.xctest"
-               BlueprintName = "FarewellTests"
-               ReferencedContainer = "container:Farewell.xcodeproj">
+               BuildableName = "Komic.xctest"
+               BlueprintName = "KomicTests"
+               ReferencedContainer = "container:Komic.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0F48B7031CD92DF1008A7F3D"
-               BuildableName = "FarewellUITests.xctest"
-               BlueprintName = "FarewellUITests"
-               ReferencedContainer = "container:Farewell.xcodeproj">
+               BuildableName = "Komic.xctest"
+               BlueprintName = "KomicUITests"
+               ReferencedContainer = "container:Komic.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0F48B6DF1CD92DF1008A7F3D"
-            BuildableName = "Farewell.app"
-            BlueprintName = "Farewell"
-            ReferencedContainer = "container:Farewell.xcodeproj">
+            BuildableName = "Komic.app"
+            BlueprintName = "Komic"
+            ReferencedContainer = "container:Komic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0F48B6DF1CD92DF1008A7F3D"
-            BuildableName = "Farewell.app"
-            BlueprintName = "Farewell"
-            ReferencedContainer = "container:Farewell.xcodeproj">
+            BuildableName = "Komic.app"
+            BlueprintName = "Komic"
+            ReferencedContainer = "container:Komic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0F48B6DF1CD92DF1008A7F3D"
-            BuildableName = "Farewell.app"
-            BlueprintName = "Farewell"
-            ReferencedContainer = "container:Farewell.xcodeproj">
+            BuildableName = "Komic.app"
+            BlueprintName = "Komic"
+            ReferencedContainer = "container:Komic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

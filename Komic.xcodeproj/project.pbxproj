@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		050BC95E9A4D01D49F5204A2 /* Pods_Farewell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68615D816A2E6299CDDA61 /* Pods_Farewell.framework */; };
-		0F0975931D11EAFF00C42FC7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0975921D11EAFF00C42FC7 /* GameKit.framework */; };
 		0F17D7591D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
 		0F17D75A1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
 		0F17D75B1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
@@ -38,8 +36,10 @@
 		0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FAFCB311CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
-		DD4C5F9F421C3DBF4CCAF2AC /* Pods_FarewellUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479EB7F75A9DABF272DF143 /* Pods_FarewellUITests.framework */; };
-		DE2BB84061FFD19FBBAF9519 /* Pods_FarewellTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */; };
+		0FBE5BB31D2F2DD7007322B6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */; };
+		18CB188FB7768258B070BA2D /* Pods_KomicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24693DFAC83C5D67D3DC5051 /* Pods_KomicUITests.framework */; };
+		358AE8F00A63B817D50C23D4 /* Pods_KomicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DF4B4E32CAF01E57B9441 /* Pods_KomicTests.framework */; };
+		90B30AB2A3BCDD3636E3FF6C /* Pods_Komic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C161C70AEF7815A9115872D /* Pods_Komic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,20 +60,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F0975921D11EAFF00C42FC7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0727F8069ED09BC4E95D15E7 /* Pods-Komic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Komic/Pods-Komic.debug.xcconfig"; sourceTree = "<group>"; };
 		0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPromptSelectionViewController.h; sourceTree = "<group>"; };
 		0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPromptSelectionViewController.m; sourceTree = "<group>"; };
-		0F2826DE1D27503300A80782 /* HexColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HexColors.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphonesimulator/HexColors/HexColors.framework"; sourceTree = "<group>"; };
 		0F35A7A61D274A870089AB4C /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
-		0F35A7A81D274AAE0089AB4C /* HexColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HexColors.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/HexColors/HexColors.framework"; sourceTree = "<group>"; };
-		0F35A7A91D274AAE0089AB4C /* TSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TSMessages.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/TSMessages/TSMessages.framework"; sourceTree = "<group>"; };
-		0F35A7AC1D274AED0089AB4C /* TSMessages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TSMessages; path = Pods/TSMessages; sourceTree = "<group>"; };
 		0F35A7AE1D274AF70089AB4C /* PureLayout */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PureLayout; path = Pods/PureLayout; sourceTree = "<group>"; };
-		0F35A7B01D274B2F0089AB4C /* TSMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSMessageView.h; path = Pods/TSMessages/Pod/Classes/TSMessageView.h; sourceTree = "<group>"; };
 		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWInitialFlowViewController.h; path = ../FWInitialFlowViewController.h; sourceTree = "<group>"; };
 		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWInitialFlowViewController.m; path = ../FWInitialFlowViewController.m; sourceTree = "<group>"; };
-		0F48B6E01CD92DF1008A7F3D /* Farewell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farewell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F48B6E01CD92DF1008A7F3D /* Komic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F48B6E41CD92DF1008A7F3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWAppDelegate.h; sourceTree = "<group>"; };
 		0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWAppDelegate.m; sourceTree = "<group>"; };
@@ -83,10 +77,10 @@
 		0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F48B6F21CD92DF1008A7F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F48B6F41CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F48B6F91CD92DF1008A7F3D /* FarewellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarewellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F48B6F91CD92DF1008A7F3D /* Komic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Komic.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F48B6FD1CD92DF1008A7F3D /* FarewellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarewellTests.m; sourceTree = "<group>"; };
 		0F48B6FF1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F48B7041CD92DF1008A7F3D /* FarewellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarewellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F48B7041CD92DF1008A7F3D /* Komic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Komic.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F48B7081CD92DF1008A7F3D /* FarewellUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarewellUITests.m; sourceTree = "<group>"; };
 		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGameCenterHelper.h; sourceTree = "<group>"; };
@@ -99,11 +93,18 @@
 		0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Letters.m"; path = "../UIImageView+Letters.m"; sourceTree = "<group>"; };
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
 		0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGamesTableViewController.m; sourceTree = "<group>"; };
-		1B68615D816A2E6299CDDA61 /* Pods_Farewell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Farewell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		1150A7450745D29371A8F61D /* Pods-KomicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KomicUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KomicUITests/Pods-KomicUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		24693DFAC83C5D67D3DC5051 /* Pods_KomicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KomicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C59E781FBC25839042018E /* Pods-FarewellTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests.debug.xcconfig"; sourceTree = "<group>"; };
+		269C89C67F7266DB4B53978A /* Pods-KomicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KomicTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KomicTests/Pods-KomicTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3C161C70AEF7815A9115872D /* Pods_Komic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Komic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4624B0294B5570C830DE8279 /* Pods-Komic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Komic/Pods-Komic.release.xcconfig"; sourceTree = "<group>"; };
 		4BA1F3FB434A0A24DE964C15 /* Pods-Farewell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Farewell.release.xcconfig"; path = "Pods/Target Support Files/Pods-Farewell/Pods-Farewell.release.xcconfig"; sourceTree = "<group>"; };
+		6001AB888DF8AD236B621DBC /* Pods-KomicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KomicTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KomicTests/Pods-KomicTests.release.xcconfig"; sourceTree = "<group>"; };
+		608DF4B4E32CAF01E57B9441 /* Pods_KomicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KomicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7117B146DBCDBA67EE80B6F3 /* Pods-KomicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KomicUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KomicUITests/Pods-KomicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		8479EB7F75A9DABF272DF143 /* Pods_FarewellUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FarewellUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests.release.xcconfig"; sourceTree = "<group>"; };
 		C42F5537F3E2E204C531E3FA /* Pods-Farewell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Farewell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Farewell/Pods-Farewell.debug.xcconfig"; sourceTree = "<group>"; };
 		EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,8 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F0975931D11EAFF00C42FC7 /* GameKit.framework in Frameworks */,
-				050BC95E9A4D01D49F5204A2 /* Pods_Farewell.framework in Frameworks */,
+				0FBE5BB31D2F2DD7007322B6 /* GameKit.framework in Frameworks */,
+				90B30AB2A3BCDD3636E3FF6C /* Pods_Komic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE2BB84061FFD19FBBAF9519 /* Pods_FarewellTests.framework in Frameworks */,
+				358AE8F00A63B817D50C23D4 /* Pods_KomicTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD4C5F9F421C3DBF4CCAF2AC /* Pods_FarewellUITests.framework in Frameworks */,
+				18CB188FB7768258B070BA2D /* Pods_KomicUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +142,7 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
-				0F0975921D11EAFF00C42FC7 /* GameKit.framework */,
-				0F48B6E21CD92DF1008A7F3D /* Farewell */,
+				0F48B6E21CD92DF1008A7F3D /* Komic */,
 				0F48B6FC1CD92DF1008A7F3D /* FarewellTests */,
 				0F48B7071CD92DF1008A7F3D /* FarewellUITests */,
 				0F48B6E11CD92DF1008A7F3D /* Products */,
@@ -154,14 +154,14 @@
 		0F48B6E11CD92DF1008A7F3D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0F48B6E01CD92DF1008A7F3D /* Farewell.app */,
-				0F48B6F91CD92DF1008A7F3D /* FarewellTests.xctest */,
-				0F48B7041CD92DF1008A7F3D /* FarewellUITests.xctest */,
+				0F48B6E01CD92DF1008A7F3D /* Komic.app */,
+				0F48B6F91CD92DF1008A7F3D /* Komic.xctest */,
+				0F48B7041CD92DF1008A7F3D /* Komic.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0F48B6E21CD92DF1008A7F3D /* Farewell */ = {
+		0F48B6E21CD92DF1008A7F3D /* Komic */ = {
 			isa = PBXGroup;
 			children = (
 				0F97FFAF1CF8CC8900924EA1 /* View Controllers */,
@@ -172,6 +172,7 @@
 				0F48B6E31CD92DF1008A7F3D /* Supporting Files */,
 				0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */,
 			);
+			name = Komic;
 			path = Farewell;
 			sourceTree = "<group>";
 		};
@@ -214,10 +215,10 @@
 				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
 				0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */,
 				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
-				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
-				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
 				0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */,
 				0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */,
+				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
+				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -260,16 +261,12 @@
 		C8541AA93D24A26F7D7DFD29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0F2826DE1D27503300A80782 /* HexColors.framework */,
-				0F35A7B01D274B2F0089AB4C /* TSMessageView.h */,
+				0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */,
 				0F35A7AE1D274AF70089AB4C /* PureLayout */,
-				0F35A7AC1D274AED0089AB4C /* TSMessages */,
-				0F35A7A81D274AAE0089AB4C /* HexColors.framework */,
-				0F35A7A91D274AAE0089AB4C /* TSMessages.framework */,
 				0F35A7A61D274A870089AB4C /* PureLayout.framework */,
-				1B68615D816A2E6299CDDA61 /* Pods_Farewell.framework */,
-				0BF4FF74F070D2583A343F34 /* Pods_FarewellTests.framework */,
-				8479EB7F75A9DABF272DF143 /* Pods_FarewellUITests.framework */,
+				3C161C70AEF7815A9115872D /* Pods_Komic.framework */,
+				608DF4B4E32CAF01E57B9441 /* Pods_KomicTests.framework */,
+				24693DFAC83C5D67D3DC5051 /* Pods_KomicUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,6 +280,12 @@
 				9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */,
 				74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */,
 				EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */,
+				0727F8069ED09BC4E95D15E7 /* Pods-Komic.debug.xcconfig */,
+				4624B0294B5570C830DE8279 /* Pods-Komic.release.xcconfig */,
+				269C89C67F7266DB4B53978A /* Pods-KomicTests.debug.xcconfig */,
+				6001AB888DF8AD236B621DBC /* Pods-KomicTests.release.xcconfig */,
+				1150A7450745D29371A8F61D /* Pods-KomicUITests.debug.xcconfig */,
+				7117B146DBCDBA67EE80B6F3 /* Pods-KomicUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -290,9 +293,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0F48B6DF1CD92DF1008A7F3D /* Farewell */ = {
+		0F48B6DF1CD92DF1008A7F3D /* Komic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F48B70D1CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "Farewell" */;
+			buildConfigurationList = 0F48B70D1CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "Komic" */;
 			buildPhases = (
 				E14B273B2FB9B9F19D6F5708 /* [CP] Check Pods Manifest.lock */,
 				0F48B6DC1CD92DF1008A7F3D /* Sources */,
@@ -305,14 +308,14 @@
 			);
 			dependencies = (
 			);
-			name = Farewell;
+			name = Komic;
 			productName = Farewell;
-			productReference = 0F48B6E01CD92DF1008A7F3D /* Farewell.app */;
+			productReference = 0F48B6E01CD92DF1008A7F3D /* Komic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0F48B6F81CD92DF1008A7F3D /* FarewellTests */ = {
+		0F48B6F81CD92DF1008A7F3D /* KomicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellTests" */;
+			buildConfigurationList = 0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicTests" */;
 			buildPhases = (
 				0E6E658D510E640614A16D3E /* [CP] Check Pods Manifest.lock */,
 				0F48B6F51CD92DF1008A7F3D /* Sources */,
@@ -326,14 +329,14 @@
 			dependencies = (
 				0F48B6FB1CD92DF1008A7F3D /* PBXTargetDependency */,
 			);
-			name = FarewellTests;
+			name = KomicTests;
 			productName = FarewellTests;
-			productReference = 0F48B6F91CD92DF1008A7F3D /* FarewellTests.xctest */;
+			productReference = 0F48B6F91CD92DF1008A7F3D /* Komic.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0F48B7031CD92DF1008A7F3D /* FarewellUITests */ = {
+		0F48B7031CD92DF1008A7F3D /* KomicUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellUITests" */;
+			buildConfigurationList = 0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicUITests" */;
 			buildPhases = (
 				AF61EE289955ECFC306F38AF /* [CP] Check Pods Manifest.lock */,
 				0F48B7001CD92DF1008A7F3D /* Sources */,
@@ -346,9 +349,9 @@
 			dependencies = (
 				0F48B7061CD92DF1008A7F3D /* PBXTargetDependency */,
 			);
-			name = FarewellUITests;
+			name = KomicUITests;
 			productName = FarewellUITests;
-			productReference = 0F48B7041CD92DF1008A7F3D /* FarewellUITests.xctest */;
+			productReference = 0F48B7041CD92DF1008A7F3D /* Komic.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -379,7 +382,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0F48B6DB1CD92DF1008A7F3D /* Build configuration list for PBXProject "Farewell" */;
+			buildConfigurationList = 0F48B6DB1CD92DF1008A7F3D /* Build configuration list for PBXProject "Komic" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -392,9 +395,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0F48B6DF1CD92DF1008A7F3D /* Farewell */,
-				0F48B6F81CD92DF1008A7F3D /* FarewellTests */,
-				0F48B7031CD92DF1008A7F3D /* FarewellUITests */,
+				0F48B6DF1CD92DF1008A7F3D /* Komic */,
+				0F48B6F81CD92DF1008A7F3D /* KomicTests */,
+				0F48B7031CD92DF1008A7F3D /* KomicUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -454,7 +457,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Farewell/Pods-Farewell-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komic/Pods-Komic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5A1F995369CF433C02272322 /* [CP] Embed Pods Frameworks */ = {
@@ -469,7 +472,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KomicTests/Pods-KomicTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6217E59F704705F086A2D03B /* [CP] Copy Pods Resources */ = {
@@ -484,7 +487,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Farewell/Pods-Farewell-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komic/Pods-Komic-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		85629A5D8870E0C350E9F26A /* [CP] Copy Pods Resources */ = {
@@ -499,7 +502,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KomicUITests/Pods-KomicUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AC18E8ADC95B759515FA6CA3 /* [CP] Copy Pods Resources */ = {
@@ -514,7 +517,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KomicTests/Pods-KomicTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF61EE289955ECFC306F38AF /* [CP] Check Pods Manifest.lock */ = {
@@ -602,12 +605,12 @@
 /* Begin PBXTargetDependency section */
 		0F48B6FB1CD92DF1008A7F3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0F48B6DF1CD92DF1008A7F3D /* Farewell */;
+			target = 0F48B6DF1CD92DF1008A7F3D /* Komic */;
 			targetProxy = 0F48B6FA1CD92DF1008A7F3D /* PBXContainerItemProxy */;
 		};
 		0F48B7061CD92DF1008A7F3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0F48B6DF1CD92DF1008A7F3D /* Farewell */;
+			target = 0F48B6DF1CD92DF1008A7F3D /* Komic */;
 			targetProxy = 0F48B7051CD92DF1008A7F3D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -726,7 +729,7 @@
 		};
 		0F48B70E1CD92DF1008A7F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C42F5537F3E2E204C531E3FA /* Pods-Farewell.debug.xcconfig */;
+			baseConfigurationReference = 0727F8069ED09BC4E95D15E7 /* Pods-Komic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -741,15 +744,15 @@
 				);
 				OTHER_LDFLAGS = "";
 				"OTHER_LDFLAGS[arch=*]" = "";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.komik;
+				PRODUCT_NAME = Komic;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		0F48B70F1CD92DF1008A7F3D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BA1F3FB434A0A24DE964C15 /* Pods-Farewell.release.xcconfig */;
+			baseConfigurationReference = 4624B0294B5570C830DE8279 /* Pods-Komic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -763,58 +766,58 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.farewell;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.komik;
+				PRODUCT_NAME = Komic;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		0F48B7111CD92DF1008A7F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25C59E781FBC25839042018E /* Pods-FarewellTests.debug.xcconfig */;
+			baseConfigurationReference = 269C89C67F7266DB4B53978A /* Pods-KomicTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FarewellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Farewell.app/Farewell";
+				PRODUCT_NAME = Komic;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Komic.app/Komic";
 			};
 			name = Debug;
 		};
 		0F48B7121CD92DF1008A7F3D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */;
+			baseConfigurationReference = 6001AB888DF8AD236B621DBC /* Pods-KomicTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FarewellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Farewell.app/Farewell";
+				PRODUCT_NAME = Komic;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Komic.app/Komic";
 			};
 			name = Release;
 		};
 		0F48B7141CD92DF1008A7F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */;
+			baseConfigurationReference = 1150A7450745D29371A8F61D /* Pods-KomicUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FarewellUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Komic;
 				TEST_TARGET_NAME = Farewell;
 			};
 			name = Debug;
 		};
 		0F48B7151CD92DF1008A7F3D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */;
+			baseConfigurationReference = 7117B146DBCDBA67EE80B6F3 /* Pods-KomicUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FarewellUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Komic;
 				TEST_TARGET_NAME = Farewell;
 			};
 			name = Release;
@@ -822,7 +825,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0F48B6DB1CD92DF1008A7F3D /* Build configuration list for PBXProject "Farewell" */ = {
+		0F48B6DB1CD92DF1008A7F3D /* Build configuration list for PBXProject "Komic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F48B70B1CD92DF1008A7F3D /* Debug */,
@@ -831,7 +834,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F48B70D1CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "Farewell" */ = {
+		0F48B70D1CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "Komic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F48B70E1CD92DF1008A7F3D /* Debug */,
@@ -840,7 +843,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellTests" */ = {
+		0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F48B7111CD92DF1008A7F3D /* Debug */,
@@ -849,7 +852,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "FarewellUITests" */ = {
+		0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F48B7141CD92DF1008A7F3D /* Debug */,

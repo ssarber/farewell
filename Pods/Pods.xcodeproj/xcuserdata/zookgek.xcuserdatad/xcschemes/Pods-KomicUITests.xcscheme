@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "09B7EE83AE41EC4488C34C02E8D672A9"
-               BuildableName = "Pods_Farewell.framework"
-               BlueprintName = "Pods-Farewell"
+               BlueprintIdentifier = "9BADA1A148D1D92D76FFF7017DD431E3"
+               BuildableName = "Pods_KomicUITests.framework"
+               BlueprintName = "Pods-KomicUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "09B7EE83AE41EC4488C34C02E8D672A9"
-            BuildableName = "Pods_Farewell.framework"
-            BlueprintName = "Pods-Farewell"
+            BlueprintIdentifier = "9BADA1A148D1D92D76FFF7017DD431E3"
+            BuildableName = "Pods_KomicUITests.framework"
+            BlueprintName = "Pods-KomicUITests"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

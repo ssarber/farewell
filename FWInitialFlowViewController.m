@@ -66,16 +66,17 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
 
 - (NSArray *)textArray {
     if (!_textArray) {
-        _textArray= @[@"You come to work in the morning. Settle into your chair and open Gmail. Read all the emails that don't have a thing to do with you.  Wow, it's lunchtime already?\
-                      Your friend from marketing stops by your desk and asks if you wanna grab some lunch. Should we get like a sandwich or like a soup?",
+        _textArray= @[@"You, dear Sir or Madam, are a comedian. You can write stand-up comedy big-time.\n\
+Dane Cook ain't got nothin' on you. What, no way?\n\
+Yes way. \
+Because you've got help now.",
                       
-                      @"So you get to Quiznos, order your pathetic sandwich, sit down. Start discussing what idiots your bosses are and how they're running the company into the ground. How basically the whole place is still afloat cuz of you two.\nBut you know what, if you're such a genius, why are you still working here?",
+@"Enlist a friend you think is funny to write it with you. You write a sentence (surely you \
+can write a sentence), then pass the turn to the friend and she (or he) will write a sentence or two. Before long, you'll have \
+yourself a masterpiece you can sell to Comedy Central(tm) or something. Trust me.",
 
-                      @"This is a game. It's not serious.\nWrite a farewell email to all your co-workers as if you were quitting your job TODAY.\nWrite a couple sentences to get started, then pass the turn to a friend or a random individual! Then read what they wrote and add a couple sentences again. See if you can have some fun.",
-                      
-                       @"The whole point is to have fun. When was the last time you had fun?",
-                      
-                      @"Ready to begin?"];
+@"Why should you trust me, you ask? Whatever.\n\
+Just tap the damn button."];
     }
     
     return _textArray;
@@ -117,7 +118,7 @@ NSString *const kFWUserHasSeenInitialFlowUserDefault = @"FWUserHasSeenInitialFlo
                                
                            } completion:^ (BOOL finished){
                                [UIView animateWithDuration:.75
-                                                     delay:2
+                                                     delay:3.5
                                                    options: UIViewAnimationOptionTransitionCrossDissolve
                                                 animations:^{
                                                     initialFlowFinishedBlock();

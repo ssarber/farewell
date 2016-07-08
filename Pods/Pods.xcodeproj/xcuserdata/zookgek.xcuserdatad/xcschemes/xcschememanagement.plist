@@ -4,17 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Farewell.xcscheme</key>
+		<key>Pods-Komic.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FarewellTests.xcscheme</key>
+		<key>Pods-KomicTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FarewellUITests.xcscheme</key>
+		<key>Pods-KomicUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>09B7EE83AE41EC4488C34C02E8D672A9</key>
+		<key>14DC7845237C9E0983D9665484BE1AAD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B67AB0AD8E512AB7C377E5A888B95E0</key>
+		<key>9BADA1A148D1D92D76FFF7017DD431E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73636CCA9EE81DB1F5AA37BE918115B3</key>
+		<key>AC20B592CA3FE3CEE6252DB531325EAE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0E1BD80BEF8BFF60FBB0DAFE601F0E4</key>
+		<key>EA4251B193F23B9AF23D9BF7409A6E22</key>
 		<dict>
 			<key>primary</key>
 			<true/>

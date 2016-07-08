@@ -13,7 +13,7 @@
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
 #import "UIImageView+Letters.h"
-#import "PureLayout.h"
+//#import "PureLayout.h"
 @import GameKit;
 
 NSString *const kFWUserHasSeenInitialTutorialUserDefault = @"FWUserHasSeenInitialTutorialUserDefault";
@@ -123,6 +123,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [[defaults objectForKey:kFWUserHasSeenInitialTutorialUserDefault] boolValue];
 }
+
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -231,7 +233,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                 self.writeButton.hidden = NO;
                 self.tutorialLabel.hidden = NO;                
                 [self.view bringSubviewToFront:self.tutorialLabel];
-                self.tutorialLabel.text = @"No emails. You should write one. Right now.";
+                self.tutorialLabel.text = @"No comedic masterprieces found. You should write one. Right now.";
             }
         }
     }];
@@ -245,8 +247,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (NSArray *)textArray {
     if (!_textArray) {
         _textArray = @[@"",
-                       @"You begin the email by writing the first two sentences.",
-                       @"Then you pass the turn to your co-writer.",
+                       @"You write a sentence or two on a topic that you select from a few we've prepared for you.",
+                       @"Then you pass the turn to your co-comedian.",
                        @"He (or she) will add his (or her) two sentences.",
                        @"Let's get the ball rolling, yeah?",
                        @"I can only show you the button at the bottom of this screen; you are the one that has to tap it."];
