@@ -43,13 +43,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    Might activate the keyboard on load
 //    [self.textInputField becomeFirstResponder];
     
-//    self.headerView.layer.shadowColor = [[UIColor blackColor] CGColor];
-//    self.headerView.layer.shadowOffset = CGSizeMake(0.0, 5);
-//    self.headerView.layer.shadowRadius = 6;
-//    self.headerView.layer.shadowOpacity = 0.5;    
-//    self.headerView.layer.masksToBounds = NO;
-    
-    
     self.mainTextField.layer.borderWidth = 0.5;
     self.mainTextField.layer.borderColor = [UIColor colorWithRed:(84/255.0) green:(222/255.0) blue:(167/255.0) alpha:1].CGColor;
     
@@ -174,7 +167,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
             
         } else {
             
-            NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I will sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", ];
+            NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", @"Seriously? That's what you came up with?", @"It's kinda funny, I guess." @"Dude (or dudette), that was pretty funny.", @"I thought it over and I think you're alright.", @"Dayumn!", @"Cue laughter.", @"Now go look in the mirror and say, \"Damn you're sexy.\"", @"George Carlin is spinning in his grave.", @"You've just made everyone's day better. Hahahaha.", @"No, you deent"];
+            
             NSUInteger randomIndex = arc4random() % [messagesArray count];
             NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
 
@@ -186,12 +180,17 @@ NSUInteger const kMaxAllowedCharacters = 100;
             AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
             [synthesizer speakUtterance:utterance];
             
+            self.statusLabel.alpha = 0;
+            
             self.statusLabel.text = randomMessage;
             
-            self.statusLabelBottom.constant = 50;
+            self.textInputFieldBottom.constant = 50;
             
-            [UIView animateWithDuration:1 animations:^{
+            [UIView animateWithDuration:1.5 animations:^{
+                self.statusLabel.alpha = 1;
+
                 [self.view setNeedsLayout];
+                [self.view layoutIfNeeded];
             }];
         }
     }];
@@ -527,11 +526,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    
     self.statusLabel.text = @"Your turn.";
     
-//    self.statusLabelTop.constant = -50;
+    // Shift everything up
+    self.textInputFieldBottom.constant = 240;
     
-//    [UIView animateWithDuration:1 animations:^{
-//        [self.view setNeedsLayout];
-//    }];
+    [UIView animateWithDuration:1 animations:^{
+        [self.view setNeedsLayout];
+    }];
     
     self.textInputField.hidden = NO;
     self.textInputField.enabled = YES;
@@ -550,9 +550,29 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSLog(@"SELF: %@", self);
     NSLog(@"TEXT FIELD: %@", self.mainTextField);
     
-    NSString *statusString = [NSString stringWithFormat:@"Go shorty, it's your turn."];
+    // Shift everything up
+    self.textInputFieldBottom.constant = 240;
     
-    self.statusLabel.text = statusString;
+    [UIView animateWithDuration:1 animations:^{
+        [self.view setNeedsLayout];
+    }];
+    
+    NSArray *messagesArray = @[@"Ah, it's you again.", @"Yo, dawg, you back?", @"Show me the funny.", @"Funny is you.",
+                               @"Don't let me down, ok?", @"Prepare to be seriously entertained.", @"Come on, the audience ain't got all day.", @"Hilarity is about to ensue.", @"I don't know if you can be funny, but you do look pretty funny."
+                               , @"Give it your best shot.", @"It's not you again, is it?", @"You. You. It's you.",@"Let's hear it.", @"Do whatchu gotta do."];
+    
+    NSUInteger randomIndex = arc4random() % [messagesArray count];
+    NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
+    
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
+    utterance.pitchMultiplier = .9;
+    //            utterance.rate = 2;
+    
+    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
+    [synthesizer speakUtterance:utterance];
+    
+    self.statusLabel.text = randomMessage;
     self.textInputField.hidden = NO;
     self.textInputField.enabled = YES;
     
@@ -590,10 +610,15 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     NSLog(@"MATCH: %@", match);
     
+    // Shift textfield down and stretch the text view
+    self.textInputFieldBottom.constant = 20;
+    
+    [UIView animateWithDuration:1 animations:^{
+        [self.view setNeedsLayout];
+    }];
+    
     self.textInputField.hidden = YES;
     self.characterCountLabel.hidden = YES;
-    
-    // [self.statusLabel autoSetDimension:ALDimensionHeight toSize:100];
     
     NSString *statusString;
     

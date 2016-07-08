@@ -118,7 +118,7 @@ Just tap the damn button."];
                                
                            } completion:^ (BOOL finished){
                                [UIView animateWithDuration:.75
-                                                     delay:3.5
+                                                     delay:4.5
                                                    options: UIViewAnimationOptionTransitionCrossDissolve
                                                 animations:^{
                                                     initialFlowFinishedBlock();
