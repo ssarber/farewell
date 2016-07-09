@@ -152,7 +152,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                 NSLog(@"MATCH: %@", match);
             }
             
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading emails."
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading this comedy routine."
                                                                            message:@"Check your Internet connection and try again."
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             
@@ -360,9 +360,9 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     if (section == FWGamesTableViewSectionMyTurn) {
         return @"My Turn";
     } else if (section == FWGamesTableViewSectionTheirTurn) {
-        return @"Co-writers' Turns";
+        return @"Co-comedian's Turns";
     } else {
-        return @"Completed Masterpieces";
+        return @"Completed Pieces";
     }
 }
 

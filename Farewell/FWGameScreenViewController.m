@@ -167,14 +167,14 @@ NSUInteger const kMaxAllowedCharacters = 100;
             
         } else {
             
-            NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", @"Seriously? That's what you came up with?", @"It's kinda funny, I guess." @"Dude (or dudette), that was pretty funny.", @"I thought it over and I think you're alright.", @"Dayumn!", @"Cue laughter.", @"Now go look in the mirror and say, \"Damn you're sexy.\"", @"George Carlin is spinning in his grave.", @"You've just made everyone's day better. Hahahaha.", @"No, you deent"];
+            NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", @"Seriously? That's what you came up with?", @"It's kinda funny, I guess.", @"Dude (or dudette), that was pretty funny.", @"I thought it over and I think you're alright.", @"Dayumn!", @"Cue laughter.", @"Now go look in the mirror and say, \"Damn you're sexy.\"", @"George Carlin is spinning in his grave right now.", @"You've just made everyone's day better. Hahahaha.", @"No, you deent", @"Woah, dude, you're killin' it right now.", @"I say, goddamn!", @"Hohohohoh, I daresay.", @"Well, it is what it is you know."];
             
             NSUInteger randomIndex = arc4random() % [messagesArray count];
             NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
 
             AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
             utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
-            utterance.pitchMultiplier = .9;
+            utterance.pitchMultiplier = 1.3;
 //            utterance.rate = 2;
             
             AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
@@ -220,7 +220,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     alert.popoverPresentationController.sourceView = self.view;
     alert.popoverPresentationController.sourceRect = self.view.bounds;
     
-    UIAlertAction* completeAction = [UIAlertAction actionWithTitle:@"Complete Email" style:UIAlertActionStyleDefault
+    UIAlertAction* completeAction = [UIAlertAction actionWithTitle:@"Complete This Routine" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self confirmQuit];
                                                           }];
@@ -247,6 +247,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     // Provide complete option to open or matching games where user has taken a turn
     } else if (self.match.status == GKTurnBasedMatchStatusOpen || (self.match.status == GKTurnBasedMatchStatusMatching && [self.match.participants objectAtIndex:0].lastTurnDate != nil)) {
         [alert addAction:completeAction];
+        [alert addAction:shareAction];
     } else if (self.match.status == GKTurnBasedMatchStatusEnded) {
         [alert addAction:shareAction];
         [alert addAction:removeAction];
@@ -262,7 +263,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)confirmQuit
 {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Complete this email?"
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Complete this comedy piece?"
                                                                     message:@"This will end the game."
                                                              preferredStyle:UIAlertControllerStyleAlert];
     
@@ -314,7 +315,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
         // But since only two players are currently supported, it will end the match.
         
         for (GKTurnBasedParticipant *participant in self.match.participants) {
-            participant.matchOutcome = GKTurnBasedMatchOutcomeTied;
+            participant.matchOutcome = GKTurnBasedMatchOutcomeWon;
         }
         
         [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
@@ -558,8 +559,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
     }];
     
     NSArray *messagesArray = @[@"Ah, it's you again.", @"Yo, dawg, you back?", @"Show me the funny.", @"Funny is you.",
-                               @"Don't let me down, ok?", @"Prepare to be seriously entertained.", @"Come on, the audience ain't got all day.", @"Hilarity is about to ensue.", @"I don't know if you can be funny, but you do look pretty funny."
-                               , @"Give it your best shot.", @"It's not you again, is it?", @"You. You. It's you.",@"Let's hear it.", @"Do whatchu gotta do."];
+                               @"Don't let me down, ok?", @"Prepare to be seriously entertained.", @"Come on, the audience ain't got all day.", @"Hilarity is about to ensue.", @"I don't know if you can be funny, but you look pretty funny."
+                               , @"Give it your best shot, son.", @"It's not you again, is it?", @"You. You. It's you.",@"Let's hear it.", @"Do whatchu gotta do.", @"Come on, dude, kill it."];
     
     NSUInteger randomIndex = arc4random() % [messagesArray count];
     NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
@@ -625,7 +626,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     if (match.status == GKTurnBasedMatchStatusEnded) {
         
         NSLog(@"Match ended: %@", match.description);
-        statusString = @"One of the writers marked this email complete. Share it!";
+        statusString = @"One of the writers marked this comedy piece complete. Share it!";
         self.characterCountLabel.hidden = YES;
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
