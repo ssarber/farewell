@@ -405,6 +405,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     }
     NSUInteger index = 0;
     for (GKTurnBasedParticipant *p in match.participants) {
+        NSLog(@"PARTICIPANT: %@", p);
         
             // If we're matching with a random player, but this player
             // has not taken a turn yet
@@ -416,49 +417,63 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             // Load and set players' photos
             [p.player loadPhotoForSize:GKPhotoSizeSmall withCompletionHandler:^(UIImage *photo, NSError *error) {
                 
+                NSLog(@"photo: %@", photo);
+                
                 // If awaing an auto-matched user, no player id yet, but this will be the current
                 // participant, so set a question mark image on the left
                 if (match.status == GKTurnBasedParticipantStatusMatching) {
                     UIImage *questionMarkImage = [UIImage imageNamed:@"question-mark-icon.png"];
                     [cell.playerOnePhoto setImage:questionMarkImage];
-                }
-                
-                // Handle case for current participant -- photo on the left
-                if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
-                    if (photo != nil) {
-                        [cell.playerOnePhoto setImage:photo];
-                    } else {
-                        NSString *userInitials;
-                        if ([self isLocalParticipant:p]) {
-                            userInitials = @"M E";
-                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                    
+                    // Handle case for local participant -- photo or initials on the right
+                    if ([self isLocalParticipant:p]) {
+                        if (photo != nil) {
+                            [cell.playerTwoPhoto setImage:photo];
+                            
                         } else {
-                            userInitials = p.player.displayName;
-                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                            NSString *userInitials;
+                            userInitials = @"M E";
+                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
                         }
                     }
+                }
+                
+                if (match.status == GKTurnBasedMatchStatusOpen) {
                     
-                } else { // if not this player's turn, set photo to the right
-            
-                    if (photo != nil) {
-                        [cell.playerTwoPhoto setImage:photo];
-                    } else {
-                        NSString *userInitials;
-                        // If local player, set initials to "ME", since the displayName is actually "Me"
-                        if ([self isLocalParticipant:p]) {
-                            userInitials = @"M E";
-                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
+                    // Handle case for current participant -- photo on the left
+                    if ([p.player.playerID isEqual:match.currentParticipant.player.playerID]) {
+                        if (photo != nil) {
+                            [cell.playerOnePhoto setImage:photo];
                         } else {
-                            userInitials = p.player.displayName;
-                            if (userInitials) {
-                                [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
-                                
+                            NSString *userInitials;
+                            if ([self isLocalParticipant:p]) {
+                                userInitials = @"M E";
+                                [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
+                            } else {
+                                userInitials = p.player.displayName;
+                                [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor greenColor] circular:YES];
                             }
                         }
-                }
-                    
-                // Completed Emails section
-                if (match.status == GKTurnBasedMatchStatusEnded) {
+                    } else { // if not this player's turn, set photo to the right
+                
+                        if (photo != nil) {
+                            [cell.playerTwoPhoto setImage:photo];
+                        } else {
+                            NSString *userInitials;
+                            // If local player, set initials to "ME", since the displayName is actually "Me"
+                            if ([self isLocalParticipant:p]) {
+                                userInitials = @"M E";
+                                [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
+                            } else {
+                                userInitials = p.player.displayName;
+                                if (userInitials) {
+                                    [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
+                                    
+                                }
+                            }
+                        }
+                    }
+                } else if (match.status == GKTurnBasedMatchStatusEnded) {  // Completed Emails section
                     if (photo != nil) {
 
                         if ([self isLocalParticipant:p]) {
@@ -471,14 +486,13 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
                         // If local player, set initials to "ME", since the displayName is actually "Me"
                         if ([self isLocalParticipant:p]) {
                             userInitials = @"M E";
-                            [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
+                            [cell.playerOnePhoto setImageWithString:userInitials color:[UIColor redColor] circular:YES];
                         } else {
                             userInitials = p.player.displayName;
                             [cell.playerTwoPhoto setImageWithString:userInitials color:[UIColor blueColor] circular:YES];
                         }
                     }
                 }
-            }
         }];
         index = index + 1;
     }

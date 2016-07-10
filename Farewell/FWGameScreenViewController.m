@@ -126,6 +126,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
  
     NSString *sendString = [@[self.mainTextField.text, newGameString] componentsJoinedByString:@" "];
     
+    NSLog(@"SEND STRING: %@", sendString);
+    
     NSData *data = [sendString dataUsingEncoding:NSUTF8StringEncoding];
     
     self.mainTextField.text = sendString;
@@ -220,7 +222,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     alert.popoverPresentationController.sourceView = self.view;
     alert.popoverPresentationController.sourceRect = self.view.bounds;
     
-    UIAlertAction* completeAction = [UIAlertAction actionWithTitle:@"Complete This Routine" style:UIAlertActionStyleDefault
+    UIAlertAction* completeAction = [UIAlertAction actionWithTitle:@"Bow Out and Leave" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self confirmQuit];
                                                           }];
@@ -342,11 +344,11 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 - (void)confirmRemoval
 {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Remove this email forever?"
-                                                                   message:@"It will also disappear from all your co-workers' and your boss's computers. Nice!"
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Delete this beautiful comedy piece from existence?"
+                                                                   message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault
+    UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Yeah" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self removeFinishedGame];
                                                           }];
@@ -647,6 +649,12 @@ NSUInteger const kMaxAllowedCharacters = 100;
     
     __weak typeof(self) weakSelf = self;
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
+        
+        if (error) {
+            NSLog(@"Error loading match data: %@", error.localizedDescription);
+        }
+        NSLog(@"MATCH DATA: %@", [NSString stringWithUTF8String:[matchData bytes]]);
+        
         if ([matchData bytes]) {
             NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
             dispatch_async(dispatch_get_main_queue(), ^{
