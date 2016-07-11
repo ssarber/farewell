@@ -146,26 +146,27 @@ NSUInteger const kMaxAllowedCharacters = 100;
 //    [currentMatch setLocalizableMessageWithKey:@"Yo, it's your turn to add 2 sentences!"
 //                                     arguments:nil];
     
+    NSLog(@"CURRENT MATCH: %@", currentMatch);
     [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault
                                     matchData:data completionHandler:^(NSError *error) {
         if (error) {
-            NSLog(@"Got error: %@", error.localizedDescription);
+            NSLog(@"Error ending turn: %@", error.localizedDescription);
             self.statusLabel.text = @"Oops, something went wrong. Try that again.";
 
-#warning Remove before shipping
-            
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error sending turn."
-                                                                           message:error.localizedDescription
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {
-                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
-                                                                  }];
-            
-            [alert addAction:defaultAction];
-            
-            [self presentViewController:alert animated:YES completion:nil];
+//#warning Remove before shipping
+//            
+//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error sending turn."
+//                                                                           message:error.localizedDescription
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {
+//                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
+//                                                                  }];
+//            
+//            [alert addAction:defaultAction];
+//            
+//            [self presentViewController:alert animated:YES completion:nil];
             
         } else {
             
@@ -324,13 +325,13 @@ NSUInteger const kMaxAllowedCharacters = 100;
             if (error) {
                 NSLog(@"Error quitting game: %@", error.localizedDescription);
                 
-#warning Remove before shipping
-                
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error completing email:"
-                                                                               message:error.localizedDescription
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                [self presentViewController:alert animated:YES completion:nil];
+//#warning Remove before shipping
+//                
+//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error completing email:"
+//                                                                               message:error.localizedDescription
+//                                                                        preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                [self presentViewController:alert animated:YES completion:nil];
             }
         }];
     }
@@ -583,16 +584,19 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.characterCountLabel.text = @"2 sentences remaining.";
     
     __weak typeof(self) weakSelf = self;
+    
+    NSLog(@"Match: %@", match.description);
 
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
         if ([matchData bytes]) {
-            NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
+            
+            NSString *gameTextSoFar = [[NSString alloc] initWithData:matchData encoding:NSUTF8StringEncoding];
+            NSLog(@"gameTextSoFar: %@", gameTextSoFar);
+            //NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
             
             // Update the UI on the main thread
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.mainTextField.text = gameTextSoFar;
-            
-                NSLog(@"gameTextSoFar: %@", gameTextSoFar);
             });
         } else {
             

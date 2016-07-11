@@ -144,26 +144,28 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
         self.tutorialLabel.hidden = YES;
         
+        NSLog(@"AAAAA, matchs: %@", matches);
+        
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
             
-            for (GKTurnBasedMatch  *match in matches) {
-                NSLog(@"reloadTableView \n");
-                NSLog(@"MATCH: %@", match);
-            }
-            
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading this comedy routine."
-                                                                           message:@"Check your Internet connection and try again."
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {
-                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
-                                                                  }];
-            
-            [alert addAction:defaultAction];
-            
-            [self presentViewController:alert animated:YES completion:nil];
+//            for (GKTurnBasedMatch  *match in matches) {
+//                NSLog(@"reloadTableView \n");
+//                NSLog(@"MATCH: %@", match);
+//            }
+//            
+//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading this comedy routine."
+//                                                                           message:@"Check your Internet connection and try again."
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {
+//                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
+//                                                                  }];
+//            
+//            [alert addAction:defaultAction];
+//            
+//            [self presentViewController:alert animated:YES completion:nil];
 
         }
         
@@ -395,7 +397,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     cell.delegate = self;
     
     if ([match.matchData length] > 0) {
-        NSString *storyString = [NSString stringWithUTF8String:[match.matchData bytes]];
+        NSString *storyString = [[NSString alloc] initWithData:match.matchData encoding:NSUTF8StringEncoding];
         cell.storyText.text = storyString;
         [self scrolllTextViewToBottom:cell.storyText];
         // cell.storyText.textContainer.maximumNumberOfLines = 2;
