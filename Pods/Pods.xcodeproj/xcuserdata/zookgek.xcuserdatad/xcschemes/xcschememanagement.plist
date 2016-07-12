@@ -4,17 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AMSmoothAlert.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Komic.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-KomicTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-KomicUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>14DC7845237C9E0983D9665484BE1AAD</key>
+		<key>38C1E017813E26D237DE62553831C387</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9BADA1A148D1D92D76FFF7017DD431E3</key>
+		<key>D1ECF7F83F96A442330A9E46A1D33854</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC20B592CA3FE3CEE6252DB531325EAE</key>
+		<key>D898B8B2CE9E31045C3253C6EE270C9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA4251B193F23B9AF23D9BF7409A6E22</key>
+		<key>DE93392C80D45AE8768EDBA0C493C1A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,12 +1,18 @@
 PODS:
+  - AMSmoothAlert (1.1):
+    - GPUImage
+  - GPUImage (0.1.7)
   - PureLayout (3.0.1)
 
 DEPENDENCIES:
+  - AMSmoothAlert (~> 1.0)
   - PureLayout
 
 SPEC CHECKSUMS:
+  AMSmoothAlert: 108cf0fc3eea9256ccfdcd9deaa283999ac1e47e
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
 
-PODFILE CHECKSUM: 6e5f5cf5d5a5d4d073d12b21942e1425f9fa6a26
+PODFILE CHECKSUM: 227273480b68908ae34ed990b1d57e82c244cbe9
 
 COCOAPODS: 1.0.1

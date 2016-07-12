@@ -3,20 +3,21 @@
 
 target 'Komic' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
-  use_frameworks!
+#  use_frameworks!
 
   # Pods for Farewell
   pod 'PureLayout'
+  pod 'AMSmoothAlert', '~> 1.0'
 #  pod 'TSMessages'
 
-  target 'KomicTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'KomicUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+#  target 'KomicTests' do
+#    inherit! :search_paths
+#    # Pods for testing
+#  end
+#
+#  target 'KomicUITests' do
+#    inherit! :search_paths
+#    # Pods for testing
+#  end
 
 end

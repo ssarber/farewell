@@ -1,6 +1,0 @@
-framework module Pods_Komic {
-  umbrella header "Pods-Komic-umbrella.h"
-
-  export *
-  module * { export * }
-}
