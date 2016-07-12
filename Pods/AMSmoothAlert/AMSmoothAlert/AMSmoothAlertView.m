@@ -243,7 +243,7 @@
     [self setColorForButton:color onButton:_defaultButton withType:type];
     
     //default button end setup
-    [_defaultButton setTitle:@"OK !" forState:UIControlStateNormal];
+    [_defaultButton setTitle:@"Got it." forState:UIControlStateNormal];
     _defaultButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0f];
 	[_defaultButton addTarget:self action:@selector(handleButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
     [_defaultButton.layer setCornerRadius:20.0f];

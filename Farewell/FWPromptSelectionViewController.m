@@ -29,15 +29,14 @@
     
     self.tableView.rowHeight = 120;
     
-//    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Congrats !"
-//                                                               andText:@"You've just displayed this awesome alert view !"
-//                                                          forAlertType:AlertSuccess];
-//    
-      AMSmoothAlertView *alert = [[AMSmoothAlertView alloc]initDropAlertWithTitle:@"Congrats !" andText:@"You've just displayed this awesome alert view !" andCancelButton:NO forAlertType:AlertSuccess];
-    
-    [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:35.0f]];
-    
-    [alert show];
+    if ([self.gamesVC hasSeenInitialTutorial] == NO) {
+        
+        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Hey! Yeah, you!" andText:@"Select a topic, invite your Game Center friend or get matched with a random individual." andCancelButton:NO forAlertType:AlertInfo];
+        [alert setCornerRadius:10];
+        [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
+        
+        [alert show];
+    }
 }
 
 
@@ -97,6 +96,10 @@
     [defaults synchronize];
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    // User has seen the initial flow, don't show again
+    [defaults setObject:[NSNumber numberWithBool: YES] forKey:@"FWUserHasSeenInitialTutorialUserDefault"];
+    [defaults synchronize];
     
     [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self.gamesVC];
 }

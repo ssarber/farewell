@@ -14,4 +14,6 @@
 - (void)layoutMatch:(GKTurnBasedMatch *)match;
 - (void)receiveEndGame:(GKTurnBasedMatch *)match;
 
+- (BOOL)hasSeenInitialTutorial;
+
 @end

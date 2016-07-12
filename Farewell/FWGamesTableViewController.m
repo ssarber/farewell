@@ -13,7 +13,8 @@
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
 #import "UIImageView+Letters.h"
-//#import "PureLayout.h"
+#import "AMSmoothAlertView.h"
+#import "AMSmoothAlertConstants.h"
 @import GameKit;
 
 NSString *const kFWUserHasSeenInitialTutorialUserDefault = @"FWUserHasSeenInitialTutorialUserDefault";
@@ -102,6 +103,16 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
     self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
     
+    if ([self hasSeenInitialTutorial] == NO) {
+        
+        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!" andText:@"Komic uses Game Center. You can invite friends through Game Center app." andCancelButton:NO forAlertType:AlertInfo];
+        
+        [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
+        [alert setCornerRadius:10];
+        
+        [alert show];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
                                                  name:@"StateOfMatchesHasChangedNotification" object:nil];
     
@@ -182,12 +193,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             if (self.textLabelButton) {
                 [self.textLabelButton removeFromSuperview];
             };
-            
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                
-            // User has seen the initial flow, don't show again
-            [defaults setObject:[NSNumber numberWithBool: YES] forKey:kFWUserHasSeenInitialTutorialUserDefault];
-            [defaults synchronize];
 
             NSMutableArray *myMatches = [NSMutableArray array];
             NSMutableArray *otherMatches = [NSMutableArray array];
@@ -532,10 +537,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 - (void)enterNewGame:(GKTurnBasedMatch *)match
 {
     NSLog(@"======== Entering new game ===========");
-
-//    if ([self.gameVC isPresented] == NO) {
-//        [self presentViewController:self.gameVC animated:YES completion:nil];
-//    }
 
     // Finish with the initial tutorial
     [self.tutorialLabel removeFromSuperview];
