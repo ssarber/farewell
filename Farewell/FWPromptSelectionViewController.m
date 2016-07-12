@@ -8,7 +8,8 @@
 
 #import "FWPromptSelectionViewController.h"
 #import "FWGameCenterHelper.h"
-
+#import "AMSmoothAlertView.h"
+#import "AMSmoothAlertConstants.h"
 
 @interface FWPromptSelectionViewController  () <UITableViewDelegate, UITableViewDataSource>
 
@@ -27,6 +28,16 @@
     self.tableView.dataSource = self;
     
     self.tableView.rowHeight = 120;
+    
+//    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Congrats !"
+//                                                               andText:@"You've just displayed this awesome alert view !"
+//                                                          forAlertType:AlertSuccess];
+//    
+      AMSmoothAlertView *alert = [[AMSmoothAlertView alloc]initDropAlertWithTitle:@"Congrats !" andText:@"You've just displayed this awesome alert view !" andCancelButton:NO forAlertType:AlertSuccess];
+    
+    [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:35.0f]];
+    
+    [alert show];
 }
 
 
