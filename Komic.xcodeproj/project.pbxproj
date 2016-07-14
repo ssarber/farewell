@@ -24,6 +24,9 @@
 		0F48B7181CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
 		0F48B7191CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
 		0F48B71A1CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
+		0F6507AE1D3720310097EA9D /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507AD1D3720310097EA9D /* libGPUImage.a */; };
+		0F6507B11D3720610097EA9D /* libAMSmoothAlert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */; };
+		0F6507B21D3720610097EA9D /* libPureLayout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507B01D3720610097EA9D /* libPureLayout.a */; };
 		0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
 		0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
 		0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
@@ -83,6 +86,9 @@
 		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGameCenterHelper.h; sourceTree = "<group>"; };
 		0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGameCenterHelper.m; sourceTree = "<group>"; };
+		0F6507AD1D3720310097EA9D /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "../../Library/Developer/Xcode/DerivedData/Komic-bhraznahspgwfbaipykmivhpqbzf/Build/Products/Debug-iphoneos/GPUImage/libGPUImage.a"; sourceTree = "<group>"; };
+		0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAMSmoothAlert.a; path = "Pods/../build/Release-iphoneos/AMSmoothAlert/libAMSmoothAlert.a"; sourceTree = "<group>"; };
+		0F6507B01D3720610097EA9D /* libPureLayout.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPureLayout.a; path = "Pods/../build/Release-iphoneos/PureLayout/libPureLayout.a"; sourceTree = "<group>"; };
 		0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMatchCellTableViewCell.h; sourceTree = "<group>"; };
 		0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMatchCellTableViewCell.m; sourceTree = "<group>"; };
 		0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSegue.h; sourceTree = "<group>"; };
@@ -109,6 +115,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F6507B11D3720610097EA9D /* libAMSmoothAlert.a in Frameworks */,
+				0F6507B21D3720610097EA9D /* libPureLayout.a in Frameworks */,
+				0F6507AE1D3720310097EA9D /* libGPUImage.a in Frameworks */,
 				0FBE5BB31D2F2DD7007322B6 /* GameKit.framework in Frameworks */,
 				544619A51514B6159BEED65C /* libPods-Komic.a in Frameworks */,
 			);
@@ -253,6 +262,9 @@
 		C8541AA93D24A26F7D7DFD29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */,
+				0F6507B01D3720610097EA9D /* libPureLayout.a */,
+				0F6507AD1D3720310097EA9D /* libGPUImage.a */,
 				0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */,
 				0F35A7AE1D274AF70089AB4C /* PureLayout */,
 				0F35A7A61D274A870089AB4C /* PureLayout.framework */,
@@ -730,6 +742,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Farewell",
+					"$(PROJECT_DIR)/build/Release-iphoneos/AMSmoothAlert",
+					"$(PROJECT_DIR)/build/Release-iphoneos/PureLayout",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.komik;
@@ -754,6 +768,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Farewell",
+					"$(PROJECT_DIR)/build/Release-iphoneos/AMSmoothAlert",
+					"$(PROJECT_DIR)/build/Release-iphoneos/PureLayout",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "";

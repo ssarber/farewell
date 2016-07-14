@@ -32,7 +32,7 @@
     
     __weak GKLocalPlayer *weakLocalPlayer = localPlayer;
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error) {
-        if (viewController) {
+        if (viewController != nil) {
             [authenticationPresentingVC presentViewController:viewController animated:YES completion:^{
                 _userAuthenticated = YES;
                 [weakLocalPlayer unregisterAllListeners];
@@ -45,9 +45,13 @@
             [weakLocalPlayer unregisterAllListeners];
             [weakLocalPlayer registerListener:self];
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UnblockUI" object:self];
+            
         } else {
             _userAuthenticated = NO;
             NSLog(@"Error authenticating local user: %@", error);
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"BlockUI" object:self];
             
         }
         

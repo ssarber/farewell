@@ -64,7 +64,7 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     [[FWGameCenterHelper sharedInstance] authenticateLocalUserFromController:self];
     
     [FWGameCenterHelper sharedInstance].delegate = self;
-    
+
     self.initialTableViewLoad = YES;
     
     self.writeButton.hidden = YES;
@@ -103,29 +103,49 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     
     self.gameVC = [storyboard instantiateViewControllerWithIdentifier:@"FWGameScreenViewControllerID"];
     
-    if ([self hasSeenInitialTutorial] == NO) {
-        
-        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!" andText:@"Komic uses Game Center. You can invite friends through Game Center app." andCancelButton:NO forAlertType:AlertInfo];
-        
-        [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
-        [alert setCornerRadius:10];
-        
-        [alert show];
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
                                                  name:@"StateOfMatchesHasChangedNotification" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView)
                                                  name:@"ReceivedTurnEventNotification" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(blockUI)
+                                                 name:@"BlockUI" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unblockUI)
+                                                 name:@"UnblockUI" object:nil];
 }
 
+
+- (void)blockUI
+{
+    self.tutorialLabel.hidden = NO;
+    self.tutorialLabel.text = @"Yo, Komic needs Game Center to work ¯\\_(ツ)_/¯. C'mon, look for the Game Center app on your phone and log in.";
+    self.textLabelButton.enabled = NO;
+    self.writeButton.hidden = YES;
+    self.tableView.hidden = YES;
+}
+
+
+- (void)unblockUI
+{
+    self.tutorialLabel.text = @"Welcome.";
+    self.textLabelButton.enabled = YES;
+    self.writeButton.hidden = NO;
+    self.tableView.hidden = NO;
+    [self reloadTableView];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self.tableView reloadData];
+    if ([FWGameCenterHelper sharedInstance].userAuthenticated == NO) {
+        [self blockUI];
+
+    } else {
+        [self.tableView reloadData];
+    }
 }
 
 
@@ -225,22 +245,28 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             
         } else { // If no matches
             
-            // Set up tutorial if user hasn't seen one already
-            if (![self hasSeenInitialTutorial]) {
-                self.tutorialLabel.hidden = NO;
-                self.tutorialLabel.text = @"The rules are simple.";
-                [self.view bringSubviewToFront:self.tutorialLabel];
-                [self.view bringSubviewToFront:self.textLabelButton];
-                
-                self.headerView.hidden = YES;
-                self.writeButton.hidden = YES;
+            if ([FWGameCenterHelper sharedInstance].userAuthenticated == NO) {
+                [self blockUI];
             } else {
-                // Don't hide the write button is user has seen the tutorial but deleted all the matches
-                // Use tutorial label to message the user to start a new game
-                self.writeButton.hidden = NO;
-                self.tutorialLabel.hidden = NO;                
-                [self.view bringSubviewToFront:self.tutorialLabel];
-                self.tutorialLabel.text = @"No comedic masterprieces found. You should write one. Right now.";
+                [self unblockUI];
+                
+                // Set up tutorial if user hasn't seen one already
+                if (![self hasSeenInitialTutorial]) {
+                    self.tutorialLabel.hidden = NO;
+                    self.tutorialLabel.text = @"The rules are simple.";
+                    [self.view bringSubviewToFront:self.tutorialLabel];
+                    [self.view bringSubviewToFront:self.textLabelButton];
+                    
+                    self.headerView.hidden = YES;
+                    self.writeButton.hidden = YES;
+                } else {
+                    // Don't hide the write button is user has seen the tutorial but deleted all the matches
+                    // Use tutorial label to message the user to start a new game
+                    self.writeButton.hidden = NO;
+                    self.tutorialLabel.hidden = NO;
+                    [self.view bringSubviewToFront:self.tutorialLabel];
+                    self.tutorialLabel.text = @"No comedic masterprieces found. You should write one. Right now.";
+                }
             }
         }
     }];
