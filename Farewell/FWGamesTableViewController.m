@@ -248,7 +248,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             if ([FWGameCenterHelper sharedInstance].userAuthenticated == NO) {
                 [self blockUI];
             } else {
-                [self unblockUI];
                 
                 // Set up tutorial if user hasn't seen one already
                 if (![self hasSeenInitialTutorial]) {
