@@ -136,7 +136,6 @@
         if (participant.matchOutcome == GKTurnBasedMatchOutcomeNone) {
             [nextParticipants addObject:participant];
         }
-        
     }
     
     NSLog(@"CURRENT MATCH: %@", currentMatch);
@@ -479,7 +478,9 @@
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
     utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
     utterance.pitchMultiplier = .9;
-    //            utterance.rate = 2;
+    
+    // Uncomment if you want to mess with the rate
+    // utterance.rate = 2;
     
     AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
     [synthesizer speakUtterance:utterance];
@@ -500,7 +501,6 @@
             
             NSString *gameTextSoFar = [[NSString alloc] initWithData:matchData encoding:NSUTF8StringEncoding];
             NSLog(@"gameTextSoFar: %@", gameTextSoFar);
-            //NSString *gameTextSoFar = [NSString stringWithUTF8String:[matchData bytes]];
             
             // Update the UI on the main thread
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -544,7 +544,7 @@
         self.characterCountLabel.hidden = YES;
     } else {
         NSString *playerName = match.currentParticipant.player.displayName;
-        //NSUInteger playerNum = [match.participants indexOfObject:match.currentParticipant] + 1;
+        
         statusString = playerName? [NSString stringWithFormat:@"\n\n%@'s turn.", playerName] :
             [NSString stringWithFormat: @"\n\nWaiting to be matched with a random individual."];
     }
