@@ -35,7 +35,7 @@
 
 - (void)findMatchWithMinPlayers:(NSUInteger)minPlayers
                      maxPlayers:(NSUInteger)maxPlayers
-             showExistingMatches:(BOOL)show
+            showExistingMatches:(BOOL)show
                  viewController:(UIViewController *)viewController;
 
 - (void)loadAMatch:(GKTurnBasedMatch *)match;

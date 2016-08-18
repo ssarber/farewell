@@ -20,8 +20,8 @@
 NSString *const kFWUserHasSeenInitialTutorialUserDefault = @"FWUserHasSeenInitialTutorialUserDefault";
 
 typedef NS_ENUM(NSInteger, FWGamesTableViewSection) {
-    FWGamesTableViewSectionMyTurn   = 0,
-    FWGamesTableViewSectionTheirTurn   = 1,
+    FWGamesTableViewSectionMyTurn     = 0,
+    FWGamesTableViewSectionTheirTurn  = 1,
     FWGamesTableViewSectionGameEnded  = 2
 };
 
@@ -78,8 +78,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     self.headerView.layer.shadowOpacity = 0.5;
     
     self.headerView.layer.masksToBounds = NO;
-    
-//    self.writeButton.tintColor = self.view.tintColor;
     
     self.writeButton.tintColor = [UIColor colorWithRed:255.0f/255.0f
                                                  green:8.0f/255.0f
@@ -175,29 +173,8 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
     [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
         self.tutorialLabel.hidden = YES;
         
-        NSLog(@"AAAAA, matchs: %@", matches);
-        
         if (error) {
             NSLog(@"Error loading matches: %@", error.localizedDescription);
-            
-//            for (GKTurnBasedMatch  *match in matches) {
-//                NSLog(@"reloadTableView \n");
-//                NSLog(@"MATCH: %@", match);
-//            }
-//            
-//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error loading this comedy routine."
-//                                                                           message:@"Check your Internet connection and try again."
-//                                                                    preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                                  handler:^(UIAlertAction * action) {
-//                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
-//                                                                  }];
-//            
-//            [alert addAction:defaultAction];
-//            
-//            [self presentViewController:alert animated:YES completion:nil];
-
         }
         
         if (matches) {
@@ -206,7 +183,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             self.writeButton.hidden = NO;
             
             if (self.tutorialLabel) {
-//                [self.tutorialLabel removeFromSuperview];
                 self.tutorialLabel.hidden = YES;
             };
             
@@ -237,7 +213,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
             }
             self.allMyMatches = @[myMatches, otherMatches, endedMatches];
             for (GKTurnBasedMatch *myMatch in [self.allMyMatches objectAtIndex:0]){
-                NSString *dataString = [[NSString alloc] initWithData:myMatch.matchData encoding:NSUTF8StringEncoding];
                 NSLog(@"\n\nMy Match: %@", myMatch.description);
             }
             
@@ -367,8 +342,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    
-//    header.backgroundView.backgroundColor = [UIColor clearColor];
 
     header.textLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:23];
     CGRect headerFrame = header.frame;
@@ -430,7 +403,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
         NSString *storyString = [[NSString alloc] initWithData:match.matchData encoding:NSUTF8StringEncoding];
         cell.storyText.text = storyString;
         [self scrolllTextViewToBottom:cell.storyText];
-        // cell.storyText.textContainer.maximumNumberOfLines = 2;
         
     } else {
         cell.storyText.text = @"Awaiting your turn!";
@@ -662,7 +634,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"toPromptSelection"]) {

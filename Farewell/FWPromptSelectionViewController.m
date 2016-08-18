@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -31,7 +30,11 @@
     
     if ([self.gamesVC hasSeenInitialTutorial] == NO) {
         
-        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Hey! Yeah, you!" andText:@"Select a topic, invite your Game Center friend or get matched with a random individual." andCancelButton:NO forAlertType:AlertInfo];
+        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!"
+                                                                             andText:@"Select a topic, invite your Game Center friend or get matched with a random individual."
+                                                                     andCancelButton:NO
+                                                                        forAlertType:AlertInfo
+                                                                         buttonTitle:@"OK!"];
         [alert setCornerRadius:10];
         [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
         
@@ -101,6 +104,18 @@
     [defaults setObject:[NSNumber numberWithBool: YES] forKey:@"FWUserHasSeenInitialTutorialUserDefault"];
     [defaults synchronize];
     
+    
+    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!"
+                                                                         andText:@"If you select Auto-match, whoever starts the game first gets to choose the topic. Keeps things interesting!"
+                                                                 andCancelButton:NO
+                                                                    forAlertType:AlertInfo
+                                                                     buttonTitle:@"Really? OK..."];
+    
+    [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
+    [alert setCornerRadius:10];
+    
+    [alert show];
+    
     [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self.gamesVC];
 }
 
@@ -109,15 +124,5 @@
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -106,7 +106,7 @@
 - (void)loadAMatch:(GKTurnBasedMatch *)match;
 {
     
-    NSLog(@"did find match");
+    NSLog(@"Did find match");
     
     [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
     

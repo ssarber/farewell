@@ -13,12 +13,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
-    
+
     self.storyText.font = [UIFont fontWithName:@"AvenirNext-Bold" size:16];
-    
-//    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
-//    self.profileImageView.clipsToBounds = YES;
+
     self.playerOnePhoto.layer.cornerRadius = self.playerOnePhoto.frame.size.width / 2;
     self.playerOnePhoto.clipsToBounds = YES;
     

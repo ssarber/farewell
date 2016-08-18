@@ -25,6 +25,23 @@
     return [self initDropAlertWithTitle:title andText:text andCancelButton:hasCancelButton forAlertType:type andColor:nil];
 }
 
+- (id) initDropAlertWithTitle:(NSString*) title andText:(NSString*) text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType) type buttonTitle:(NSString *)buttonTitle
+{
+    return [self initDropAlertWithTitle:title andText:text andCancelButton:hasCancelButton forAlertType:type andColor:nil buttonTitle:buttonTitle];
+}
+
+- (id) initDropAlertWithTitle:(NSString*) title andText:(NSString*) text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType) type andColor:(UIColor*) color buttonTitle:(NSString *)buttonTitle
+{
+    self = [super init];
+    if (self) {
+        // Initialization code
+        _animationType = DropAnimation;
+        [self _initViewWithTitle:title andText:text andCancelButton:hasCancelButton forAlertType:type andColor:color buttonTitle:buttonTitle];
+    }
+    return self;
+}
+
+
 - (id) initDropAlertWithTitle:(NSString*) title andText:(NSString*) text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType) type andColor:(UIColor*) color
 {
     self = [super init];
@@ -102,7 +119,7 @@
     _blurFilter = [[GPUImageiOSBlurFilter alloc] init];
     _blurFilter.blurRadiusInPixels = 2.0;
   
-    bg = [[UIImageView alloc]initWithFrame:[self screenFrame]];
+    bg = [[UIImageView alloc] initWithFrame:[self screenFrame]];
   
     alertView = [self alertPopupView];
   
@@ -114,9 +131,31 @@
 }
 
 
+- (void) _initViewWithTitle:(NSString *)title andText:(NSString *)text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType)type andColor:(UIColor*) color buttonTitle:(NSString *)buttonTitle;
+{
+    self.frame = [self screenFrame];
+    self.opaque = YES;
+    self.alpha = 1;
+    
+    _blurFilter = [[GPUImageiOSBlurFilter alloc] init];
+    _blurFilter.blurRadiusInPixels = 2.0;
+    
+    bg = [[UIImageView alloc] initWithFrame:[self screenFrame]];
+    
+    alertView = [self alertPopupView];
+    
+    [self labelSetupWithTitle:title andText:text];
+    [self buttonSetupForType:type withCancelButton: hasCancelButton andColor:color buttonTitle:buttonTitle];
+    [self addSubview:alertView];
+    
+    [self circleSetupForAlertType:type andColor:color];
+}
+
+
+
 - (UIView*) alertPopupView
 {
-    UIView * alertSquare = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 250)];
+    UIView * alertSquare = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 350)];
     
     alertSquare.backgroundColor = [UIColor colorWithRed:0.937 green:0.937 blue:0.937 alpha:1];
     alertSquare.center = CGPointMake([self screenFrame].size.width/2, -[self screenFrame].size.height/2);
@@ -205,9 +244,9 @@
     
     [alertView addSubview:_titleLabel];
     
-    
-    _textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 250, 100)];
+    _textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 250, 120)];
     _textLabel.center = CGPointMake(alertView.frame.size.width/2, 140);
+    
     _textLabel.text = text;
     _textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20.0f];
     _textLabel.textAlignment = NSTextAlignmentCenter;
@@ -237,7 +276,7 @@
         [_cancelButton.layer setCornerRadius:3.0f];
     }else{
         _defaultButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 180, 44)];
-        _defaultButton.center = CGPointMake(alertView.frame.size.width/2, 220);
+        _defaultButton.center = CGPointMake(alertView.frame.size.width/2, 310);
     }
 
     [self setColorForButton:color onButton:_defaultButton withType:type];
@@ -251,6 +290,47 @@
     [alertView addSubview:_defaultButton];
     if (hasCancelButton)[alertView addSubview:_cancelButton];
 
+}
+
+
+- (void) buttonSetupForType:(AlertType)type withCancelButton:(BOOL) hasCancelButton andColor:(UIColor*) color buttonTitle:(NSString *)buttonTitle
+{
+    
+    if (hasCancelButton) {
+        //default button
+        _defaultButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 84, 30)];
+        _defaultButton.center = CGPointMake((alertView.frame.size.width/4)+3, 120);
+        
+        //cancel button
+        _cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 84, 30)];
+        _cancelButton.center = CGPointMake((alertView.frame.size.width*3/4)-3, 120);
+        _cancelButton.backgroundColor = [UIColor colorWithRed:0.792 green:0.792 blue:0.792 alpha:1];
+        
+        [_cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        _cancelButton.titleLabel.textColor = [UIColor whiteColor];
+        _cancelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0f];
+        [_cancelButton addTarget:self action:@selector(handleButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelButton.layer setCornerRadius:3.0f];
+    }else{
+        _defaultButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 180, 44)];
+        _defaultButton.center = CGPointMake(alertView.frame.size.width/2, 310);
+    }
+    
+    [self setColorForButton:color onButton:_defaultButton withType:type];
+    
+    //default button end setup
+    if (buttonTitle) {
+        [_defaultButton setTitle:buttonTitle forState:UIControlStateNormal];
+    } else {
+        [_defaultButton setTitle:@"Got it." forState:UIControlStateNormal];
+    }
+    _defaultButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0f];
+    [_defaultButton addTarget:self action:@selector(handleButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [_defaultButton.layer setCornerRadius:20.0f];
+    
+    [alertView addSubview:_defaultButton];
+    if (hasCancelButton)[alertView addSubview:_cancelButton];
+    
 }
 
 

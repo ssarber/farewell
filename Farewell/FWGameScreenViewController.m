@@ -8,10 +8,6 @@
 
 #import "FWGameScreenViewController.h"
 #import <AVFoundation/AVFoundation.h>
-//#import "TSMessageView.h"
-//#import "PureLayout.h"
-
-NSUInteger const kMaxAllowedCharacters = 100;
 
 @interface FWGameScreenViewController () <UITextViewDelegate, UITextFieldDelegate>
 
@@ -40,8 +36,8 @@ NSUInteger const kMaxAllowedCharacters = 100;
     self.textInputField.delegate = self;
     self.textInputField.enablesReturnKeyAutomatically = YES;
     
-//    Might activate the keyboard on load
-//    [self.textInputField becomeFirstResponder];
+    //  Might activate the keyboard on load
+    //  [self.textInputField becomeFirstResponder];
     
     self.mainTextField.layer.borderWidth = 0.5;
     self.mainTextField.layer.borderColor = [UIColor colorWithRed:(84/255.0) green:(222/255.0) blue:(167/255.0) alpha:1].CGColor;
@@ -120,7 +116,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
     GKTurnBasedMatch *currentMatch = [[FWGameCenterHelper sharedInstance] currentMatch];
     
     NSString *newGameString;
-    //newGameString = [self.textInputField.text length] > 140? [self.textInputField.text substringToIndex:139] : self.textInputField.text;
     
     newGameString = self.textInputField.text;
  
@@ -143,34 +138,18 @@ NSUInteger const kMaxAllowedCharacters = 100;
         }
         
     }
-//    [currentMatch setLocalizableMessageWithKey:@"Yo, it's your turn to add 2 sentences!"
-//                                     arguments:nil];
     
     NSLog(@"CURRENT MATCH: %@", currentMatch);
+    
     [currentMatch endTurnWithNextParticipants:nextParticipants turnTimeout:GKTurnTimeoutDefault
                                     matchData:data completionHandler:^(NSError *error) {
         if (error) {
             NSLog(@"Error ending turn: %@", error.localizedDescription);
             self.statusLabel.text = @"Oops, something went wrong. Try that again.";
-
-//#warning Remove before shipping
-//            
-//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error sending turn."
-//                                                                           message:error.localizedDescription
-//                                                                    preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                                  handler:^(UIAlertAction * action) {
-//                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
-//                                                                  }];
-//            
-//            [alert addAction:defaultAction];
-//            
-//            [self presentViewController:alert animated:YES completion:nil];
             
         } else {
             
-            NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", @"Seriously? That's what you came up with?", @"It's kinda funny, I guess.", @"Dude (or dudette), that was pretty funny.", @"I thought it over and I think you're alright.", @"Dayumn!", @"Cue laughter.", @"Now go look in the mirror and say, \"Damn you're sexy.\"", @"George Carlin is spinning in his grave right now.", @"You've just made everyone's day better. Hahahaha.", @"No, you deent", @"Woah, dude, you're killin' it right now.", @"I say, goddamn!", @"Hohohohoh, I daresay.", @"Well, it is what it is you know."];
+            NSArray *messagesArray = @[@"Hahahaha, this is hilarious. You're the George Carlin of our generation.", @"Woah, I didn't expect that...", @"You really outdid yourself with that one. Hillahrious. Clap clap clap.", @"I have a great sense of humor. When I'm provided humor, I sense it.", @"Swoosh, woosh, poosh. That's the sound of me sending this message into the abyss.", @"Seriously? That's what you came up with?", @"It's kinda funny, I guess.", @"Dude (or dudette), that was pretty funny.", @"I thought it over and I think you're alright.", @"Dayumn!", @"Cue laughter.", @"Now go look in the mirror and say, \"Damn you're sexy.\"", @"George Carlin is spinning in his grave right now.", @"You've just made everyone's day better. Hahahaha.", @"No, you deent", @"Woah, dude, you're killin' it right now.", @"I say, goddamn!", @"Hohohohoh, I daresay.", @"Well, it is what it is, you know."];
             
             NSUInteger randomIndex = arc4random() % [messagesArray count];
             NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
@@ -178,7 +157,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
             AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
             utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
             utterance.pitchMultiplier = 1.3;
-//            utterance.rate = 2;
+            // utterance.rate = 2;
             
             AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
             [synthesizer speakUtterance:utterance];
@@ -324,14 +303,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
         [self.match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
             if (error) {
                 NSLog(@"Error quitting game: %@", error.localizedDescription);
-                
-//#warning Remove before shipping
-//                
-//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error completing email:"
-//                                                                               message:error.localizedDescription
-//                                                                        preferredStyle:UIAlertControllerStyleAlert];
-//                
-//                [self presentViewController:alert animated:YES completion:nil];
             }
         }];
     }
@@ -379,59 +350,6 @@ NSUInteger const kMaxAllowedCharacters = 100;
 
 
 #pragma mark - UITextFieldDelegate Protocol methods
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    // Enable editing of text input textfield if user hasn't typed
-    // two sentences or else user taps "backspace". Otherwise disaable the textfield.
-    
-    // Ugh, this ugly code detects the backspace: http://lifesforlearning.com/detect-backspace-on-ios-textfield/
-    const char * _char = [string cStringUsingEncoding:NSUTF8StringEncoding];
-    int isBackSpace = strcmp(_char, "\b");
-    if (isBackSpace == -8 || [self shouldAllowToContinueWriting] == YES) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
-
-// Breaks up entered text into sentences. Updates sentence-counting label.
-// Retuns NO when 2 sentences are detected so that further editing is disabled.
-- (BOOL)shouldAllowToContinueWriting
-{
-    NSCharacterSet *separators = [NSCharacterSet alphanumericCharacterSet];
-    NSArray *words = [self.textInputField.text componentsSeparatedByCharactersInSet:separators];
-    
-    NSLog(@"WORDS: %@", words);
-    
-    NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        return ([obj isEqualToString:@". "] || [obj isEqualToString:@"."] || [obj isEqualToString:@"! "] || [obj isEqualToString:@"!"] ||
-                [obj isEqualToString:@"Free at last\"."]);
-    }];
-    
-    NSLog(@"INDEXES COUNT: %lu", (unsigned long)[separatorIndexes count]);
-    
-    if ([separatorIndexes count] == 1) {
-        _characterCountLabel.text = @"1 sentence remaining.";
-        
-//        [TSMessage showNotificationWithTitle:@"1 sentence remaining."
-//                                    subtitle:nil
-//                                        type:TSMessageNotificationTypeError];
-    }
-    
-    if ([separatorIndexes count] == 2) {
-        _characterCountLabel.text = @"0 sentences remaining.";
-        return NO;
-    }
-//FIXME: hack for video recording. Fix!!
-    if ([_textInputField.text hasSuffix:@"\"."]) {
-        _characterCountLabel.text = @"0 sentences remaining.";
-        return NO;
-    }
-        
-    return YES;
-}
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -517,17 +435,7 @@ NSUInteger const kMaxAllowedCharacters = 100;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *prompt = [defaults objectForKey:@"FWUserPromptSelectionDefault"];
     self.mainTextField.text = prompt;
-    
-//    NSArray *messagesArray = @[@"Here's an example to get your creative juices flowing:\nAs many of you probably know, today is my last day. But before I leave, I wanted to take this opportunity to let you know what a great and distinct pleasure it has been to type “Today is my last day.” "];
-//    NSUInteger randomIndex = arc4random() % [messagesArray count];
-//    NSString *randomMessage = [messagesArray objectAtIndex:randomIndex];
-//    
-//    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:randomMessage];
-//    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-GB"];
-//    
-//    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
-//    [synthesizer speakUtterance:utterance];
-//    
+   
     self.statusLabel.text = @"Your turn.";
     
     // Shift everything up
