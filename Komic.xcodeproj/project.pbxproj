@@ -66,8 +66,8 @@
 		0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPromptSelectionViewController.m; sourceTree = "<group>"; };
 		0F35A7A61D274A870089AB4C /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
 		0F35A7AE1D274AF70089AB4C /* PureLayout */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PureLayout; path = Pods/PureLayout; sourceTree = "<group>"; };
-		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWInitialFlowViewController.h; path = ../FWInitialFlowViewController.h; sourceTree = "<group>"; };
-		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWInitialFlowViewController.m; path = ../FWInitialFlowViewController.m; sourceTree = "<group>"; };
+		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWInitialFlowViewController.h; sourceTree = "<group>"; };
+		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWInitialFlowViewController.m; sourceTree = "<group>"; };
 		0F48B6E01CD92DF1008A7F3D /* Komic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F48B6E41CD92DF1008A7F3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWAppDelegate.h; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 		0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMatchCellTableViewCell.m; sourceTree = "<group>"; };
 		0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSegue.h; sourceTree = "<group>"; };
 		0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSegue.m; sourceTree = "<group>"; };
-		0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Letters.h"; path = "../UIImageView+Letters.h"; sourceTree = "<group>"; };
-		0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Letters.m"; path = "../UIImageView+Letters.m"; sourceTree = "<group>"; };
+		0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
+		0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
 		0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGamesTableViewController.m; sourceTree = "<group>"; };
 		0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -143,12 +143,12 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
-				0F48B6E21CD92DF1008A7F3D /* Komic */,
 				0F48B6FC1CD92DF1008A7F3D /* FarewellTests */,
 				0F48B7071CD92DF1008A7F3D /* FarewellUITests */,
-				0F48B6E11CD92DF1008A7F3D /* Products */,
-				CD47EED7DA72A6954F8808F7 /* Pods */,
 				C8541AA93D24A26F7D7DFD29 /* Frameworks */,
+				0F48B6E21CD92DF1008A7F3D /* Komic */,
+				CD47EED7DA72A6954F8808F7 /* Pods */,
+				0F48B6E11CD92DF1008A7F3D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,30 +165,29 @@
 		0F48B6E21CD92DF1008A7F3D /* Komic */ = {
 			isa = PBXGroup;
 			children = (
-				0F97FFAF1CF8CC8900924EA1 /* View Controllers */,
-				0FC041A61D00E05B003BE002 /* Helpers */,
-				0F97FFB31CF8DE0900924EA1 /* Custom Segues */,
-				0F97FFB01CF8CCD400924EA1 /* Storyboards */,
 				0FC041A51D00E030003BE002 /* Custom Cells */,
+				0F97FFB31CF8DE0900924EA1 /* Custom Segues */,
+				0FC041A61D00E05B003BE002 /* Helpers */,
+				0F97FFB01CF8CCD400924EA1 /* Storyboards */,
 				0F48B6E31CD92DF1008A7F3D /* Supporting Files */,
+				0F97FFAF1CF8CC8900924EA1 /* View Controllers */,
 				0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */,
 			);
-			name = Komic;
-			path = Farewell;
+			path = Komic;
 			sourceTree = "<group>";
 		};
 		0F48B6E31CD92DF1008A7F3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
-				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
 				0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */,
 				0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */,
+				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
+				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
 				0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */,
 				0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */,
 				0F48B6E41CD92DF1008A7F3D /* main.m */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		0F48B6FC1CD92DF1008A7F3D /* FarewellTests */ = {
@@ -212,16 +211,16 @@
 		0F97FFAF1CF8CC8900924EA1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */,
-				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
-				0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */,
-				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
-				0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */,
-				0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */,
 				0F48B6E91CD92DF1008A7F3D /* FWGameScreenViewController.h */,
 				0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */,
+				0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */,
+				0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */,
+				0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */,
+				0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */,
+				0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */,
+				0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */,
 			);
-			name = "View Controllers";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		0F97FFB01CF8CCD400924EA1 /* Storyboards */ = {
@@ -230,7 +229,7 @@
 				0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */,
 				0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */,
 			);
-			name = Storyboards;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		0F97FFB31CF8DE0900924EA1 /* Custom Segues */ = {
@@ -238,7 +237,7 @@
 			children = (
 				0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */,
 			);
-			name = "Custom Segues";
+			path = "Custom Segues";
 			sourceTree = "<group>";
 		};
 		0FC041A51D00E030003BE002 /* Custom Cells */ = {
@@ -247,7 +246,7 @@
 				0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */,
 				0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */,
 			);
-			name = "Custom Cells";
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		0FC041A61D00E05B003BE002 /* Helpers */ = {
@@ -256,7 +255,7 @@
 				0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */,
 				0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */,
 			);
-			name = Helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C8541AA93D24A26F7D7DFD29 /* Frameworks */ = {
@@ -622,6 +621,7 @@
 				0F48B6ED1CD92DF1008A7F3D /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */ = {
@@ -630,6 +630,7 @@
 				0F48B6F21CD92DF1008A7F3D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -736,7 +737,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
-				INFOPLIST_FILE = Farewell/Info.plist;
+				INFOPLIST_FILE = "Komic/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -762,7 +763,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Farewell/Info.plist;
+				INFOPLIST_FILE = "Komic/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
