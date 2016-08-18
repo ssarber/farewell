@@ -143,10 +143,10 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
-				0F48B6FC1CD92DF1008A7F3D /* KomicTests */,
-				0F48B7071CD92DF1008A7F3D /* KomicUITests */,
 				C8541AA93D24A26F7D7DFD29 /* Frameworks */,
 				0F48B6E21CD92DF1008A7F3D /* Komic */,
+				0F48B6FC1CD92DF1008A7F3D /* KomicTests */,
+				0F48B7071CD92DF1008A7F3D /* KomicUITests */,
 				CD47EED7DA72A6954F8808F7 /* Pods */,
 				0F48B6E11CD92DF1008A7F3D /* Products */,
 			);
@@ -193,21 +193,19 @@
 		0F48B6FC1CD92DF1008A7F3D /* KomicTests */ = {
 			isa = PBXGroup;
 			children = (
-				0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */,
 				0F48B6FF1CD92DF1008A7F3D /* Info.plist */,
+				0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */,
 			);
-			name = KomicTests;
-			path = FarewellTests;
+			path = KomicTests;
 			sourceTree = "<group>";
 		};
 		0F48B7071CD92DF1008A7F3D /* KomicUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0F48B7081CD92DF1008A7F3D /* KomicUITests.m */,
 				0F48B70A1CD92DF1008A7F3D /* Info.plist */,
+				0F48B7081CD92DF1008A7F3D /* KomicUITests.m */,
 			);
-			name = KomicUITests;
-			path = FarewellUITests;
+			path = KomicUITests;
 			sourceTree = "<group>";
 		};
 		0F97FFAF1CF8CC8900924EA1 /* View Controllers */ = {
@@ -788,7 +786,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FarewellTests/Info.plist;
+				INFOPLIST_FILE = KomicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellTests;
 				PRODUCT_NAME = Komic;
@@ -800,7 +798,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FarewellTests/Info.plist;
+				INFOPLIST_FILE = KomicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellTests;
 				PRODUCT_NAME = Komic;
@@ -811,7 +809,7 @@
 		0F48B7141CD92DF1008A7F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = FarewellUITests/Info.plist;
+				INFOPLIST_FILE = KomicUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellUITests;
 				PRODUCT_NAME = Komic;
@@ -822,7 +820,7 @@
 		0F48B7151CD92DF1008A7F3D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = FarewellUITests/Info.plist;
+				INFOPLIST_FILE = KomicUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellUITests;
 				PRODUCT_NAME = Komic;
