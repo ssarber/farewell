@@ -92,7 +92,7 @@
 		0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMatchCellTableViewCell.h; sourceTree = "<group>"; };
 		0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMatchCellTableViewCell.m; sourceTree = "<group>"; };
 		0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSegue.h; sourceTree = "<group>"; };
-		0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSegue.m; sourceTree = "<group>"; };
+		0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameSegue.m; path = "../Supporting Files/GameSegue.m"; sourceTree = "<group>"; };
 		0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
@@ -181,7 +181,6 @@
 			children = (
 				0F48B6E61CD92DF1008A7F3D /* FWAppDelegate.h */,
 				0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */,
-				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
 				0F48B6F41CD92DF1008A7F3D /* Info.plist */,
 				0F97FFB91CFCFBE000924EA1 /* UIImageView+Letters.h */,
 				0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */,
@@ -235,6 +234,7 @@
 		0F97FFB31CF8DE0900924EA1 /* Custom Segues */ = {
 			isa = PBXGroup;
 			children = (
+				0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */,
 				0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */,
 			);
 			path = "Custom Segues";

@@ -162,7 +162,6 @@ FWTurnBasedMatchDelegate, FWMatchCellTableViewCellDelegate>
 
 - (void)reloadTableView
 {
-    
     if(self.initialTableViewLoad == YES) {
         
         self.tutorialLabel.hidden = NO;
