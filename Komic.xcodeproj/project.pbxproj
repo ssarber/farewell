@@ -19,8 +19,8 @@
 		0F48B6EE1CD92DF1008A7F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */; };
 		0F48B6F01CD92DF1008A7F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */; };
 		0F48B6F31CD92DF1008A7F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */; };
-		0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6FD1CD92DF1008A7F3D /* FarewellTests.m */; };
-		0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7081CD92DF1008A7F3D /* FarewellUITests.m */; };
+		0F48B6FE1CD92DF1008A7F3D /* KomicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */; };
+		0F48B7091CD92DF1008A7F3D /* KomicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7081CD92DF1008A7F3D /* KomicUITests.m */; };
 		0F48B7181CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
 		0F48B7191CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
 		0F48B71A1CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
@@ -79,10 +79,10 @@
 		0F48B6F21CD92DF1008A7F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F48B6F41CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B6F91CD92DF1008A7F3D /* Komic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Komic.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F48B6FD1CD92DF1008A7F3D /* FarewellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarewellTests.m; sourceTree = "<group>"; };
+		0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KomicTests.m; sourceTree = "<group>"; };
 		0F48B6FF1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7041CD92DF1008A7F3D /* Komic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Komic.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F48B7081CD92DF1008A7F3D /* FarewellUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarewellUITests.m; sourceTree = "<group>"; };
+		0F48B7081CD92DF1008A7F3D /* KomicUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KomicUITests.m; sourceTree = "<group>"; };
 		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGameCenterHelper.h; sourceTree = "<group>"; };
 		0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGameCenterHelper.m; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
-				0F48B6FC1CD92DF1008A7F3D /* FarewellTests */,
-				0F48B7071CD92DF1008A7F3D /* FarewellUITests */,
+				0F48B6FC1CD92DF1008A7F3D /* KomicTests */,
+				0F48B7071CD92DF1008A7F3D /* KomicUITests */,
 				C8541AA93D24A26F7D7DFD29 /* Frameworks */,
 				0F48B6E21CD92DF1008A7F3D /* Komic */,
 				CD47EED7DA72A6954F8808F7 /* Pods */,
@@ -190,21 +190,23 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0F48B6FC1CD92DF1008A7F3D /* FarewellTests */ = {
+		0F48B6FC1CD92DF1008A7F3D /* KomicTests */ = {
 			isa = PBXGroup;
 			children = (
-				0F48B6FD1CD92DF1008A7F3D /* FarewellTests.m */,
+				0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */,
 				0F48B6FF1CD92DF1008A7F3D /* Info.plist */,
 			);
+			name = KomicTests;
 			path = FarewellTests;
 			sourceTree = "<group>";
 		};
-		0F48B7071CD92DF1008A7F3D /* FarewellUITests */ = {
+		0F48B7071CD92DF1008A7F3D /* KomicUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0F48B7081CD92DF1008A7F3D /* FarewellUITests.m */,
+				0F48B7081CD92DF1008A7F3D /* KomicUITests.m */,
 				0F48B70A1CD92DF1008A7F3D /* Info.plist */,
 			);
+			name = KomicUITests;
 			path = FarewellUITests;
 			sourceTree = "<group>";
 		};
@@ -577,7 +579,7 @@
 				0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F97FFBC1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
-				0F48B6FE1CD92DF1008A7F3D /* FarewellTests.m in Sources */,
+				0F48B6FE1CD92DF1008A7F3D /* KomicTests.m in Sources */,
 				0F48B7191CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
 				0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
@@ -592,7 +594,7 @@
 				0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
 				0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
 				0F97FFBD1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
-				0F48B7091CD92DF1008A7F3D /* FarewellUITests.m in Sources */,
+				0F48B7091CD92DF1008A7F3D /* KomicUITests.m in Sources */,
 				0F48B71A1CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
 				0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */,
 				0FAFCB311CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,

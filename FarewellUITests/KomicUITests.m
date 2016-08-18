@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-@interface FarewellUITests : XCTestCase
+@interface KomicUITests : XCTestCase
 
 @end
 
