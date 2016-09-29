@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -42,8 +42,8 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F48B7031CD92DF1008A7F3D"
-               BuildableName = "Komic.xctest"
+               BlueprintIdentifier = "0F72A05C1D9D8AF4004C7B2C"
+               BuildableName = "KomicUITests.xctest"
                BlueprintName = "KomicUITests"
                ReferencedContainer = "container:Komic.xcodeproj">
             </BuildableReference>

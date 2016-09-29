@@ -8,55 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		0F17D7591D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
-		0F17D75A1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
-		0F17D75B1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */; };
 		0F3DDFF61CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
-		0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
-		0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */; };
 		0F48B6E51CD92DF1008A7F3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6E41CD92DF1008A7F3D /* main.m */; };
 		0F48B6E81CD92DF1008A7F3D /* FWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6E71CD92DF1008A7F3D /* FWAppDelegate.m */; };
 		0F48B6EB1CD92DF1008A7F3D /* FWGameScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6EA1CD92DF1008A7F3D /* FWGameScreenViewController.m */; };
 		0F48B6EE1CD92DF1008A7F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6EC1CD92DF1008A7F3D /* Main.storyboard */; };
 		0F48B6F01CD92DF1008A7F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */; };
 		0F48B6F31CD92DF1008A7F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */; };
-		0F48B6FE1CD92DF1008A7F3D /* KomicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */; };
-		0F48B7091CD92DF1008A7F3D /* KomicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7081CD92DF1008A7F3D /* KomicUITests.m */; };
 		0F48B7181CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
-		0F48B7191CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
-		0F48B71A1CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
 		0F6507AE1D3720310097EA9D /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507AD1D3720310097EA9D /* libGPUImage.a */; };
 		0F6507B11D3720610097EA9D /* libAMSmoothAlert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */; };
-		0F6507B21D3720610097EA9D /* libPureLayout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507B01D3720610097EA9D /* libPureLayout.a */; };
+		0F72A0601D9D8AF4004C7B2C /* KomicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72A05F1D9D8AF4004C7B2C /* KomicUITests.swift */; };
 		0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
-		0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
-		0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
 		0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
-		0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
-		0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
 		0F97FFBB1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */; };
-		0F97FFBC1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */; };
-		0F97FFBD1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */; };
 		0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
-		0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
-		0FAFCB311CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
 		0FBE5BB31D2F2DD7007322B6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */; };
 		544619A51514B6159BEED65C /* libPods-Komic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFCDC25276C5B4E005629F5 /* libPods-Komic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0F48B6FA1CD92DF1008A7F3D /* PBXContainerItemProxy */ = {
+		0F72A0621D9D8AF4004C7B2C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F48B6D81CD92DF1008A7F3D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0F48B6DF1CD92DF1008A7F3D;
-			remoteInfo = Farewell;
-		};
-		0F48B7051CD92DF1008A7F3D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F48B6D81CD92DF1008A7F3D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F48B6DF1CD92DF1008A7F3D;
-			remoteInfo = Farewell;
+			remoteInfo = Komic;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -64,8 +41,6 @@
 		0727F8069ED09BC4E95D15E7 /* Pods-Komic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Komic/Pods-Komic.debug.xcconfig"; sourceTree = "<group>"; };
 		0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPromptSelectionViewController.h; sourceTree = "<group>"; };
 		0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPromptSelectionViewController.m; sourceTree = "<group>"; };
-		0F35A7A61D274A870089AB4C /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../Library/Developer/Xcode/DerivedData/Farewell-gejobhzpaeaxdkdxpkohcrhobyuj/Build/Products/Debug-iphoneos/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
-		0F35A7AE1D274AF70089AB4C /* PureLayout */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PureLayout; path = Pods/PureLayout; sourceTree = "<group>"; };
 		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWInitialFlowViewController.h; sourceTree = "<group>"; };
 		0F3DDFF51CE3DD5B0048DFAE /* FWInitialFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWInitialFlowViewController.m; sourceTree = "<group>"; };
 		0F48B6E01CD92DF1008A7F3D /* Komic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,17 +53,13 @@
 		0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F48B6F21CD92DF1008A7F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F48B6F41CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F48B6F91CD92DF1008A7F3D /* Komic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Komic.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KomicTests.m; sourceTree = "<group>"; };
-		0F48B6FF1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F48B7041CD92DF1008A7F3D /* Komic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Komic.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F48B7081CD92DF1008A7F3D /* KomicUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KomicUITests.m; sourceTree = "<group>"; };
-		0F48B70A1CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGameCenterHelper.h; sourceTree = "<group>"; };
 		0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGameCenterHelper.m; sourceTree = "<group>"; };
 		0F6507AD1D3720310097EA9D /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "../../Library/Developer/Xcode/DerivedData/Komic-bhraznahspgwfbaipykmivhpqbzf/Build/Products/Debug-iphoneos/GPUImage/libGPUImage.a"; sourceTree = "<group>"; };
 		0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAMSmoothAlert.a; path = "Pods/../build/Release-iphoneos/AMSmoothAlert/libAMSmoothAlert.a"; sourceTree = "<group>"; };
-		0F6507B01D3720610097EA9D /* libPureLayout.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPureLayout.a; path = "Pods/../build/Release-iphoneos/PureLayout/libPureLayout.a"; sourceTree = "<group>"; };
+		0F72A05D1D9D8AF4004C7B2C /* KomicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F72A05F1D9D8AF4004C7B2C /* KomicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomicUITests.swift; sourceTree = "<group>"; };
+		0F72A0611D9D8AF4004C7B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F97FFA11CF5249E00924EA1 /* FWMatchCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMatchCellTableViewCell.h; sourceTree = "<group>"; };
 		0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMatchCellTableViewCell.m; sourceTree = "<group>"; };
 		0F97FFB41CF8DE6A00924EA1 /* GameSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSegue.h; sourceTree = "<group>"; };
@@ -116,21 +87,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F6507B11D3720610097EA9D /* libAMSmoothAlert.a in Frameworks */,
-				0F6507B21D3720610097EA9D /* libPureLayout.a in Frameworks */,
 				0F6507AE1D3720310097EA9D /* libGPUImage.a in Frameworks */,
 				0FBE5BB31D2F2DD7007322B6 /* GameKit.framework in Frameworks */,
 				544619A51514B6159BEED65C /* libPods-Komic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F48B6F61CD92DF1008A7F3D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F48B7011CD92DF1008A7F3D /* Frameworks */ = {
+		0F72A05A1D9D8AF4004C7B2C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -145,8 +108,7 @@
 			children = (
 				C8541AA93D24A26F7D7DFD29 /* Frameworks */,
 				0F48B6E21CD92DF1008A7F3D /* Komic */,
-				0F48B6FC1CD92DF1008A7F3D /* KomicTests */,
-				0F48B7071CD92DF1008A7F3D /* KomicUITests */,
+				0F72A05E1D9D8AF4004C7B2C /* KomicUITests */,
 				CD47EED7DA72A6954F8808F7 /* Pods */,
 				0F48B6E11CD92DF1008A7F3D /* Products */,
 			);
@@ -156,8 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				0F48B6E01CD92DF1008A7F3D /* Komic.app */,
-				0F48B6F91CD92DF1008A7F3D /* Komic.xctest */,
-				0F48B7041CD92DF1008A7F3D /* Komic.xctest */,
+				0F72A05D1D9D8AF4004C7B2C /* KomicUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,20 +150,11 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0F48B6FC1CD92DF1008A7F3D /* KomicTests */ = {
+		0F72A05E1D9D8AF4004C7B2C /* KomicUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0F48B6FF1CD92DF1008A7F3D /* Info.plist */,
-				0F48B6FD1CD92DF1008A7F3D /* KomicTests.m */,
-			);
-			path = KomicTests;
-			sourceTree = "<group>";
-		};
-		0F48B7071CD92DF1008A7F3D /* KomicUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0F48B70A1CD92DF1008A7F3D /* Info.plist */,
-				0F48B7081CD92DF1008A7F3D /* KomicUITests.m */,
+				0F72A05F1D9D8AF4004C7B2C /* KomicUITests.swift */,
+				0F72A0611D9D8AF4004C7B2C /* Info.plist */,
 			);
 			path = KomicUITests;
 			sourceTree = "<group>";
@@ -262,11 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */,
-				0F6507B01D3720610097EA9D /* libPureLayout.a */,
 				0F6507AD1D3720310097EA9D /* libGPUImage.a */,
 				0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */,
-				0F35A7AE1D274AF70089AB4C /* PureLayout */,
-				0F35A7A61D274A870089AB4C /* PureLayout.framework */,
 				608DF4B4E32CAF01E57B9441 /* Pods_KomicTests.framework */,
 				24693DFAC83C5D67D3DC5051 /* Pods_KomicUITests.framework */,
 				3AFCDC25276C5B4E005629F5 /* libPods-Komic.a */,
@@ -312,45 +261,22 @@
 			productReference = 0F48B6E01CD92DF1008A7F3D /* Komic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0F48B6F81CD92DF1008A7F3D /* KomicTests */ = {
+		0F72A05C1D9D8AF4004C7B2C /* KomicUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicTests" */;
+			buildConfigurationList = 0F72A0641D9D8AF4004C7B2C /* Build configuration list for PBXNativeTarget "KomicUITests" */;
 			buildPhases = (
-				0E6E658D510E640614A16D3E /* [CP] Check Pods Manifest.lock */,
-				0F48B6F51CD92DF1008A7F3D /* Sources */,
-				0F48B6F61CD92DF1008A7F3D /* Frameworks */,
-				0F48B6F71CD92DF1008A7F3D /* Resources */,
-				5A1F995369CF433C02272322 /* [CP] Embed Pods Frameworks */,
-				AC18E8ADC95B759515FA6CA3 /* [CP] Copy Pods Resources */,
+				0F72A0591D9D8AF4004C7B2C /* Sources */,
+				0F72A05A1D9D8AF4004C7B2C /* Frameworks */,
+				0F72A05B1D9D8AF4004C7B2C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0F48B6FB1CD92DF1008A7F3D /* PBXTargetDependency */,
-			);
-			name = KomicTests;
-			productName = FarewellTests;
-			productReference = 0F48B6F91CD92DF1008A7F3D /* Komic.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0F48B7031CD92DF1008A7F3D /* KomicUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicUITests" */;
-			buildPhases = (
-				AF61EE289955ECFC306F38AF /* [CP] Check Pods Manifest.lock */,
-				0F48B7001CD92DF1008A7F3D /* Sources */,
-				0F48B7011CD92DF1008A7F3D /* Frameworks */,
-				0F48B7021CD92DF1008A7F3D /* Resources */,
-				85629A5D8870E0C350E9F26A /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0F48B7061CD92DF1008A7F3D /* PBXTargetDependency */,
+				0F72A0631D9D8AF4004C7B2C /* PBXTargetDependency */,
 			);
 			name = KomicUITests;
-			productName = FarewellUITests;
-			productReference = 0F48B7041CD92DF1008A7F3D /* Komic.xctest */;
+			productName = KomicUITests;
+			productReference = 0F72A05D1D9D8AF4004C7B2C /* KomicUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -359,7 +285,8 @@
 		0F48B6D81CD92DF1008A7F3D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Stan Sarber";
 				TargetAttributes = {
 					0F48B6DF1CD92DF1008A7F3D = {
@@ -371,12 +298,9 @@
 							};
 						};
 					};
-					0F48B6F81CD92DF1008A7F3D = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = 0F48B6DF1CD92DF1008A7F3D;
-					};
-					0F48B7031CD92DF1008A7F3D = {
-						CreatedOnToolsVersion = 7.3;
+					0F72A05C1D9D8AF4004C7B2C = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 0F48B6DF1CD92DF1008A7F3D;
 					};
 				};
@@ -395,8 +319,7 @@
 			projectRoot = "";
 			targets = (
 				0F48B6DF1CD92DF1008A7F3D /* Komic */,
-				0F48B6F81CD92DF1008A7F3D /* KomicTests */,
-				0F48B7031CD92DF1008A7F3D /* KomicUITests */,
+				0F72A05C1D9D8AF4004C7B2C /* KomicUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -412,14 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F48B6F71CD92DF1008A7F3D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F48B7021CD92DF1008A7F3D /* Resources */ = {
+		0F72A05B1D9D8AF4004C7B2C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -429,21 +345,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E6E658D510E640614A16D3E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		15EB15F4CD33E8BA3A3D49CD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,21 +360,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komic/Pods-Komic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5A1F995369CF433C02272322 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KomicTests/Pods-KomicTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6217E59F704705F086A2D03B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -487,51 +373,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komic/Pods-Komic-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		85629A5D8870E0C350E9F26A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KomicUITests/Pods-KomicUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AC18E8ADC95B759515FA6CA3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KomicTests/Pods-KomicTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF61EE289955ECFC306F38AF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E14B273B2FB9B9F19D6F5708 /* [CP] Check Pods Manifest.lock */ = {
@@ -569,48 +410,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F48B6F51CD92DF1008A7F3D /* Sources */ = {
+		0F72A0591D9D8AF4004C7B2C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F17D75A1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */,
-				0F97FFA41CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
-				0F3DDFF71CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
-				0F97FFBC1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
-				0F48B6FE1CD92DF1008A7F3D /* KomicTests.m in Sources */,
-				0F48B7191CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
-				0F97FFB71CF8DE6A00924EA1 /* GameSegue.m in Sources */,
-				0FAFCB301CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F48B7001CD92DF1008A7F3D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F17D75B1D2AA13300505F8E /* FWPromptSelectionViewController.m in Sources */,
-				0F97FFA51CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */,
-				0F3DDFF81CE3DD5B0048DFAE /* FWInitialFlowViewController.m in Sources */,
-				0F97FFBD1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */,
-				0F48B7091CD92DF1008A7F3D /* KomicUITests.m in Sources */,
-				0F48B71A1CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */,
-				0F97FFB81CF8DE6A00924EA1 /* GameSegue.m in Sources */,
-				0FAFCB311CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */,
+				0F72A0601D9D8AF4004C7B2C /* KomicUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0F48B6FB1CD92DF1008A7F3D /* PBXTargetDependency */ = {
+		0F72A0631D9D8AF4004C7B2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F48B6DF1CD92DF1008A7F3D /* Komic */;
-			targetProxy = 0F48B6FA1CD92DF1008A7F3D /* PBXContainerItemProxy */;
-		};
-		0F48B7061CD92DF1008A7F3D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F48B6DF1CD92DF1008A7F3D /* Komic */;
-			targetProxy = 0F48B7051CD92DF1008A7F3D /* PBXContainerItemProxy */;
+			targetProxy = 0F72A0621D9D8AF4004C7B2C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -650,8 +464,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -699,8 +515,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -744,7 +562,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Farewell",
 					"$(PROJECT_DIR)/build/Release-iphoneos/AMSmoothAlert",
-					"$(PROJECT_DIR)/build/Release-iphoneos/PureLayout",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.komik;
@@ -770,7 +587,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Farewell",
 					"$(PROJECT_DIR)/build/Release-iphoneos/AMSmoothAlert",
-					"$(PROJECT_DIR)/build/Release-iphoneos/PureLayout",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "";
@@ -782,49 +598,36 @@
 			};
 			name = Release;
 		};
-		0F48B7111CD92DF1008A7F3D /* Debug */ = {
+		0F72A0651D9D8AF4004C7B2C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = KomicTests/Info.plist;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = KomicUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellTests;
-				PRODUCT_NAME = Komic;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Komic.app/Komic";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.KomicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Komic;
 			};
 			name = Debug;
 		};
-		0F48B7121CD92DF1008A7F3D /* Release */ = {
+		0F72A0661D9D8AF4004C7B2C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = KomicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellTests;
-				PRODUCT_NAME = Komic;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Komic.app/Komic";
-			};
-			name = Release;
-		};
-		0F48B7141CD92DF1008A7F3D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				INFOPLIST_FILE = KomicUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellUITests;
-				PRODUCT_NAME = Komic;
-				TEST_TARGET_NAME = Farewell;
-			};
-			name = Debug;
-		};
-		0F48B7151CD92DF1008A7F3D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = KomicUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.FarewellUITests;
-				PRODUCT_NAME = Komic;
-				TEST_TARGET_NAME = Farewell;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.KomicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Komic;
 			};
 			name = Release;
 		};
@@ -849,23 +652,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F48B7101CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicTests" */ = {
+		0F72A0641D9D8AF4004C7B2C /* Build configuration list for PBXNativeTarget "KomicUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0F48B7111CD92DF1008A7F3D /* Debug */,
-				0F48B7121CD92DF1008A7F3D /* Release */,
+				0F72A0651D9D8AF4004C7B2C /* Debug */,
+				0F72A0661D9D8AF4004C7B2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0F48B7131CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "KomicUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0F48B7141CD92DF1008A7F3D /* Debug */,
-				0F48B7151CD92DF1008A7F3D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,7 +11,9 @@
 @import GameKit;
 
 @protocol FWMatchCellTableViewCellDelegate
+@optional
 - (void)loadAMatch:(GKTurnBasedMatch *)match;
+@required
 - (void)reloadTableView;
 @end
 

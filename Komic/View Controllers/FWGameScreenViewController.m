@@ -385,10 +385,10 @@
     CGRect newFrame = self.view.frame;
     CGRect keyboardFrameEnd = [self.view convertRect:keyboardEndFrame toView:nil];
     CGRect keyboardFrameBegin = [self.view convertRect:keyboardBeginFrame toView:nil];
-    
-//    newFrame.origin.y -= (keyboardFrameBegin.origin.y - keyboardFrameEnd.origin.y);
-//    self.view.frame = newFrame;
-    
+  
+    newFrame.origin.y -= (keyboardFrameBegin.origin.y - keyboardFrameEnd.origin.y);
+    self.view.frame = newFrame;
+  
     [UIView commitAnimations];
 }
 
