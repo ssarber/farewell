@@ -6,10 +6,15 @@ PODS:
 DEPENDENCIES:
   - AMSmoothAlert (~> 1.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AMSmoothAlert
+    - GPUImage
+
 SPEC CHECKSUMS:
   AMSmoothAlert: 108cf0fc3eea9256ccfdcd9deaa283999ac1e47e
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
 
-PODFILE CHECKSUM: a14be6e3875e0384fd01b840c6aa00db08f4ecd3
+PODFILE CHECKSUM: 9ca1e26e8358072e6ca7711163fb9257bb639bb1
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.7.5
