@@ -8,8 +8,6 @@
 
 #import "FWPromptSelectionViewController.h"
 #import "FWGameCenterHelper.h"
-#import "AMSmoothAlertView.h"
-#import "AMSmoothAlertConstants.h"
 
 @interface FWPromptSelectionViewController  () <UITableViewDelegate, UITableViewDataSource>
 
@@ -29,16 +27,32 @@
     self.tableView.rowHeight = 120;
     
     if ([self.gamesVC hasSeenInitialTutorial] == NO) {
+        /*
         
-        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!"
-                                                                             andText:@"Select a topic, invite your Game Center friend or get matched with a random individual."
-                                                                     andCancelButton:NO
-                                                                        forAlertType:AlertInfo
-                                                                         buttonTitle:@"OK!"];
-        [alert setCornerRadius:10];
-        [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
+        - (id) initDropAlertWithTitle:(NSString*) title andText:(NSString*) text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType) type;
+        - (id) initDropAlertWithTitle:(NSString*) title andText:(NSString*) text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType) type andColor:(UIColor*) color;
+        - (id) initFadeAlertWithTitle:(NSString*) title andText:(NSString*) text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType) type;
+        - (id) initFadeAlertWithTitle:(NSString*) title andText:(NSString*) text andCancelButton:(BOOL)hasCancelButton forAlertType:(AlertType) type andColor:(UIColor*) color;
+         */
         
-        [alert show];
+//        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!"
+//                                                                             andText:@"Select a topic, invite your Game Center friend or get matched with a random individual."
+//                                                                     andCancelButton:NO
+//                                                                        forAlertType:AlertInfo];
+////
+////        AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initWithTitle:@"Pssst!"
+////                andText: @"Select a topic, invite your Game Center friend or get matched with a random individual."
+////                forAlertType:AlertSuccess];
+//        [alert setCornerRadius:10];
+//        [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
+//
+//        [alert show];
+        
+        UIAlertController * alert = [UIAlertController
+                                    alertControllerWithTitle:@"Logout"
+                                    message:@"Are You Sure Want to Logout!"
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -105,16 +119,21 @@
     [defaults synchronize];
     
     
-    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!"
-                                                                         andText:@"If you select Auto-match, whoever starts the game first gets to choose the topic. Keeps things interesting!"
-                                                                 andCancelButton:NO
-                                                                    forAlertType:AlertInfo
-                                                                     buttonTitle:@"Really? OK..."];
+//    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Psst!"
+//                                                                         andText:@"If you select Auto-match, whoever starts the game first gets to choose the topic. Keeps things interesting!"
+//                                                                 andCancelButton:NO
+//                                                                    forAlertType:AlertInfo];
+//
+//    [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
+//    [alert setCornerRadius:10];
+//
+//    [alert show];
     
-    [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:30.0f]];
-    [alert setCornerRadius:10];
-    
-    [alert show];
+    UIAlertController * alert = [UIAlertController
+                                alertControllerWithTitle:@"Logout"
+                                message:@"Are You Sure Want to Logout!"
+                                preferredStyle:UIAlertControllerStyleAlert];
+    [self presentViewController:alert animated:YES completion:nil];
     
     [[FWGameCenterHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 showExistingMatches:NO viewController:self.gamesVC];
 }

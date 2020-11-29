@@ -16,15 +16,11 @@
 		0F48B6F01CD92DF1008A7F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6EF1CD92DF1008A7F3D /* Assets.xcassets */; };
 		0F48B6F31CD92DF1008A7F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F48B6F11CD92DF1008A7F3D /* LaunchScreen.storyboard */; };
 		0F48B7181CD94E90008A7F3D /* FWGameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */; };
-		0F6507AE1D3720310097EA9D /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507AD1D3720310097EA9D /* libGPUImage.a */; };
-		0F6507B11D3720610097EA9D /* libAMSmoothAlert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */; };
 		0F72A0601D9D8AF4004C7B2C /* KomicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72A05F1D9D8AF4004C7B2C /* KomicUITests.swift */; };
 		0F97FFA31CF5249E00924EA1 /* FWMatchCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFA21CF5249E00924EA1 /* FWMatchCellTableViewCell.m */; };
 		0F97FFB61CF8DE6A00924EA1 /* GameSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFB51CF8DE6A00924EA1 /* GameSegue.m */; };
 		0F97FFBB1CFCFBE000924EA1 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */; };
 		0FAFCB2F1CF4FED1009FE469 /* FWGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */; };
-		0FBE5BB31D2F2DD7007322B6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */; };
-		544619A51514B6159BEED65C /* libPods-Komic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFCDC25276C5B4E005629F5 /* libPods-Komic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0727F8069ED09BC4E95D15E7 /* Pods-Komic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Komic/Pods-Komic.debug.xcconfig"; sourceTree = "<group>"; };
 		0F17D7571D2AA13300505F8E /* FWPromptSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPromptSelectionViewController.h; sourceTree = "<group>"; };
 		0F17D7581D2AA13300505F8E /* FWPromptSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPromptSelectionViewController.m; sourceTree = "<group>"; };
 		0F3DDFF41CE3DD5B0048DFAE /* FWInitialFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWInitialFlowViewController.h; sourceTree = "<group>"; };
@@ -55,8 +50,6 @@
 		0F48B6F41CD92DF1008A7F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F48B7161CD94E90008A7F3D /* FWGameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGameCenterHelper.h; sourceTree = "<group>"; };
 		0F48B7171CD94E90008A7F3D /* FWGameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGameCenterHelper.m; sourceTree = "<group>"; };
-		0F6507AD1D3720310097EA9D /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "../../Library/Developer/Xcode/DerivedData/Komic-bhraznahspgwfbaipykmivhpqbzf/Build/Products/Debug-iphoneos/GPUImage/libGPUImage.a"; sourceTree = "<group>"; };
-		0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAMSmoothAlert.a; path = "Pods/../build/Release-iphoneos/AMSmoothAlert/libAMSmoothAlert.a"; sourceTree = "<group>"; };
 		0F72A05D1D9D8AF4004C7B2C /* KomicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F72A05F1D9D8AF4004C7B2C /* KomicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomicUITests.swift; sourceTree = "<group>"; };
 		0F72A0611D9D8AF4004C7B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,17 +61,6 @@
 		0F97FFBA1CFCFBE000924EA1 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		0FAFCB2D1CF4FED1009FE469 /* FWGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGamesTableViewController.h; sourceTree = "<group>"; };
 		0FAFCB2E1CF4FED1009FE469 /* FWGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGamesTableViewController.m; sourceTree = "<group>"; };
-		0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		24693DFAC83C5D67D3DC5051 /* Pods_KomicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KomicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25C59E781FBC25839042018E /* Pods-FarewellTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3AFCDC25276C5B4E005629F5 /* libPods-Komic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Komic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4624B0294B5570C830DE8279 /* Pods-Komic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Komic/Pods-Komic.release.xcconfig"; sourceTree = "<group>"; };
-		4BA1F3FB434A0A24DE964C15 /* Pods-Farewell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Farewell.release.xcconfig"; path = "Pods/Target Support Files/Pods-Farewell/Pods-Farewell.release.xcconfig"; sourceTree = "<group>"; };
-		608DF4B4E32CAF01E57B9441 /* Pods_KomicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KomicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellTests/Pods-FarewellTests.release.xcconfig"; sourceTree = "<group>"; };
-		C42F5537F3E2E204C531E3FA /* Pods-Farewell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Farewell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Farewell/Pods-Farewell.debug.xcconfig"; sourceTree = "<group>"; };
-		EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarewellUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarewellUITests/Pods-FarewellUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F6507B11D3720610097EA9D /* libAMSmoothAlert.a in Frameworks */,
-				0F6507AE1D3720310097EA9D /* libGPUImage.a in Frameworks */,
-				0FBE5BB31D2F2DD7007322B6 /* GameKit.framework in Frameworks */,
-				544619A51514B6159BEED65C /* libPods-Komic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,10 +84,8 @@
 		0F48B6D71CD92DF1008A7F3D = {
 			isa = PBXGroup;
 			children = (
-				C8541AA93D24A26F7D7DFD29 /* Frameworks */,
 				0F48B6E21CD92DF1008A7F3D /* Komic */,
 				0F72A05E1D9D8AF4004C7B2C /* KomicUITests */,
-				CD47EED7DA72A6954F8808F7 /* Pods */,
 				0F48B6E11CD92DF1008A7F3D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -210,34 +186,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C8541AA93D24A26F7D7DFD29 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0F6507AF1D3720610097EA9D /* libAMSmoothAlert.a */,
-				0F6507AD1D3720310097EA9D /* libGPUImage.a */,
-				0FBE5BB21D2F2DD7007322B6 /* GameKit.framework */,
-				608DF4B4E32CAF01E57B9441 /* Pods_KomicTests.framework */,
-				24693DFAC83C5D67D3DC5051 /* Pods_KomicUITests.framework */,
-				3AFCDC25276C5B4E005629F5 /* libPods-Komic.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CD47EED7DA72A6954F8808F7 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C42F5537F3E2E204C531E3FA /* Pods-Farewell.debug.xcconfig */,
-				4BA1F3FB434A0A24DE964C15 /* Pods-Farewell.release.xcconfig */,
-				25C59E781FBC25839042018E /* Pods-FarewellTests.debug.xcconfig */,
-				9862BF30CDA97460FD264C00 /* Pods-FarewellTests.release.xcconfig */,
-				74256808EDE900FE4E95E084 /* Pods-FarewellUITests.debug.xcconfig */,
-				EA7825492AAFF04A536A00A7 /* Pods-FarewellUITests.release.xcconfig */,
-				0727F8069ED09BC4E95D15E7 /* Pods-Komic.debug.xcconfig */,
-				4624B0294B5570C830DE8279 /* Pods-Komic.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,11 +193,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F48B70D1CD92DF1008A7F3D /* Build configuration list for PBXNativeTarget "Komic" */;
 			buildPhases = (
-				E14B273B2FB9B9F19D6F5708 /* [CP] Check Pods Manifest.lock */,
 				0F48B6DC1CD92DF1008A7F3D /* Sources */,
 				0F48B6DD1CD92DF1008A7F3D /* Frameworks */,
 				0F48B6DE1CD92DF1008A7F3D /* Resources */,
-				6217E59F704705F086A2D03B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,7 +231,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Stan Sarber";
 				TargetAttributes = {
 					0F48B6DF1CD92DF1008A7F3D = {
@@ -342,65 +288,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		6217E59F704705F086A2D03B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Komic/Pods-Komic-resources.sh",
-				"${PODS_ROOT}/AMSmoothAlert/AMSmoothAlert/assets/checkMark.png",
-				"${PODS_ROOT}/AMSmoothAlert/AMSmoothAlert/assets/checkMark@2x.png",
-				"${PODS_ROOT}/AMSmoothAlert/AMSmoothAlert/assets/crossMark.png",
-				"${PODS_ROOT}/AMSmoothAlert/AMSmoothAlert/assets/crossMark@2x.png",
-				"${PODS_ROOT}/AMSmoothAlert/AMSmoothAlert/assets/info.png",
-				"${PODS_ROOT}/AMSmoothAlert/AMSmoothAlert/assets/info@2x.png",
-				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
-				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
-				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
-				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
-				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/checkMark.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/checkMark@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/crossMark.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/crossMark@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/info.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/info@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Komic/Pods-Komic-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E14B273B2FB9B9F19D6F5708 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Komic-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0F48B6DC1CD92DF1008A7F3D /* Sources */ = {
@@ -484,6 +371,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -508,7 +396,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -545,6 +433,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -563,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
@@ -579,53 +468,45 @@
 		};
 		0F48B70E1CD92DF1008A7F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0727F8069ED09BC4E95D15E7 /* Pods-Komic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = E89J2JM4SK;
 				FRAMEWORK_SEARCH_PATHS = "";
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "Komic/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Farewell",
-					"$(PROJECT_DIR)/build/Release-iphoneos/AMSmoothAlert",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.komik;
 				PRODUCT_NAME = Komic;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv6 armv7 armv7s arm64";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64";
 			};
 			name = Debug;
 		};
 		0F48B70F1CD92DF1008A7F3D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4624B0294B5570C830DE8279 /* Pods-Komic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VDK4KGPH4J;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Komic/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Farewell",
-					"$(PROJECT_DIR)/build/Release-iphoneos/AMSmoothAlert",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.komik;
 				PRODUCT_NAME = Komic;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv6 armv7 armv7s arm64";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64";
 			};
 			name = Release;
 		};
@@ -635,7 +516,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				INFOPLIST_FILE = KomicUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.KomicUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,7 +533,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				INFOPLIST_FILE = KomicUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ssarber.KomicUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

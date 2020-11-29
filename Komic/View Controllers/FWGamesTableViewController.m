@@ -13,8 +13,6 @@
 #import "FWMatchCellTableViewCell.h"
 #import "GameSegue.h"
 #import "UIImageView+Letters.h"
-#import "AMSmoothAlertView.h"
-#import "AMSmoothAlertConstants.h"
 @import GameKit;
 
 NSString *const kFWUserHasSeenInitialTutorialUserDefault = @"FWUserHasSeenInitialTutorialUserDefault";
